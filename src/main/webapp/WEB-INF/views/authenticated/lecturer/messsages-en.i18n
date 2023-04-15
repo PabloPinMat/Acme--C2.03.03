@@ -10,8 +10,8 @@
 
 authenticated.lecturer.form.label.almaMater = Alma mater:
 authenticated.lecturer.form.label.resume = Resume:
-authenticated.lecturer.form.label.listOfQualifications = List of qualifications:
-authenticated.lecturer.form.label.furtherInformation = Further information:
+authenticated.lecturer.form.label.qualificationsList = List of qualifications:
+authenticated.lecturer.form.label.link = Further information:
 
 authenticated.lecturer.form.button.create = Register
 authenticated.lecturer.form.button.update = Update

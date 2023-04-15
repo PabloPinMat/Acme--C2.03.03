@@ -9,13 +9,13 @@
 # they accept any liabilities with respect to them.
 
 lecturer.course.list.label.title = Título
-lecturer.course.list.label.abstract$ = Resumen
-lecturer.course.list.label.price = Precio
+lecturer.course.list.label.courseAbstract = Resumen
+lecturer.course.list.label.retailPrice = Precio
 
 lecturer.course.form.label.code = Código
 lecturer.course.form.label.title = Título
-lecturer.course.form.label.abstract$ = Resumen
-lecturer.course.form.label.price = Precio
+lecturer.course.form.label.courseAbstract = Resumen
+lecturer.course.form.label.retailPrice = Precio
 lecturer.course.form.label.furtherInformationLink = Información adicional
 lecturer.course.form.label.lecturer = Profesor
 lecturer.course.form.label.drafMode = Modo borrador

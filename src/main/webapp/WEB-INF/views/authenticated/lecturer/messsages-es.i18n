@@ -10,8 +10,8 @@
 
 authenticated.lecturer.form.label.almaMater = Universidad:
 authenticated.lecturer.form.label.resume = Resumen:
-authenticated.lecturer.form.label.listOfQualifications = Lista de calificaciones: 
-authenticated.lecturer.form.label.furtherInformation = Más información:
+authenticated.lecturer.form.label.qualificationsList = Lista de calificaciones: 
+authenticated.lecturer.form.label.link = Más información:
 
 authenticated.lecturer.form.button.create = Registrar
 authenticated.lecturer.form.button.update = Actualizar
