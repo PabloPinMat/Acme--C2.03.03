@@ -42,6 +42,12 @@ master.menu.administrator.shut-down = Parar el sistema
 master.menu.provider = Proveedor
 master.menu.provider.favourite-link = Enlace favorito
 
+# master.menu.lecturer ########################################################
+
+master.menu.lecturer = Profesor
+master.menu.lecturer.course.list = Listar Cursos
+master.menu.lecturer.lecture = Listar lecciones
+
 # master.menu.consumer ##########################################################
 
 master.menu.consumer = Consumidor
