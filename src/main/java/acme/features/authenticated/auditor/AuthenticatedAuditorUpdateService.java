@@ -15,13 +15,8 @@ import acme.roles.Auditor;
 @Service
 public class AuthenticatedAuditorUpdateService extends AbstractService<Authenticated, Auditor> {
 
-	// Internal state ---------------------------------------------------------
-
 	@Autowired
 	protected AuthenticatedAuditorRepository repository;
-
-	// AbstractService interface ----------------------------------------------ç
-
 
 	@Override
 	public void authorise() {

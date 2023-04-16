@@ -25,7 +25,7 @@
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link4" action="https://www.realmadrid.com"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link5" action="https://grandwesternsteaks.com/"/>
 		</acme:menu-option>
-
+		
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-separator/>
@@ -41,6 +41,10 @@
 
 		<acme:menu-option code="master.menu.consumer" access="hasRole('Consumer')">
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.authenticated.audit.list" action="/authenticated/audit/list"/>
 		</acme:menu-option>
 	</acme:menu-left>
 

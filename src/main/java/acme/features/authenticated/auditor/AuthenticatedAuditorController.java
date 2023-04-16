@@ -12,15 +12,12 @@ import acme.roles.Auditor;
 @Controller
 public class AuthenticatedAuditorController extends AbstractController<Authenticated, Auditor> {
 
-	// Internal state ---------------------------------------------------------
-
 	@Autowired
 	protected AuthenticatedAuditorCreateService createService;
 
 	@Autowired
 	protected AuthenticatedAuditorUpdateService updateService;
-
-	// Constructors -----------------------------------------------------------
+	
 
 
 	@PostConstruct
