@@ -17,6 +17,9 @@
 
 <acme:list>
 	<acme:list-column code="company.practicum.list.label.practicum-code" path="code"  width="20%"/>
-	<acme:list-column code="company.practicum.list.label.title" path="title"  width="60%"/>
+	<acme:list-column code="company.practicum.list.label.title" path="title"  width="40%"/>
+	<acme:list-column code="company.practicum.list.label.estimatedTotalTime" path="estimatedTotalTime"  width="40%"/>
 </acme:list>
+
+<acme:button code="company.practicum.list.button.create" action="/company/practicum/create"/>
 

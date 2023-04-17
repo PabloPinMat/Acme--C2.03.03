@@ -8,13 +8,14 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.course.Course;
 import acme.entities.practicum.Practicum;
+import acme.framework.components.accounts.Principal;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Company;
 
 @Service
-public class CompanyPracticumCreateService extends AbstractService<Company, Practicum> {
+public class CompanyPracticumUpdateService extends AbstractService<Company, Practicum> {
 
 	@Autowired
 	protected CompanyPracticumRepository repository;
@@ -22,23 +23,36 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 
 	@Override
 	public void check() {
-		super.getResponse().setChecked(true);
+		boolean status;
+
+		status = super.getRequest().hasData("id", int.class);
+
+		super.getResponse().setChecked(status);
 	}
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		Practicum object;
+		Principal principal;
+		int practicumId;
+
+		practicumId = super.getRequest().getData("id", int.class);
+		object = this.repository.findPracticumById(practicumId);
+		principal = super.getRequest().getPrincipal();
+
+		status = object.getCompany().getId() == principal.getActiveRoleId();
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		Practicum object;
-		Company company;
+		int id;
 
-		company = this.repository.findCompanyById(super.getRequest().getPrincipal().getActiveRoleId());
-		object = new Practicum();
-		object.setCompany(company);
-		object.setPublish(false);
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findPracticumById(id);
 
 		super.getBuffer().setData(object);
 	}
@@ -61,6 +75,17 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 	public void validate(final Practicum object) {
 		assert object != null;
 
+		//		if (!super.getBuffer().getErrors().hasErrors("code"))
+		//			super.state(this.repository.findPracticumByCode(object.getCode()) == null || this.repository.findPracticumByCode(object.getCode()).equals(object), "code", "company.practicum.form.error.code");
+		//
+		//		if (!super.getBuffer().getErrors().hasErrors("title"))
+		//			super.state(this.auxiliarService.validateTextImput(object.getTitle()), "title", "company.practicum.form.error.spam");
+		//
+		//		if (!super.getBuffer().getErrors().hasErrors("abstract$"))
+		//			super.state(this.auxiliarService.validateTextImput(object.getAbstract$()), "abstract$", "company.practicum.form.error.spam");
+		//
+		//		if (!super.getBuffer().getErrors().hasErrors("goals"))
+		//			super.state(this.auxiliarService.validateTextImput(object.getGoals()), "goals", "company.practicum.form.error.spam");
 	}
 
 	@Override

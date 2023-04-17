@@ -12,5 +12,15 @@
 company.practicum.list.label.practicum-code = Practicum code
 company.practicum.list.label.title = Title
 company.practicum.list.label.course-code = Course code
+company.practicum.list.label.estimatedTotalTime = Estimated total time
+
+company.practicum.form.label.title = Title
+company.practicum.form.label.abstractPracticum = Abstract
+company.practicum.form.label.goals = Goals
+company.practicum.form.label.course = Course
+company.practicum.form.label.publish = Publish
+company.practicum.form.label.estimatedTotalTime = Estimated total time
 
 company.practicum.list.button.create = Create
+
+company.practicum.form.button.create = Create

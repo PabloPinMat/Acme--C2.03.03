@@ -8,37 +8,54 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.course.Course;
 import acme.entities.practicum.Practicum;
+import acme.entities.session.PracticumSession;
+import acme.framework.components.accounts.Principal;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Company;
 
 @Service
-public class CompanyPracticumCreateService extends AbstractService<Company, Practicum> {
+public class CompanyPracticumDeleteService extends AbstractService<Company, Practicum> {
 
 	@Autowired
 	protected CompanyPracticumRepository repository;
 
+	// AbstractService interface ----------------------------------------------
+
 
 	@Override
 	public void check() {
-		super.getResponse().setChecked(true);
+		boolean status;
+
+		status = super.getRequest().hasData("id", int.class);
+
+		super.getResponse().setChecked(status);
 	}
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		Practicum object;
+		Principal principal;
+		int practicumId;
+
+		practicumId = super.getRequest().getData("id", int.class);
+		object = this.repository.findPracticumById(practicumId);
+		principal = super.getRequest().getPrincipal();
+
+		status = object.getCompany().getId() == principal.getActiveRoleId();
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
 		Practicum object;
-		Company company;
+		int id;
 
-		company = this.repository.findCompanyById(super.getRequest().getPrincipal().getActiveRoleId());
-		object = new Practicum();
-		object.setCompany(company);
-		object.setPublish(false);
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findPracticumById(id);
 
 		super.getBuffer().setData(object);
 	}
@@ -60,14 +77,17 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 	@Override
 	public void validate(final Practicum object) {
 		assert object != null;
-
 	}
 
 	@Override
 	public void perform(final Practicum object) {
 		assert object != null;
 
-		this.repository.save(object);
+		Collection<PracticumSession> practicumSessions;
+
+		practicumSessions = this.repository.findPracticumSessionsByPracticumId(object.getId());
+		this.repository.deleteAll(practicumSessions);
+		this.repository.delete(object);
 	}
 
 	@Override
