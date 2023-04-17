@@ -19,12 +19,8 @@ master.menu.sign-out = Salir
 
 master.menu.anonymous = Anónimo
 master.menu.anonymous.favourite-link1 = 32099110B: Pino Mateo, Pablo
-<<<<<<< HEAD
 master.menu.anonymous.favourite-link2 = 47349483G: Baquero Fernandez, Fernando
-=======
-master.menu.anonymous.favourite-link2 = 47349483G: Baquero Fernández, Fernando
 master.menu.anonymous.favourite-link3 = 77939845K: Cortés Fonseca, Daniel
->>>>>>> branch 'main' of https://github.com/rauulhernaan/C1.03.03.git
 master.menu.anonymous.favourite-link4 = 17475514E: Merida Bascon, Raul Hernan
 master.menu.anonymous.favourite-link5 = 77930171F: Ribas Luna, Gonzalo
 
@@ -41,6 +37,12 @@ master.menu.administrator.shut-down = Parar el sistema
 
 master.menu.provider = Proveedor
 master.menu.provider.favourite-link = Enlace favorito
+
+# master.menu.lecturer ########################################################
+
+master.menu.lecturer = Profesor
+master.menu.lecturer.course.list = Listar Cursos
+master.menu.lecturer.lecture = Listar lecciones
 
 # master.menu.consumer ##########################################################
 
@@ -70,3 +72,10 @@ master.menu.user-account.consumer = Datos de consumidor
 master.menu.user-account.become-consumer = Hazte consumidor
 master.menu.user-account.company = Datos de compañia
 master.menu.user-account.become-company = Hazte compañia
+master.menu.user-account.lecturer = Datos de profesor
+master.menu.user-account.become-lecturer = Hazte profesor
+
+
+# master.menu.any ####################################################
+master.menu.any.course = Cursos
+master.menu.any= Cualquiera

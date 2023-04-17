@@ -38,6 +38,12 @@ master.menu.administrator.shut-down = Shut down
 master.menu.provider = Provider
 master.menu.provider.favourite-link = Favourite link
 
+# master.menu.lecturer ########################################################
+
+master.menu.lecturer = Lecturer
+master.menu.lecturer.course.list = List Courses
+master.menu.lecturer.lecture = My lectures
+
 # master.menu.consumer ##########################################################
 
 master.menu.consumer = Consumer
@@ -66,3 +72,10 @@ master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.company = Company data
 master.menu.user-account.become-company = Become a company
+master.menu.user-account.lecturer = Lecturer data
+master.menu.user-account.become-lecturer = Become a lecturer
+
+
+# master.menu.any ####################################################
+master.menu.any.course = Courses
+master.menu.any= Any
