@@ -16,8 +16,7 @@ import acme.framework.services.AbstractService;
 import acme.roles.Lecturer;
 
 @Service
-public class LecturerCoursePublishService extends AbstractService<Lecturer, Course> {
-
+public class LecturerCourseUpdateService extends AbstractService<Lecturer, Course> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -29,7 +28,9 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 	@Override
 	public void check() {
 		boolean status;
+
 		status = super.getRequest().hasData("id", int.class);
+
 		super.getResponse().setChecked(status);
 	}
 
@@ -66,7 +67,7 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 
 	@Override
 	public void perform(final Course object) {
-		object.setDraftMode(false);
+		assert object != null;
 		this.repository.save(object);
 	}
 
@@ -74,7 +75,7 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 	public void unbind(final Course object) {
 		assert object != null;
 		Tuple tuple;
-		tuple = super.unbind(object, "code", "title", "courseAbstract", "retailPrice", "link", "draftMode");
+		tuple = super.unbind(object, "code", "title", "courseAbstract", "retailPrice", "link", "draftMode", "lecturer");
 		final List<Lecture> lectures = this.repository.findLecturesByCourse(object.getId()).stream().collect(Collectors.toList());
 		final CourseType courseType = object.getCourseType();
 		tuple.put("courseType", courseType);

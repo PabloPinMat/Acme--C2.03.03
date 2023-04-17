@@ -25,6 +25,11 @@
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link4" action="https://www.realmadrid.com"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link5" action="https://grandwesternsteaks.com/"/>
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.any">
+			<acme:menu-suboption code="master.menu.any.course" action="/any/course/list"/>
+			<acme:menu-separator/>
+		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRole('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.user-accounts" action="/administrator/user-account/list"/>

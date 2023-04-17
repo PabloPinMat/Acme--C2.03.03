@@ -1,29 +1,27 @@
 
 package acme.features.lecturer.course;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.course.Course;
-import acme.entities.course.CourseType;
-import acme.entities.lecture.Lecture;
+import acme.entities.course.CourseLecture;
 import acme.framework.components.accounts.Principal;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Lecturer;
 
 @Service
-public class LecturerCoursePublishService extends AbstractService<Lecturer, Course> {
+public class LecturerCourseDeleteService extends AbstractService<Lecturer, Course> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	protected LecturerCourseRepository repository;
 
-	// AbstractService<Employer, Job> -------------------------------------
+	// AbstractService interface ----------------------------------------------
 
 
 	@Override
@@ -48,8 +46,10 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 	public void load() {
 		Course object;
 		int id;
+
 		id = super.getRequest().getData("id", int.class);
 		object = this.repository.findCourseById(id);
+
 		super.getBuffer().setData(object);
 	}
 
@@ -66,18 +66,18 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 
 	@Override
 	public void perform(final Course object) {
-		object.setDraftMode(false);
-		this.repository.save(object);
+		assert object != null;
+		final Collection<CourseLecture> courseLectures = this.repository.findCourseLecturesByCourse(object);
+		for (final CourseLecture cl : courseLectures)
+			this.repository.delete(cl);
+		this.repository.delete(object);
 	}
 
 	@Override
 	public void unbind(final Course object) {
 		assert object != null;
 		Tuple tuple;
-		tuple = super.unbind(object, "code", "title", "courseAbstract", "retailPrice", "link", "draftMode");
-		final List<Lecture> lectures = this.repository.findLecturesByCourse(object.getId()).stream().collect(Collectors.toList());
-		final CourseType courseType = object.getCourseType();
-		tuple.put("courseType", courseType);
+		tuple = super.unbind(object, "code", "title", "courseAbstract", "retailPrice", "link");
 		super.getResponse().setData(tuple);
 	}
 }
