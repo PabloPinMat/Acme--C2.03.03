@@ -49,6 +49,12 @@ master.menu.lecturer.lecture = Listar lecciones
 master.menu.consumer = Consumidor
 master.menu.consumer.favourite-link = Enlace favorito
 
+
+# master.menu.student ####################################################
+
+master.menu.student = Estudiante
+master.menu.student.my-enrolments = Mis inscripciones
+
 # master.menu.company ##########################################################
 
 master.menu.company = Compañia
@@ -61,6 +67,7 @@ master.menu.authenticated.practicum.list = Lista de prácticas
 # master.menu.authenticated ##########################################################
 
 master.menu.authenticated = Autenticado
+
 
 # master.menu.user-account ####################################################
 

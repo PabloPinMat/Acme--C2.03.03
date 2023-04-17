@@ -55,8 +55,13 @@
 			<acme:menu-suboption code="master.menu.consumer.favourite-link" action="http://www.example.com/"/>
 		</acme:menu-option>
 		
+
+		<acme:menu-option code="master.menu.student" access="hasRole('Student')">
+			<acme:menu-suboption code="master.menu.student.my-enrolments" action="/student/enrolment/list"/>
+
 		<acme:menu-option code="master.menu.company" access="hasRole('Company')">
 			<acme:menu-suboption code="master.menu.company.my-practica" action="/company/practicum/list"/>
+
 		</acme:menu-option>
 		
 	</acme:menu-left>
