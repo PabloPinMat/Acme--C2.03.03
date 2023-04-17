@@ -25,3 +25,8 @@ company.practicum.list.button.create = Crear
 
 company.practicum.form.button.create = Crear
 
+company.practicum.form.button.update = Actualizar
+company.practicum.form.button.delete = Borrar
+company.practicum.form.button.publish = Publicar
+company.practicum.form.button.practicum-sessions = Sesiones
+
