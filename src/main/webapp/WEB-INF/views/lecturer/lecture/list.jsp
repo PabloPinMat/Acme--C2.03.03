@@ -17,8 +17,9 @@
 
 <acme:list>
 	<acme:list-column code="lecturer.lecture.list.label.title" path="title"  width="40%"/>
-	<acme:list-column code="lecturer.lecture.list.label.summary" path="abstractt" width="40%" />
+	<acme:list-column code="lecturer.lecture.list.label.abstractt" path="abstractt" width="40%" />
 	<acme:list-column code="lecturer.lecture.list.label.estimatedLearningTime" path="estimatedLearningTime" width="20%" />
+	<acme:list-column code="lecturer.lecture.list.label.lectureType" path="lectureType" width="20%"/>
 </acme:list>
 
 <acme:button code="lecturer.lecture.list.button.create" action="/lecturer/lecture/create"/>
