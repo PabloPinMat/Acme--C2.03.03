@@ -9,15 +9,15 @@
 # they accept any liabilities with respect to them.
 
 lecturer.lecture.list.label.title= Título
-lecturer.lecture.list.label.summary = Resumen
+lecturer.lecture.list.label.abstractt = Resumen
 lecturer.lecture.list.label.estimatedLearningTime = Tiempo de Aprendizaje estimado
 
 lecturer.lecture.form.label.title = Título:
-lecturer.lecture.form.label.summary = Resumen:
+lecturer.lecture.form.label.abstractt = Resumen:
 lecturer.lecture.form.label.estimatedLearningTime = Tiempo de aprendizaje estimado:
 lecturer.lecture.form.label.body = Cuerpo:
-lecturer.lecture.form.label.nature = Naturaleza:
-lecturer.lecture.form.label.furtherInformationLink = Información adicional:
+lecturer.lecture.form.label.lectureType = Tipo de Clase:
+lecturer.lecture.form.label.furtherInformation = Información adicional:
 lecturer.lecture.form.label.draftMode = Modo borrador:
 
 lecturer.lecture.list.button.create = Crear lección
