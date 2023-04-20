@@ -27,7 +27,7 @@
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == false}">	 
 			<acme:button code="lecturer.lecture.list.button.add" action="/lecturer/course-lecture/create?lectureId=${id}"/>
 		</jstl:when>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == null}">
 			<acme:submit code="lecturer.lecture.form.button.update" action="/lecturer/lecture/update"/>
 			<acme:submit code="lecturer.lecture.form.button.delete" action="/lecturer/lecture/delete"/>
 			<acme:submit code="lecturer.lecture.form.button.publish" action="/lecturer/lecture/publish"/>

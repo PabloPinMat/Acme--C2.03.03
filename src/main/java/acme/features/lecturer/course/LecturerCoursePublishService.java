@@ -1,6 +1,7 @@
 
 package acme.features.lecturer.course;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -62,6 +63,11 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 	@Override
 	public void validate(final Course object) {
 		assert object != null;
+		final Collection<Lecture> lectures = this.repository.findLecturesByCourse(object.getId());
+		if (!lectures.isEmpty()) {
+			boolean publishedLectures;
+			publishedLectures = lectures.stream().allMatch(x -> x.isDraftMode() == false);
+		}
 	}
 
 	@Override

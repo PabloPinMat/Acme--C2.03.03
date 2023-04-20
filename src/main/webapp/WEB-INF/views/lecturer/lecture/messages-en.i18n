@@ -11,15 +11,15 @@
 
 
 lecturer.lecture.list.label.title= Title
-lecturer.lecture.list.label.summary = Summary
+lecturer.lecture.list.label.abstractt = Summary
 lecturer.lecture.list.label.estimatedLearningTime = Estimated learning time
 
 lecturer.lecture.form.label.title = Title:
-lecturer.lecture.form.label.summary = Summary:
+lecturer.lecture.form.label.abstractt = abstractt:
 lecturer.lecture.form.label.estimatedLearningTime = Estimated learning Time:
 lecturer.lecture.form.label.body = Body:
-lecturer.lecture.form.label.nature = Nature:
-lecturer.lecture.form.label.furtherInformationLink = Further information link:
+lecturer.lecture.form.label.lectureType = Tipo:
+lecturer.lecture.form.label.furtherInformation = Further information link:
 lecturer.lecture.form.label.draftMode = Draft mode:
 
 lecturer.lecture.list.button.create = Create lecture
@@ -37,3 +37,5 @@ lecturer.lecture.form.button.update = Update
 lecturer.lecture.form.button.delete = Delete
 lecturer.lecture.form.button.publish = Publish
 lecturer.lecture.form.button.create = Create
+
+
