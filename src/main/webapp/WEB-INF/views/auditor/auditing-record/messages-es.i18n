@@ -9,7 +9,7 @@ auditor.auditing-record.form.label.assessment = Evaluación
 auditor.auditing-record.form.label.startPeriod = Fecha de inicio
 auditor.auditing-record.form.label.endPeriod = Fecha de final
 auditor.auditing-record.form.label.mark = Nota
-auditor.auditing-record.form.label.furtherInformationLink = Link información extra
+auditor.auditing-record.form.label.link = Link información extra
 
 auditor.auditing-record.form.error.spam = Las palabras introducidas son consideradas spam
 auditor.auditing-record.form.error.post-date = Fecha inicial posterior a fecha final

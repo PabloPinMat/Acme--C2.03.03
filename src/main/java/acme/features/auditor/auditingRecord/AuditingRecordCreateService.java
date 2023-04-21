@@ -1,4 +1,4 @@
-
+ 
 package acme.features.auditor.auditingRecord;
 
 import java.time.temporal.ChronoUnit;
@@ -59,7 +59,7 @@ public class AuditingRecordCreateService extends AbstractService<Auditor, Auditi
 	@Override
 	public void bind(final AuditingRecord object) {
 		assert object != null;
-		super.bind(object, "subject", "assessment", "startPeriod", "endPeriod", "mark", "furtherInformationLink", "confirmation");
+		super.bind(object, "subject", "assessment", "startPeriod", "endPeriod", "mark", "link");
 	}
 
 	@Override
@@ -70,9 +70,9 @@ public class AuditingRecordCreateService extends AbstractService<Auditor, Auditi
 		super.state(confirmation, "confirmation", "javax.validation.constraints.AssertTrue.message");
 		assert object != null;
 		if (!super.getBuffer().getErrors().hasErrors("endPeriod") && !super.getBuffer().getErrors().hasErrors("startPeriod"))
-			super.state(MomentHelper.isAfterOrEqual(object.getEndPeriod(), object.getStartPeriod()), "startPeriod", "auditor.auditing-record.form.error.post-date");
+			super.state(MomentHelper.isAfterOrEqual(object.getEndPeriod(), object.getStartPeriod()), "startPeriod", "auditor.auditingRecord.form.error.post-date");
 		if (!super.getBuffer().getErrors().hasErrors("endPeriod") && !super.getBuffer().getErrors().hasErrors("startPeriod"))
-			super.state(MomentHelper.isAfterOrEqual(object.getEndPeriod(), MomentHelper.deltaFromMoment(object.getStartPeriod(), 1, ChronoUnit.HOURS)), "endPeriod", "auditor.auditing-record.form.error.not-enough-time");
+			super.state(MomentHelper.isAfterOrEqual(object.getEndPeriod(), MomentHelper.deltaFromMoment(object.getStartPeriod(), 1, ChronoUnit.HOURS)), "endPeriod", "auditor.auditingRecord.form.error.not-enough-time");
 
 
 	}
@@ -87,7 +87,7 @@ public class AuditingRecordCreateService extends AbstractService<Auditor, Auditi
 	public void unbind(final AuditingRecord object) {
 		assert object != null;
 		Tuple tuple;
-		tuple = super.unbind(object, "subject", "assessment", "startPeriod", "endPeriod", "mark", "furtherInformationLink");
+		tuple = super.unbind(object, "subject", "assessment", "startPeriod", "endPeriod", "mark", "link");
 		final SelectChoices choices;
 		choices = SelectChoices.from(Mark.class, object.getMark());
 		tuple.put("mark", choices.getSelected().getKey());

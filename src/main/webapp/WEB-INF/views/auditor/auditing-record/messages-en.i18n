@@ -8,7 +8,7 @@ auditor.auditing-record.form.label.assessment = Assessment
 auditor.auditing-record.form.label.startPeriod = Start Period
 auditor.auditing-record.form.label.endPeriod = End Period
 auditor.auditing-record.form.label.mark = Mark
-auditor.auditing-record.form.label.furtherInformationLink = Further Information Link
+auditor.auditing-record.form.label.link = Further Information Link
 
 auditor.auditing-record.form.error.spam = The introduced text contains words that are considered spam
 auditor.auditing-record.form.error.post-date = End Date before Start Date

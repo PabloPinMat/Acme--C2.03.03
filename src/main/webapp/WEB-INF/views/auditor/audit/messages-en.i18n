@@ -13,7 +13,7 @@ auditor.audit.form.label.weakPoints = Weak Points
 auditor.audit.form.label.mark = Marks
 
 auditor.audit.form.error.duplicateCode = This code already exists, try another one
-auditor.audit.form.button.auditing-records = Auditing records
+auditor.audit.form.button.auditing-record = Auditing records
 
 auditor.audit.create = Create
 auditor.audit.form.button.delete = Delete

@@ -51,7 +51,7 @@ public class AuditingRecordDeleteService extends AbstractService<Auditor, Auditi
 	@Override
 	public void bind(final AuditingRecord object) {
 		assert object != null;
-		super.bind(object, "subject", "assesment", "startPeriod", "endPeriod", "mark", "furtherInformationLink");
+		super.bind(object, "subject", "assesment", "startPeriod", "endPeriod", "mark", "link");
 	}
 
 	@Override
@@ -69,7 +69,7 @@ public class AuditingRecordDeleteService extends AbstractService<Auditor, Auditi
 	public void unbind(final AuditingRecord object) {
 		assert object != null;
 		Tuple tuple;
-		tuple = super.unbind(object, "subject", "assesment", "startPeriod", "endPeriod", "mark", "furtherInformationLink");
+		tuple = super.unbind(object, "subject", "assesment", "startPeriod", "endPeriod", "mark", "link");
 		final SelectChoices choices;
 		choices = SelectChoices.from(Mark.class, object.getMark());
 		tuple.put("mark", choices.getSelected().getKey());
