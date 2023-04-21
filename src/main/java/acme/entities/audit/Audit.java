@@ -1,15 +1,11 @@
 
 package acme.entities.audit;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
@@ -30,7 +26,9 @@ public class Audit extends AbstractEntity {
 	@ManyToOne
 	protected Auditor				auditor;
 
-	@ManyToOne
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
 	protected Course				course;
 
 	@Column(unique = true)
@@ -49,11 +47,10 @@ public class Audit extends AbstractEntity {
 	@NotBlank
 	@Length(max = 100)
 	protected String				weakPoints;
+	
+	protected boolean			published;
 
-	@OneToMany
-	protected List<AuditingRecord>	records;
-
-
+	/*
 	public Mark calculateMark() {
 
 		final Map<Mark, Integer> markCounts = new HashMap<>();
@@ -77,4 +74,5 @@ public class Audit extends AbstractEntity {
 
 		return mode;
 	}
+	*/
 }
