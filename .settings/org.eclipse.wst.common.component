@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+<<<<<<< HEAD
                                                                                                                                                                                                     
+=======
+                                                                                                                                                                                                
+
+>>>>>>> branch 'develop' of https://github.com/Gonriblun/Acme-L3-D03.git
     
     
     
@@ -43,8 +48,10 @@
     
     
     
+
     
     
+<<<<<<< HEAD
     
     
     <wb-module deploy-name="Acme-L3-D03-23.1.0">
@@ -52,6 +59,10 @@
         
         
         
+=======
+    <wb-module deploy-name="Acme-L3-D03-23.1.0">
+                                                                                                                                                                                                                                                                                                                                                                                        
+>>>>>>> branch 'develop' of https://github.com/Gonriblun/Acme-L3-D03.git
         
         
         
@@ -66,6 +77,7 @@
         
         
         
+<<<<<<< HEAD
         
         
         
@@ -113,6 +125,9 @@
         
         
         
+=======
+
+>>>>>>> branch 'develop' of https://github.com/Gonriblun/Acme-L3-D03.git
         
         
         
@@ -145,8 +160,12 @@
         
         
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+<<<<<<< HEAD
                                                                                                                                                                                                                                                                                                                                                                                                 
         
+=======
+                                                                                                                                                                                                                                                                                                                                                                                        
+>>>>>>> branch 'develop' of https://github.com/Gonriblun/Acme-L3-D03.git
         
         
         
@@ -193,6 +212,7 @@
         
         
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+<<<<<<< HEAD
                                                                                                                                                                                                                                                                                                                                                                                         
         
         
@@ -239,7 +259,11 @@
         
         
         
+=======
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+>>>>>>> branch 'develop' of https://github.com/Gonriblun/Acme-L3-D03.git
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/webapp"/>
+<<<<<<< HEAD
                                                                                                                                                                                                                                                                                         
         
         
@@ -274,7 +298,10 @@
         
         
         
+=======
+>>>>>>> branch 'develop' of https://github.com/Gonriblun/Acme-L3-D03.git
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+<<<<<<< HEAD
                                                                                 
         
         
@@ -284,9 +311,17 @@
         
         
         
+=======
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
+>>>>>>> branch 'develop' of https://github.com/Gonriblun/Acme-L3-D03.git
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/acme-framework"/>
+<<<<<<< HEAD
                                                                                                                                                                                                                                                                                                                                                                                                 
         
+=======
+                                                                                                                                                                                                                                                                                                                                                                                        
+>>>>>>> branch 'develop' of https://github.com/Gonriblun/Acme-L3-D03.git
         
         
         
@@ -333,10 +368,19 @@
         
         
         <property name="java-output-path" value="/Hello-World-22.0/target/classes"/>
+<<<<<<< HEAD
                 
+=======
+                        
+        
+>>>>>>> branch 'develop' of https://github.com/Gonriblun/Acme-L3-D03.git
         <property name="context-root" value="Acme-L3-D03"/>
+<<<<<<< HEAD
                                                                                                                                                                                                                                                                                                                                                                                                     
     
+=======
+                                                                                                                                                                                                                                                                                                                                                                                            
+>>>>>>> branch 'develop' of https://github.com/Gonriblun/Acme-L3-D03.git
     
     
     
@@ -384,8 +428,12 @@
     
     
     </wb-module>
+<<<<<<< HEAD
                                                                                                                                                                                                 
 
+=======
+                                                                                                                                                                                            
+>>>>>>> branch 'develop' of https://github.com/Gonriblun/Acme-L3-D03.git
 
 
 
