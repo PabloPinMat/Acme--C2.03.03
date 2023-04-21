@@ -33,6 +33,11 @@ master.menu.administrator.populate-initial = Populate DB (initial)
 master.menu.administrator.populate-sample = Populate DB (samples)
 master.menu.administrator.shut-down = Shut down
 
+# master.menu.authenticated #######################################################
+
+master.menu.authenticated = Authenticated
+master.menu.authenticated.audit.list = List audits
+
 # master.menu.provider ########################################################
 
 master.menu.provider = Teacher
@@ -49,6 +54,9 @@ master.menu.lecturer.lecture = My lectures
 master.menu.consumer = Consumer
 master.menu.consumer.favourite-link = Favourite link
 
+# master.menu.auditor ####################################################
+master.menu.auditor = Auditor
+master.menu.auditor.audit = My audits
 
 # master.menu.student ####################################################
 
@@ -77,6 +85,9 @@ master.menu.user-account.provider = Provider data
 master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.consumer = Consumer data
 master.menu.user-account.become-consumer = Become a consumer
+master.menu.user-account.auditor =  Auditor data
+master.menu.user-account.become-auditor = Become an auditor
+
 master.menu.user-account.company = Company data
 master.menu.user-account.become-company = Become a company
 master.menu.user-account.lecturer = Lecturer data
