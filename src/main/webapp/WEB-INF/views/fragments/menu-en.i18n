@@ -90,3 +90,7 @@ master.menu.any= Any
 
 # any.menu.peep.list  ####################################################
 any.menu.peep.list = Peep
+
+# master.menu.administrator.banner-list  ####################################################
+master.menu.administrator.banner-list = Banners list
+

@@ -90,3 +90,5 @@ master.menu.any= Cualquiera
 # any.menu.peep.list  ####################################################
 any.menu.peep.list = Mensaje
 
+# master.menu.administrator.banner-list  ####################################################
+master.menu.administrator.banner-list = Lista de banners
