@@ -40,8 +40,14 @@ master.menu.authenticated.audit.list = List audits
 
 # master.menu.provider ########################################################
 
-master.menu.provider = Provider
+master.menu.provider = Teacher
 master.menu.provider.favourite-link = Favourite link
+
+# master.menu.lecturer ########################################################
+
+master.menu.lecturer = Lecturer
+master.menu.lecturer.course.list = List Courses
+master.menu.lecturer.lecture = My lectures
 
 # master.menu.consumer ##########################################################
 
@@ -51,6 +57,25 @@ master.menu.consumer.favourite-link = Favourite link
 # master.menu.auditor ####################################################
 master.menu.auditor = Auditor
 master.menu.auditor.audit = My audits
+
+# master.menu.student ####################################################
+
+master.menu.student = Student
+master.menu.student.my-enrolments = My enrolments
+
+# master.menu.company ##########################################################
+
+master.menu.company = Company
+master.menu.company.my-practica = My practicums
+
+# master.menu.authenticated.practicum ##########################################################
+
+master.menu.authenticated.practicum.list = Practicum list
+
+# master.menu.authenticated ##########################################################
+
+master.menu.authenticated = Authenticated
+
 
 # master.menu.user-account ####################################################
 
@@ -63,3 +88,16 @@ master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.auditor =  Auditor data
 master.menu.user-account.become-auditor = Become an auditor
 
+master.menu.user-account.company = Company data
+master.menu.user-account.become-company = Become a company
+master.menu.user-account.lecturer = Lecturer data
+master.menu.user-account.become-lecturer = Become a lecturer
+
+
+# master.menu.any ####################################################
+master.menu.any.course = Courses
+master.menu.any= Any
+
+
+# any.menu.peep.list  ####################################################
+any.menu.peep.list = Peep

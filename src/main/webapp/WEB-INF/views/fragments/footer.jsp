@@ -40,3 +40,15 @@
 
 </acme:footer-panel>
 
+<jstl:if test="${banner != null }">
+	<div style="margin:1em 0em 1em 0em; text-align:left;font-size: 30px">
+	
+		<a href="${banner.webDocument}" target ="_blank">
+			<img src="${banner.pictureLink}" alt="${banner.slogan}" class="img-fluid rounded" style="align-text:left;max-height: 200px;width: auto"/>
+		</a>
+		
+		<acme:print value="${banner.slogan}"/>
+	
+	</div>
+</jstl:if>
+

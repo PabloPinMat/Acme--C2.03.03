@@ -19,12 +19,8 @@ master.menu.sign-out = Salir
 
 master.menu.anonymous = Anónimo
 master.menu.anonymous.favourite-link1 = 32099110B: Pino Mateo, Pablo
-<<<<<<< HEAD
 master.menu.anonymous.favourite-link2 = 47349483G: Baquero Fernandez, Fernando
-=======
-master.menu.anonymous.favourite-link2 = 47349483G: Baquero Fernández, Fernando
 master.menu.anonymous.favourite-link3 = 77939845K: Cortés Fonseca, Daniel
->>>>>>> branch 'main' of https://github.com/rauulhernaan/C1.03.03.git
 master.menu.anonymous.favourite-link4 = 17475514E: Merida Bascon, Raul Hernan
 master.menu.anonymous.favourite-link5 = 77930171F: Ribas Luna, Gonzalo
 
@@ -44,20 +40,46 @@ master.menu.authenticated.audit.list = Ver auditorías
 
 # master.menu.provider ########################################################
 
-master.menu.provider = Proveedor
+master.menu.provider = Profesor
 master.menu.provider.favourite-link = Enlace favorito
+
+# master.menu.lecturer ########################################################
+
+master.menu.lecturer = Profesor
+master.menu.lecturer.course.list = Listar Cursos
+master.menu.lecturer.lecture = Listar lecciones
 
 # master.menu.consumer ##########################################################
 
 master.menu.consumer = Consumidor
 master.menu.consumer.favourite-link = Enlace favorito
 
+
+# master.menu.student ####################################################
+
+master.menu.student = Estudiante
+master.menu.student.my-enrolments = Mis inscripciones
+
+# master.menu.company ##########################################################
+
+master.menu.company = Compañia
+master.menu.company.my-practica = Mis prácticas
+
+# master.menu.authenticated.practicum ##########################################################
+
+master.menu.authenticated.practicum.list = Lista de prácticas
+
+# master.menu.authenticated ##########################################################
+
+master.menu.authenticated = Autenticado
+
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta
 master.menu.user-account.general-data = Datos generales
-master.menu.user-account.provider = Datos de proveedor
-master.menu.user-account.become-provider = Hazte proveedor
+master.menu.user-account.provider = Datos de Profesor
+master.menu.user-account.become-provider = Hazte Profesor
 master.menu.user-account.consumer = Datos de consumidor
 master.menu.user-account.become-consumer = Hazte consumidor
 master.menu.user-account.auditor = Datos de auditor
@@ -66,3 +88,16 @@ master.menu.user-account.become-auditor = Hazte auditor
 # master.menu.auditor ####################################################
 master.menu.auditor = Auditor
 master.menu.auditor.audit = Mis auditorías
+master.menu.user-account.company = Datos de compañia
+master.menu.user-account.become-company = Hazte compañia
+master.menu.user-account.lecturer = Datos de profesor
+master.menu.user-account.become-lecturer = Hazte profesor
+
+
+# master.menu.any ####################################################
+master.menu.any.course = Cursos
+master.menu.any= Cualquiera
+
+# any.menu.peep.list  ####################################################
+any.menu.peep.list = Mensaje
+
