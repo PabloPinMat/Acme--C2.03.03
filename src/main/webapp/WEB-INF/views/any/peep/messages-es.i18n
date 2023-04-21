@@ -1,0 +1,10 @@
+any.peep.list.label.title=Titulo
+any.peep.list.label.message=Mensaje
+any.peep.form.label.instantiation=Momento de Creación
+any.peep.form.label.title=Titulo
+any.peep.form.label.nick=Usuario
+any.peep.form.label.message=Mensaje
+any.peep.form.label.email=Correo electronico
+any.peep.form.label.link=Link
+
+any.peep.form.button.create=Crear
