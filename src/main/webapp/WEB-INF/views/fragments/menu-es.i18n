@@ -86,3 +86,7 @@ master.menu.user-account.become-lecturer = Hazte profesor
 # master.menu.any ####################################################
 master.menu.any.course = Cursos
 master.menu.any= Cualquiera
+
+# any.menu.peep.list  ####################################################
+any.menu.peep.list = Mensaje
+
