@@ -1,0 +1,22 @@
+auditor.audit.list.label.courseTitle = Course title
+auditor.audit.list.label.auditCode = Audit code
+auditor.audit.list.label.strongPoints = Strong points
+auditor.audit.list.label.weakPoints = Weak points
+auditor.audit.list.label.isPublished = Is published
+auditor.audit.list.label.conclusion = Conclusion 
+
+auditor.audit.form.label.course = Course
+auditor.audit.form.label.code = Code
+auditor.audit.form.label.conclusion = Conclusion
+auditor.audit.form.label.strongPoints = Strong points
+auditor.audit.form.label.weakPoints = Weak Points
+auditor.audit.form.label.mark = Marks
+
+auditor.audit.form.error.duplicateCode = This code already exists, try another one
+auditor.audit.form.button.auditing-record = Auditing records
+
+auditor.audit.create = Create
+auditor.audit.form.button.delete = Delete
+auditor.audit.form.button.update = Update
+auditor.audit.form.button.publish = Publish
+auditor.audit.form.button.create = Create
