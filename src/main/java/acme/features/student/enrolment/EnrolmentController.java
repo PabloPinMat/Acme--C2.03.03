@@ -14,13 +14,36 @@ import acme.roles.Student;
 public class EnrolmentController extends AbstractController<Student, Enrolment> {
 
 	@Autowired
-	protected EnrolmentListService listService;
+	protected EnrolmentCreateService		createService;
+
+	@Autowired
+	protected EnrolmentShowService			showService;
+
+	@Autowired
+	protected EnrolmentUpdateService		updateService;
+
+	@Autowired
+	protected EnrolmentDeleteService		deleteService;
+
+	@Autowired
+	protected EnrolmentFinaliseService		finaliseService;
+
+	@Autowired
+	protected EnrolmentMyEnrolmentService	myEnrolmentService;
 
 	// Constructors -----------------------------------------------------------
 
 
 	@PostConstruct
 	protected void initialise() {
-		super.addBasicCommand("list", this.listService);
+		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("update", this.updateService);
+		super.addBasicCommand("delete", this.deleteService);
+
+		//Comandos custom
+
+		super.addCustomCommand("list-mine", "list", this.myEnrolmentService);
+		super.addCustomCommand("finalise", "update", this.finaliseService);
 	}
 }
