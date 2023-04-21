@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.entities.course.Course;
-import acme.entities.sessions.Session;
+import acme.entities.sessions.TutorialSession;
 import acme.entities.tutorial.Tutorial;
 import acme.framework.repositories.AbstractRepository;
 import acme.roles.Assistant;
@@ -15,25 +15,28 @@ import acme.roles.Assistant;
 @Repository
 public interface AssistantTutorialRepository extends AbstractRepository {
 
-	@Query("select t from Tutorial t where t.assitant.userAccount.id = :id")
-	Collection<Tutorial> findTutorialsByAssistantId(int id);
+	@Query("SELECT tutorial FROM Tutorial tutorial WHERE tutorial.assitant.userAccount.id = :id")
+	Collection<Tutorial> findTutorialsByAssistantId(Integer id);
 
-	@Query("select t from Tutorial t where t.id = :id")
-	Tutorial findTutorialById(int id);
+	@Query("SELECT course FROM Course course")
+	Collection<Tutorial> findAllTutorials();
 
-	@Query("select s from Session s where s.tutorial = :tutorial")
-	Collection<Session> findTutorialSessionsByTutorial(Tutorial tutorial);
+	@Query("SELECT tutorial FROM Tutorial tutorial WHERE tutorial.id = :id")
+	Tutorial findTutorialById(Integer id);
 
-	@Query("select c from Course c")
+	@Query("SELECT session FROM TutorialSession session WHERE session.tutorial = :tutorial")
+	Collection<TutorialSession> findSessionsByTutorial(Tutorial tutorial);
+
+	@Query("SELECT course FROM Course course")
 	Collection<Course> findAllCourses();
 
-	@Query("select a from Assistant a where a.id = :id")
-	Assistant findOneAssistantById(int id);
+	@Query("SELECT assistant FROM Assistant assistant WHERE assistant.id = :id")
+	Assistant findAssistantById(Integer id);
 
-	@Query("select c from Course c where c.id = :id")
-	Course findCourseById(int id);
+	@Query("SELECT course FROM Course course WHERE course.id = :id")
+	Course findCourseById(Integer id);
 
-	@Query("select e from Tutorial e where e.code = :code")
-	Tutorial findOneTutorialByCode(String code);
+	@Query("SELECT tutorial FROM Tutorial tutorial WHERE tutorial.code = :code")
+	Tutorial findTutorialByCode(String code);
 
 }

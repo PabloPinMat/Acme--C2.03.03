@@ -16,7 +16,7 @@ import acme.roles.Assistant;
 public class AssistantTutorialListService extends AbstractService<Assistant, Tutorial> {
 
 	@Autowired
-	protected AssistantTutorialRepository repository;
+	protected AssistantTutorialRepository repositorio;
 
 
 	@Override
@@ -31,22 +31,20 @@ public class AssistantTutorialListService extends AbstractService<Assistant, Tut
 
 	@Override
 	public void load() {
-		Collection<Tutorial> objects;
+		Collection<Tutorial> tutoriales;
 		final Principal principal = super.getRequest().getPrincipal();
-		final int userAccountId = principal.getAccountId();
-		objects = this.repository.findTutorialsByAssistantId(userAccountId);
-		super.getBuffer().setData(objects);
+		final int userId = principal.getAccountId();
+		tutoriales = this.repositorio.findTutorialsByAssistantId(userId);
+		super.getBuffer().setData(tutoriales);
 	}
 
 	@Override
 	public void unbind(final Tutorial object) {
 		assert object != null;
 
-		Tuple tuple;
-
-		tuple = super.unbind(object, "title", "abstract$", "goals");
-
-		super.getResponse().setData(tuple);
+		Tuple tupla;
+		tupla = super.unbind(object, "title", "abstract$", "goals");
+		super.getResponse().setData(tupla);
 	}
 
 }

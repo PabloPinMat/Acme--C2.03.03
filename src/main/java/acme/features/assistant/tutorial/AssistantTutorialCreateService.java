@@ -17,7 +17,7 @@ import acme.roles.Assistant;
 public class AssistantTutorialCreateService extends AbstractService<Assistant, Tutorial> {
 
 	@Autowired
-	protected AssistantTutorialRepository repository;
+	protected AssistantTutorialRepository repositorio;
 
 
 	@Override
@@ -32,28 +32,26 @@ public class AssistantTutorialCreateService extends AbstractService<Assistant, T
 
 	@Override
 	public void load() {
-		Tutorial object;
-		Assistant employer;
+		Tutorial tutorial;
+		Assistant asistente;
 
-		employer = this.repository.findOneAssistantById(super.getRequest().getPrincipal().getActiveRoleId());
-		object = new Tutorial();
-		object.setAssitant(employer);
-
-		super.getBuffer().setData(object);
+		asistente = this.repositorio.findAssistantById(super.getRequest().getPrincipal().getActiveRoleId());
+		tutorial = new Tutorial();
+		tutorial.setDraftMode(true);
+		tutorial.setAssitant(asistente);
+		super.getBuffer().setData(tutorial);
 	}
 
 	@Override
 	public void bind(final Tutorial object) {
 		assert object != null;
+		final Integer cursoId;
+		Course curso;
 
-		int courseId;
-		Course course;
-
-		courseId = super.getRequest().getData("course", int.class);
-		course = this.repository.findCourseById(courseId);
-
-		super.bind(object, "code", "title", "summary", "goals");
-		object.setCourse(course);
+		cursoId = super.getRequest().getData("course", int.class);
+		curso = this.repositorio.findCourseById(cursoId);
+		super.bind(object, "code", "title", "abstract$", "goals", "estimatedTime");
+		object.setCourse(curso);
 	}
 
 	@Override
@@ -61,34 +59,34 @@ public class AssistantTutorialCreateService extends AbstractService<Assistant, T
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
-			Tutorial existing;
-
-			existing = this.repository.findOneTutorialByCode(object.getCode());
-			super.state(existing == null, "code", "student.tutorial.form.error.code-duplicated");
+			final Tutorial duplica;
+			duplica = this.repositorio.findTutorialByCode(object.getCode());
+			super.state(duplica == null, "code", "Tutorial ya creado");
 		}
 	}
 
 	@Override
 	public void perform(final Tutorial object) {
 		assert object != null;
-
-		this.repository.save(object);
+		this.repositorio.save(object);
 	}
 
 	@Override
 	public void unbind(final Tutorial object) {
 		assert object != null;
-		Collection<Course> courses;
-		SelectChoices choices;
-		Tuple tuple;
 
-		courses = this.repository.findPublishedCourses();
-		choices = SelectChoices.from(courses, "title", object.getCourse());
+		Collection<Course> cursos;
+		SelectChoices opciones;
+		Tuple tupla;
 
-		tuple = super.unbind(object, "code", "title", "summary", "goals", "draftMode");
-		tuple.put("course", choices.getSelected().getKey());
-		tuple.put("courses", choices);
-		super.getResponse().setData(tuple);
+		cursos = this.repositorio.findAllCourses();
+		opciones = SelectChoices.from(cursos, "code", object.getCourse());
+
+		tupla = super.unbind(object, "code", "title", "abstract$", "goals", "estimatedTime");
+		tupla.put("course", opciones.getSelected().getKey());
+		tupla.put("courses", opciones);
+
+		super.getResponse().setData(tupla);
 
 	}
 
