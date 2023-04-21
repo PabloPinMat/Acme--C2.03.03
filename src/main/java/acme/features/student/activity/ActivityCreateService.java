@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.enrolments.Activity;
+import acme.entities.enrolments.ActivityType;
 import acme.entities.enrolments.Enrolment;
-import acme.entities.lecture.LectureType;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -86,7 +86,7 @@ public class ActivityCreateService extends AbstractService<Student, Activity> {
 		SelectChoices choices;
 		Tuple tuple;
 
-		choices = SelectChoices.from(LectureType.class, object.getActivityType());
+		choices = SelectChoices.from(ActivityType.class, object.getActivityType());
 
 		tuple = super.unbind(object, "title", "summary", "type", "startDate", "endDate", "moreInfo");
 		tuple.put("enrolmentId", super.getRequest().getData("enrolmentId", int.class));

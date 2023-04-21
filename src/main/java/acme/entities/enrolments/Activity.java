@@ -14,7 +14,6 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
-import acme.entities.lecture.LectureType;
 import acme.framework.data.AbstractEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -40,7 +39,7 @@ public class Activity extends AbstractEntity {
 
 	@NotNull
 	@Column(name = "activity_type")
-	protected LectureType		activityType;
+	protected ActivityType		activityType;
 
 	@NotNull
 	@Column(name = "start_date")
