@@ -22,4 +22,8 @@
 	<acme:input-textbox code="any.course.form.label.retailPrice" path="retailPrice"/>	
 	<acme:input-textbox code="any.course.form.label.link" path="link"/>		
 	
+	<acme:check-access test="isAuthenticated()">
+		<acme:button code="any.audit.form.button.list" action="/authenticated/audit/list?masterId=${id}"/>
+	</acme:check-access>
+	
 </acme:form>
