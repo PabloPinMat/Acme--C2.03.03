@@ -1,4 +1,3 @@
-
 package acme.features.auditor.auditingRecord;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +12,10 @@ import acme.framework.services.AbstractService;
 import acme.roles.Auditor;
 
 @Service
-public class AuditingRecordUpdateService extends AbstractService<Auditor, AuditingRecord> {
+public class AuditingRecordPublishService extends AbstractService<Auditor, AuditingRecord> {
 
 	@Autowired
-	protected AuditingRecordRepository	repository;
+	protected AuditingRecordRepository repository;
 
 
 	@Override
@@ -27,9 +26,10 @@ public class AuditingRecordUpdateService extends AbstractService<Auditor, Auditi
 
 	@Override
 	public void authorise() {
+
 		boolean status;
-		final AuditingRecord audintingRecord = this.repository.findAuditingRecordById(super.getRequest().getData("id", int.class));
-		status = super.getRequest().getPrincipal().hasRole(audintingRecord.getAudit().getAuditor()) && audintingRecord.isPublished();
+		final AuditingRecord ar = this.repository.findAuditingRecordById(super.getRequest().getData("id", int.class));
+		status = super.getRequest().getPrincipal().hasRole(ar.getAudit().getAuditor()) && ar.isPublished();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -37,7 +37,6 @@ public class AuditingRecordUpdateService extends AbstractService<Auditor, Auditi
 	@Override
 	public void load() {
 		AuditingRecord object;
-
 		object = this.repository.findAuditingRecordById(super.getRequest().getData("id", int.class));
 		super.getBuffer().setData(object);
 	}
@@ -47,7 +46,7 @@ public class AuditingRecordUpdateService extends AbstractService<Auditor, Auditi
 		assert object != null;
 
 		final Mark mark = super.getRequest().getData("mark", Mark.class);
-		super.bind(object, "subject", "assessment", "startPeriod", "endPeriod", "link");
+		super.bind(object, "subject", "assesment", "periodStart", "periodFin", "link", "draftMode");
 		object.setMark(mark);
 	}
 
@@ -64,6 +63,7 @@ public class AuditingRecordUpdateService extends AbstractService<Auditor, Auditi
 	@Override
 	public void perform(final AuditingRecord object) {
 		assert object != null;
+		object.setPublished(false);
 		this.repository.save(object);
 	}
 

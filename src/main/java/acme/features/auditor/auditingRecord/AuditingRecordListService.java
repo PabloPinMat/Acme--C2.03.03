@@ -1,14 +1,12 @@
-
 package acme.features.auditor.auditingRecord;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.audit.Audit;
 import acme.entities.audit.AuditingRecord;
-import acme.framework.components.accounts.Principal;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Auditor;
@@ -21,49 +19,34 @@ public class AuditingRecordListService extends AbstractService<Auditor, Auditing
 
 	@Override
 	public void check() {
-		boolean status;
-		status = super.getRequest().hasData("masterId", int.class);
+		final boolean status = super.getRequest().hasData("auditId", int.class);
 		super.getResponse().setChecked(status);
 	}
 
 	@Override
 	public void authorise() {
-		Audit object;
-		int masterId;
-		masterId = super.getRequest().getData("masterId", int.class);
-		object = this.repository.findAuditById(masterId);
-		final Principal principal = super.getRequest().getPrincipal();
-		final int userAccountId = principal.getAccountId();
-		super.getResponse().setAuthorised(object.getAuditor().getUserAccount().getId() == userAccountId);
+		final boolean status;
+		final Audit audit = this.repository.findAuditById(super.getRequest().getData("auditId", int.class));
+		status = super.getRequest().getPrincipal().hasRole(audit.getAuditor());
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		Collection<AuditingRecord> objects;
-		int masterId;
-		masterId = super.getRequest().getData("masterId", int.class);
-		objects = this.repository.findAuditingRecordsByAuditId(masterId);
+		List<AuditingRecord> objects;
+		final int aid;
+		aid = super.getRequest().getData("auditId", int.class);
+		objects = this.repository.findAuditingRecordsByAuditId(aid);
 		super.getBuffer().setData(objects);
 	}
 
 	@Override
 	public void unbind(final AuditingRecord object) {
+		
 		assert object != null;
 		Tuple tuple;
-		tuple = super.unbind(object, "subject", "assessment", "startPeriod", "endPeriod","mark","link");
-		tuple.put("published", object.getAudit().isPublished());
+		tuple = super.unbind(object, "subject", "correction", "published");
+		tuple.put("mark", object.getMark().toString());
 		super.getResponse().setData(tuple);
-	}
-
-	@Override
-	public void unbind(final Collection<AuditingRecord> object) {
-		assert object != null;
-		boolean createButton = false;
-		final int masterId = super.getRequest().getData("masterId", int.class);
-		final Audit audit = this.repository.findAuditById(masterId);
-		if (super.getRequest().getPrincipal().getAccountId() == audit.getAuditor().getUserAccount().getId())
-			createButton = true;
-		super.getResponse().setGlobal("createButton", createButton);
-		super.getResponse().setGlobal("masterId", masterId);
 	}
 }

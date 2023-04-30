@@ -1,22 +1,25 @@
-auditor.auditing-record.list.label.subject = Sujeto
-auditor.auditing-record.list.label.assessment = Evaluación
-auditor.auditing-record.list.button.create = Crear
-auditor.auditing-record.list.button.create-exceptional = Crear registro excepcional
+auditor.auditingRecord.list.label.subject = Asignatura
+auditor.auditingRecord.list.label.mark = Nota
+auditor.auditingRecord.list.label.isACorrection = Es una corrección
+auditor.auditingRecord.list.label.published = Está publicado
 
+auditor.auditingRecord.form.label.subject = Asignatura
+auditor.auditingRecord.form.label.assessment = Evaluación
+auditor.auditingRecord.form.label.link = Más info
+auditor.auditingRecord.form.label.mark = Nota
+auditor.auditingRecord.form.label.published = Publicado
+auditor.auditingRecord.form.label.startPeriod= Hora de inicio
+auditor.auditingRecord.form.label.endPeriod = Hora de fin
+auditor.auditingRecord.form.label.hours = Duración
+auditor.auditingRecord.form.label.isACorrection = Corrección
 
-auditor.auditing-record.form.label.subject = Sujeto
-auditor.auditing-record.form.label.assessment = Evaluación
-auditor.auditing-record.form.label.startPeriod = Fecha de inicio
-auditor.auditing-record.form.label.endPeriod = Fecha de final
-auditor.auditing-record.form.label.mark = Nota
-auditor.auditing-record.form.label.link = Link información extra
+auditor.auditingRecord.announce.correction = Corrección
+auditor.auditingRecord.correction.confirmation = Confirme por favor
+auditor.auditingRecord.error.date.invalidPeriod = Periodo inválido
 
-auditor.auditing-record.form.error.spam = Las palabras introducidas son consideradas spam
-auditor.auditing-record.form.error.post-date = Fecha inicial posterior a fecha final
-auditor.auditing-record.form.error.not-enough-time = Periodo de tiempo menor de 1 hora
-
-auditor.auditing-record.form.button.delete = Borrar
-auditor.auditing-record.form.button.update = Actualizar
-auditor.auditing-record.form.button.create = Crear
-auditor.auditing-record.form.button.confirmation = Confirmar registro excepcional
-auditor.auditing-record.form.button.create-exceptional = Crear registro excepcional
+auditor.auditingRecord.create = Crear
+auditor.auditingRecord.form.button.delete = Borrar
+auditor.auditingRecord.form.button.update = Actualizar
+auditor.auditingRecord.form.button.create = Crear
+auditor.auditingRecord.form.button.publish = Publicar
+auditor.auditingRecord.form.button.confirmation = Confirmar registro excepcional

@@ -16,12 +16,8 @@
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="auditor.auditing-record.list.label.subject" path="subject"  width="40%"/>
-	<acme:list-column code="auditor.auditing-record.list.label.assessment" path="assessment"  width="60%"/>
-
+    <acme:list-column code="auditor.auditingRecord.list.label.subject" path="subject"/>
+    <acme:list-column code="auditor.auditingRecord.list.label.mark" path="mark"/> 
+    <acme:list-column code="auditor.auditingRecord.list.label.isACorrection" path="correction"/>
+    <acme:list-column code="auditor.auditingRecord.list.label.published" path="published"/> 
 </acme:list>
-<acme:button test = "${createButton && published}" code="auditor.auditing-record.list.button.create" action="/auditor/auditing-record/create?masterId=${masterId}"/>
-<acme:button test = "${createButton && !published}" code="auditor.auditing-record.list.button.createExceptional" action="/auditor/auditing-record/create?masterId=${masterId}"/>
-
-
-    

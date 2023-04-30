@@ -28,10 +28,12 @@
 		
 	<jstl:choose>	 
 		<jstl:when test="${_command == 'show' && published == true}">
-			<acme:button code="auditor.audit.form.button.auditing-record" action="/auditor/auditing-record/list"/>			
+			<acme:button code="auditor.audit.form.button.auditingRecord.list" action="/auditor/auditing-record/list?auditId=${id}"/>
+			<acme:button code="auditor.audit.form.button.auditingRecord.addCorrection" action="/auditor/auditing-record/correction?auditId=${id}"/>			
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && published == false}">
-			<acme:button code="auditor.audit.form.button.auditing-record" action="/auditor/auditing-record/list"/>
+			<acme:button code="auditor.audit.form.button.auditingRecord.list" action="/auditor/auditing-record/list?auditId=${id}"/>
+			<acme:button code="auditor.audit.form.button.auditingRecord.create" action="/auditor/auditing-record/create?auditId=${id}"/>
 			<acme:submit code="auditor.audit.form.button.update" action="/auditor/audit/update"/>
 			<acme:submit code="auditor.audit.form.button.delete" action="/auditor/audit/delete"/>
 			<acme:submit code="auditor.audit.form.button.publish" action="/auditor/audit/publish"/>
