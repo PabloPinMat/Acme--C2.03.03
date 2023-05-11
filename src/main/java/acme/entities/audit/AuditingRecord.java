@@ -48,6 +48,8 @@ public class AuditingRecord extends AbstractEntity {
 
 	@URL
 	protected String			link;
+	
+	protected boolean			isACorrection;
 
 	/*
 	 * public boolean isPeriodValid(final LocalDateTime startPeriod, final LocalDateTime endPeriod) {
