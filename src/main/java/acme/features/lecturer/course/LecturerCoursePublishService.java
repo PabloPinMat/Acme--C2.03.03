@@ -64,17 +64,28 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 	public void validate(final Course object) {
 		assert object != null;
 
+		if (!super.getBuffer().getErrors().hasErrors("draftMode")) {
+			final boolean draftMode = object.isDraftMode();
+			super.state(draftMode, "draftMode", "lecturer.course.error.draftMode.published");
+		}
+
 		final Collection<Lecture> lectures = this.repository.findLecturesByCourse(object.getId());
-		super.state(!lectures.isEmpty(), "*", "Prueba publicar");
+		super.state(!lectures.isEmpty(), "*", "lecturer.course.form.error.noLectures");
 
 		boolean publishedLectures;
 		publishedLectures = lectures.stream().allMatch(x -> x.isDraftMode() == false);
-		super.state(publishedLectures, "*", "hay lectures que no están publicadas");
+		super.state(publishedLectures, "*", "lecturer.course.form.error.lectureNotPublished");
+
+		final String code = object.getCode();
+		final Course course = this.repository.findCourseByCode(code);
+		final boolean boo = course == null || object.getId() == course.getId();
+		super.state(boo, "code", "lecturer.course.error.code.duplicated");
 
 	}
 
 	@Override
 	public void perform(final Course object) {
+
 		object.setDraftMode(false);
 		this.repository.save(object);
 	}

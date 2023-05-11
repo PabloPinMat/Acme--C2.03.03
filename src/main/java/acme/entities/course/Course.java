@@ -2,7 +2,6 @@
 package acme.entities.course;
 
 import java.util.Collection;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.persistence.Column;
@@ -59,16 +58,14 @@ public class Course extends AbstractEntity {
 
 
 	public CourseType calculateCourseType(final Collection<Lecture> lectures) {
-		Map<LectureType, Long> modeLectureType;
-		Long handsOnLectures;
-		Long theoricalLectures;
 
-		modeLectureType = lectures.stream().map(Lecture::getLectureType).collect(Collectors.groupingBy(type -> type, Collectors.counting()));
-		handsOnLectures = modeLectureType.get(LectureType.HANDS_ON);
-		theoricalLectures = modeLectureType.get(LectureType.THEORICAL);
+		Integer handsOnLectures;
+		Integer theoricalLectures;
 
-		if (modeLectureType.isEmpty() || modeLectureType == null || handsOnLectures == null || theoricalLectures == null)
-			return null;
+		handsOnLectures = lectures.stream().filter(x -> x.getLectureType().equals(LectureType.HANDS_ON)).collect(Collectors.toList()).size();
+
+		theoricalLectures = lectures.stream().filter(x -> x.getLectureType().equals(LectureType.THEORICAL)).collect(Collectors.toList()).size();
+
 		if (handsOnLectures.equals(theoricalLectures))
 			return CourseType.BALANCED;
 		if (theoricalLectures > handsOnLectures)

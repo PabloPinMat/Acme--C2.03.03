@@ -33,4 +33,7 @@ public interface LecturerCourseRepository extends AbstractRepository {
 	@Query("select count(cl) > 0 from CourseLecture cl where cl.course.id = :courseId and cl.lecture.draftMode = true")
 	boolean someLectureNotPublishedByCourseId(int courseId);
 
+	@Query("select c from Course c where c.code = :code")
+	Course findCourseByCode(String code);
+
 }
