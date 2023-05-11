@@ -1,29 +1,27 @@
 
 package acme.features.student.enrolment;
 
-import java.time.Duration;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.activity.Activity;
 import acme.entities.course.Course;
-import acme.entities.enrolments.Activity;
 import acme.entities.enrolments.Enrolment;
 import acme.framework.components.accounts.Principal;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
-import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Student;
 
 @Service
-public class EnrolmentShowService extends AbstractService<Student, Enrolment> {
+public class StudentEnrolmentShowService extends AbstractService<Student, Enrolment> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected EnrolmentRepository repository;
+	protected StudentEnrolmentRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -43,7 +41,7 @@ public class EnrolmentShowService extends AbstractService<Student, Enrolment> {
 		Enrolment object;
 		int id;
 		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findEnrolmentById(id);
+		object = this.repository.findOneEnrolmentById(id);
 		final Principal principal = super.getRequest().getPrincipal();
 		final int userAccountId = principal.getAccountId();
 		super.getResponse().setAuthorised(object.getStudent().getUserAccount().getId() == userAccountId);
@@ -55,7 +53,7 @@ public class EnrolmentShowService extends AbstractService<Student, Enrolment> {
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findEnrolmentById(id);
+		object = this.repository.findOneEnrolmentById(id);
 
 		super.getBuffer().setData(object);
 	}
@@ -65,7 +63,7 @@ public class EnrolmentShowService extends AbstractService<Student, Enrolment> {
 		assert object != null;
 
 		Tuple tuple;
-		int workTime;
+		double workTime;
 		Collection<Course> courses;
 		SelectChoices choices;
 
@@ -84,15 +82,15 @@ public class EnrolmentShowService extends AbstractService<Student, Enrolment> {
 
 	// Aux --------------------------------------------------------------------
 
-	private int getWorkTime(final int enrolmentId) {
-		int result = 0;
+	public Double getWorkTime(final int enrolmentId) {
+		double res = 0;
 		final Collection<Activity> activities = this.repository.findActivitiesByEnrolmentId(enrolmentId);
 		for (final Activity activity : activities) {
-			final Duration duration = MomentHelper.computeDuration(activity.getStartDate(), activity.getEndDate());
-			final int diffInHours = (int) duration.toHours();
-			result += diffInHours;
+			final long activityTime = Math.abs(activity.getEndDate().getTime() - activity.getStartDate().getTime());
+			final double activityTimeInHours = activityTime / 3600000;
+			res += activityTimeInHours;
 		}
-		return result;
+		return res;
 	}
 
 }

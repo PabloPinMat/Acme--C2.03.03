@@ -1,5 +1,5 @@
 
-package acme.entities.enrolments;
+package acme.entities.activity;
 
 public enum ActivityType {
 

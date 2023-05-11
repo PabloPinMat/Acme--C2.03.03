@@ -4,18 +4,18 @@ package acme.features.student.activity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.enrolments.Activity;
-import acme.entities.enrolments.ActivityType;
+import acme.entities.activity.Activity;
+import acme.entities.activity.ActivityType;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Student;
 
 @Service
-public class ActivityShowService extends AbstractService<Student, Activity> {
+public class StudentActivityShowService extends AbstractService<Student, Activity> {
 
 	@Autowired
-	protected ActivityRepository repository;
+	protected StudentActivityRepository repository;
 
 
 	@Override
@@ -35,7 +35,7 @@ public class ActivityShowService extends AbstractService<Student, Activity> {
 		Student student;
 
 		masterId = super.getRequest().getData("id", int.class);
-		activity = this.repository.findActivityById(masterId);
+		activity = this.repository.findOneActivityById(masterId);
 		student = activity == null ? null : activity.getEnrolment().getStudent();
 		status = super.getRequest().getPrincipal().hasRole(student);
 
@@ -48,7 +48,7 @@ public class ActivityShowService extends AbstractService<Student, Activity> {
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findActivityById(id);
+		object = this.repository.findOneActivityById(id);
 
 		super.getBuffer().setData(object);
 	}
@@ -62,9 +62,9 @@ public class ActivityShowService extends AbstractService<Student, Activity> {
 
 		choices = SelectChoices.from(ActivityType.class, object.getActivityType());
 
-		tuple = super.unbind(object, "title", "summary", "type", "startDate", "endDate", "moreInfo");
-		tuple.put("enrolmentId", object.getEnrolment().getId());
-		tuple.put("draftMode", object.getEnrolment().getFinalised());
+		tuple = super.unbind(object, "title", "summary", "activityType", "startDate", "endDate", "link");
+		tuple.put("masterId", object.getEnrolment().getId());
+		tuple.put("finalised", object.getEnrolment().getFinalised());
 		tuple.put("types", choices);
 
 		super.getResponse().setData(tuple);

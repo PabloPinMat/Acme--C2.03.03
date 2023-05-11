@@ -4,8 +4,8 @@ package acme.features.student.activity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.enrolments.Activity;
-import acme.entities.enrolments.ActivityType;
+import acme.entities.activity.Activity;
+import acme.entities.activity.ActivityType;
 import acme.entities.enrolments.Enrolment;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
@@ -13,12 +13,12 @@ import acme.framework.services.AbstractService;
 import acme.roles.Student;
 
 @Service
-public class ActivityCreateService extends AbstractService<Student, Activity> {
+public class StudentActivityDeleteService extends AbstractService<Student, Activity> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected ActivityRepository repository;
+	protected StudentActivityRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -27,7 +27,7 @@ public class ActivityCreateService extends AbstractService<Student, Activity> {
 	public void check() {
 		boolean status;
 
-		status = super.getRequest().hasData("enrolmentId", int.class);
+		status = super.getRequest().hasData("id", int.class);
 
 		super.getResponse().setChecked(status);
 	}
@@ -35,11 +35,11 @@ public class ActivityCreateService extends AbstractService<Student, Activity> {
 	@Override
 	public void authorise() {
 		boolean status;
-		int enrolmentId;
+		int activityId;
 		Enrolment enrolment;
 
-		enrolmentId = super.getRequest().getData("enrolmentId", int.class);
-		enrolment = this.repository.findEnrolmentById(enrolmentId);
+		activityId = super.getRequest().getData("id", int.class);
+		enrolment = this.repository.findOneEnrolmentByActivityId(activityId);
 		status = enrolment != null && enrolment.getFinalised() && super.getRequest().getPrincipal().hasRole(enrolment.getStudent());
 
 		super.getResponse().setAuthorised(status);
@@ -48,14 +48,10 @@ public class ActivityCreateService extends AbstractService<Student, Activity> {
 	@Override
 	public void load() {
 		Activity object;
-		int enrolmentId;
-		Enrolment enrolment;
+		int id;
 
-		enrolmentId = super.getRequest().getData("enrolmentId", int.class);
-		enrolment = this.repository.findEnrolmentById(enrolmentId);
-
-		object = new Activity();
-		object.setEnrolment(enrolment);
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findOneActivityById(id);
 
 		super.getBuffer().setData(object);
 	}
@@ -64,7 +60,7 @@ public class ActivityCreateService extends AbstractService<Student, Activity> {
 	public void bind(final Activity object) {
 		assert object != null;
 
-		super.bind(object, "title", "summary", "type", "startDate", "endDate", "moreInfo");
+		super.bind(object, "title", "summary", "activityType", "startDate", "endDate", "link");
 	}
 
 	@Override
@@ -76,7 +72,7 @@ public class ActivityCreateService extends AbstractService<Student, Activity> {
 	public void perform(final Activity object) {
 		assert object != null;
 
-		this.repository.save(object);
+		this.repository.delete(object);
 	}
 
 	@Override
@@ -88,8 +84,8 @@ public class ActivityCreateService extends AbstractService<Student, Activity> {
 
 		choices = SelectChoices.from(ActivityType.class, object.getActivityType());
 
-		tuple = super.unbind(object, "title", "summary", "type", "startDate", "endDate", "moreInfo");
-		tuple.put("enrolmentId", super.getRequest().getData("enrolmentId", int.class));
+		tuple = super.unbind(object, "title", "summary", "activityType", "startDate", "endDate", "link");
+		tuple.put("enrolmentId", object.getEnrolment().getId());
 		tuple.put("finalised", object.getEnrolment().getFinalised());
 		tuple.put("types", choices);
 

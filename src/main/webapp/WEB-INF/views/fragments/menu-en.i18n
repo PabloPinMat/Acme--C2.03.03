@@ -61,7 +61,8 @@ master.menu.auditor.audit = My audits
 # master.menu.student ####################################################
 
 master.menu.student = Student
-master.menu.student.my-enrolments = My enrolments
+master.menu.student.list-my-enrolments = My enrolments
+master.menu.student.courses = Courses
 
 # master.menu.company ##########################################################
 
@@ -92,6 +93,8 @@ master.menu.user-account.company = Company data
 master.menu.user-account.become-company = Become a company
 master.menu.user-account.lecturer = Lecturer data
 master.menu.user-account.become-lecturer = Become a lecturer
+master.menu.user-account.student = Student data
+master.menu.user-account.become-student = Become a student
 
 
 # master.menu.any ####################################################
