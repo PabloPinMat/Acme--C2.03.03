@@ -21,5 +21,7 @@
 	<acme:input-textbox code="any.course.form.label.courseAbstract" path="courseAbstract"/>	
 	<acme:input-textbox code="any.course.form.label.retailPrice" path="retailPrice"/>	
 	<acme:input-textbox code="any.course.form.label.link" path="link"/>		
-	
+	<jstl:if test="${courseType != null }">
+	<acme:input-double code="lecturer.course.label.courseType" path="courseType" readonly="true"/>
+	</jstl:if>
 </acme:form>

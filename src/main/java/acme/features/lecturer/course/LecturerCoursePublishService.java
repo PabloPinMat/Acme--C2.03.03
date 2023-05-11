@@ -63,14 +63,14 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 	@Override
 	public void validate(final Course object) {
 		assert object != null;
-		final boolean someLectureNotPublished;
 
 		final Collection<Lecture> lectures = this.repository.findLecturesByCourse(object.getId());
+		super.state(!lectures.isEmpty(), "*", "Prueba publicar");
 
-		final int courseId = object.getId();
-		someLectureNotPublished = this.repository.someLectureNotPublishedByCourseId(courseId);
+		boolean publishedLectures;
+		publishedLectures = lectures.stream().allMatch(x -> x.isDraftMode() == false);
+		super.state(publishedLectures, "*", "hay lectures que no están publicadas");
 
-		super.state(someLectureNotPublished, "*", "hay alguna lección que no está publicada");
 	}
 
 	@Override

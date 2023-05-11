@@ -35,6 +35,7 @@ public class LecturerLectureCreateService extends AbstractService<Lecturer, Lect
 		final Lecturer lecturer = this.repository.findOneLecturerById(super.getRequest().getPrincipal().getActiveRoleId());
 		object.setLecturer(lecturer);
 		super.getBuffer().setData(object);
+		object.setDraftMode(true);
 	}
 
 	@Override
