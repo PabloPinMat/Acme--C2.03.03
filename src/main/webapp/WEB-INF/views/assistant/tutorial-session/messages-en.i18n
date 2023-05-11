@@ -6,3 +6,9 @@ assistant.tutorial.session.form.label.type = Type
 assistant.tutorial.session.form.button.update = Update
 assistant.tutorial.session.form.button.delete = Delete
 assistant.tutorial.session.form.button.create = Create
+
+assistant.tutorial.session.list.label.title = Title
+assistant.tutorial.session.list.label.type = Type
+assistant.tutorial.session.list.label.startDate = Start date
+assistant.tutorial.session.list.label.finishDate = Finish date
+assistant.tutorial.session.list.button.create = Create session

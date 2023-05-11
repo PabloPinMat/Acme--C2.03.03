@@ -61,6 +61,12 @@ master.menu.student = Estudiante
 master.menu.student.list-my-enrolments = Mis inscripciones
 master.menu.student.courses = Cursos
 
+# master.menu.assistant ####################################################
+
+master.menu.assistant = Asistente
+master.menu.assistant.tutorial = Mis tutoriales
+
+
 # master.menu.company ##########################################################
 
 master.menu.company = Compañia
@@ -95,7 +101,8 @@ master.menu.user-account.lecturer = Datos de profesor
 master.menu.user-account.become-lecturer = Hazte profesor
 master.menu.user-account.student = Datos de estudiante
 master.menu.user-account.become-student = Hazte estudiante
-
+master.menu.user-account.assistant = Datos de asistente
+master.menu.user-account.become-assistant = Hazte asistente
 
 # master.menu.any ####################################################
 master.menu.any.course = Cursos
