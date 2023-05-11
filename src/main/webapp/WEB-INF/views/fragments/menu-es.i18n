@@ -53,7 +53,8 @@ master.menu.consumer.favourite-link = Enlace favorito
 # master.menu.student ####################################################
 
 master.menu.student = Estudiante
-master.menu.student.my-enrolments = Mis inscripciones
+master.menu.student.list-my-enrolments = Mis inscripciones
+master.menu.student.courses = Cursos
 
 # master.menu.company ##########################################################
 
@@ -81,6 +82,8 @@ master.menu.user-account.company = Datos de compañia
 master.menu.user-account.become-company = Hazte compañia
 master.menu.user-account.lecturer = Datos de profesor
 master.menu.user-account.become-lecturer = Hazte profesor
+master.menu.user-account.student = Datos de estudiante
+master.menu.user-account.become-student = Hazte estudiante
 
 
 # master.menu.any ####################################################

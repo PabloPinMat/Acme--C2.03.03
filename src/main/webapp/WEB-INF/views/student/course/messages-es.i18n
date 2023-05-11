@@ -1,0 +1,14 @@
+student.course.form.label.code = Código
+student.course.form.label.title = Titulo
+student.course.form.label.courseAbstract = Resumen
+student.course.form.label.courseType = Tipo
+student.course.form.label.retailPrice = Precio
+student.course.form.label.link = Link
+student.course.form.button.lectures = Clases
+
+student.course.list.label.code = Código
+student.course.list.label.title = Titulo
+student.course.list.label.courseAbstract = Resumen
+student.course.list.label.courseType = Tipo
+student.course.list.label.retailPrice = Precio
+student.course.list.label.link = Link

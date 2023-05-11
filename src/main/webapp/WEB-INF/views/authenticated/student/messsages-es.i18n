@@ -8,7 +8,10 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-student.activity.list.label.title = Título
-student.activity.list.label.type = Tipo
-student.activity.list.label.startDate = Fecha de Inicio
-student.activity.list.label.endDate = Fecha de Fin
+authenticated.student.form.label.statement = Declaración:
+authenticated.student.form.label.strongFeatures = Características Fuertes:
+authenticated.student.form.label.weakFeatures = Características Débiles:
+authenticated.student.form.label.link = Más información:
+
+authenticated.student.form.button.create = Registrar
+authenticated.student.form.button.update = Actualizar

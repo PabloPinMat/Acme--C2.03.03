@@ -1,27 +1,25 @@
 
 package acme.features.student.enrolment;
 
-import java.time.Duration;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.enrolments.Activity;
+import acme.entities.activity.Activity;
 import acme.entities.enrolments.Enrolment;
 import acme.framework.components.accounts.Principal;
 import acme.framework.components.models.Tuple;
-import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Student;
 
 @Service
-public class EnrolmentMyEnrolmentService extends AbstractService<Student, Enrolment> {
+public class StudentEnrolmentListMineService extends AbstractService<Student, Enrolment> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	protected EnrolmentRepository repository;
+	protected StudentEnrolmentRepository repository;
 
 	// AbstractService interface ----------------------------------------------
 
@@ -52,10 +50,10 @@ public class EnrolmentMyEnrolmentService extends AbstractService<Student, Enrolm
 		assert object != null;
 
 		Tuple tuple;
-		int workTime;
+		double workTime;
 
 		workTime = this.getWorkTime(object.getId());
-		tuple = super.unbind(object, "code", "motivation", "course.title");
+		tuple = super.unbind(object, "code", "motivation", "goals", "course.title");
 		tuple.put("workTime", workTime);
 
 		super.getResponse().setData(tuple);
@@ -63,15 +61,15 @@ public class EnrolmentMyEnrolmentService extends AbstractService<Student, Enrolm
 
 	// Aux --------------------------------------------------------------------
 
-	private int getWorkTime(final int enrolmentId) {
-		int result = 0;
+	public Double getWorkTime(final int enrolmentId) {
+		double res = 0;
 		final Collection<Activity> activities = this.repository.findActivitiesByEnrolmentId(enrolmentId);
 		for (final Activity activity : activities) {
-			final Duration duration = MomentHelper.computeDuration(activity.getStartDate(), activity.getEndDate());
-			final int diffInHours = (int) duration.toHours();
-			result += diffInHours;
+			final long activityTime = Math.abs(activity.getEndDate().getTime() - activity.getStartDate().getTime());
+			final double activityTimeInHours = activityTime / 3600000;
+			res += activityTimeInHours;
 		}
-		return result;
+		return res;
 	}
 
 }

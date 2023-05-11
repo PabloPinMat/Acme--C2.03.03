@@ -16,10 +16,7 @@
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="student.activity.list.label.title" path="title" width="40%"/>
-	<acme:list-column code="student.activity.list.label.type" path="activityType" width="10%"/>
-	<acme:list-column code="student.activity.list.label.startDate" path="startDate" width="25%"/>
-	<acme:list-column code="student.activity.list.label.endDate" path="endDate" width="25%"/>
+	<acme:list-column code="student.course.list.label.code" path="code" width="33%"/>
+	<acme:list-column code="student.course.list.label.title" path="title" width="33%"/>
+	<acme:list-column code="student.course.list.label.retailPrice" path="retailPrice" width="33%"/>	
 </acme:list>
-
-<acme:button test="${showCreate}" code="student.activity.list.button.create" action="/student/activity/create?masterId=${masterId}"/>
