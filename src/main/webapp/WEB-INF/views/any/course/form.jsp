@@ -22,9 +22,9 @@
 	<acme:input-textbox code="any.course.form.label.retailPrice" path="retailPrice"/>	
 	<acme:input-textbox code="any.course.form.label.link" path="link"/>	
 	
-	
+	<acme:check-access test="isAuthenticated()">
 	<acme:button code="authenticated.tutorial.form.button" action="/authenticated/tutorial/list?courseId=${id}"/>
-	
+	</acme:check-access>
 	
 	
 	<acme:check-access test="isAuthenticated()">

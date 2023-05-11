@@ -22,3 +22,5 @@ any.course.form.label.link = Información adicional
 any.course.form.label.lecturer = Profesor
 
 any.audit.form.button.list = Auditorías relacionadas
+
+authenticated.tutorial.form.button = Tutoriales relacionados
