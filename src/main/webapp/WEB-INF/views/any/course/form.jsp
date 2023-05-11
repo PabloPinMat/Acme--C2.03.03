@@ -20,6 +20,15 @@
 	<acme:input-textbox code="any.course.form.label.title" path="title"/>	
 	<acme:input-textbox code="any.course.form.label.courseAbstract" path="courseAbstract"/>	
 	<acme:input-textbox code="any.course.form.label.retailPrice" path="retailPrice"/>	
-	<acme:input-textbox code="any.course.form.label.link" path="link"/>		
+	<acme:input-textbox code="any.course.form.label.link" path="link"/>	
+	
+	
+	<acme:button code="authenticated.tutorial.form.button" action="/authenticated/tutorial/list?courseId=${id}"/>
+	
+	
+	
+	<acme:check-access test="isAuthenticated()">
+		<acme:button code="any.audit.form.button.list" action="/authenticated/audit/list?masterId=${id}"/>
+	</acme:check-access>
 	
 </acme:form>

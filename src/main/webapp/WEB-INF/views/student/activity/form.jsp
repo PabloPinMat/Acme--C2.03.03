@@ -18,18 +18,18 @@
 <acme:form>
 	<acme:input-textbox code="student.activity.form.label.title" path="title"/>
 	<acme:input-textarea code="student.activity.form.label.summary" path="summary"/>
-	<acme:input-select code="student.activity.form.label.type" path="type" choices="${types}"/>
+	<acme:input-select code="student.activity.form.label.type" path="activityType" choices="${types}"/>
 	<acme:input-moment code="student.activity.form.label.startDate" path="startDate"/>
 	<acme:input-moment code="student.activity.form.label.endDate" path="endDate"/>	
-	<acme:input-url code="student.activity.form.label.moreInfo" path="moreInfo"/>
+	<acme:input-url code="student.activity.form.label.moreInfo" path="link"/>
 	
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && draftMode == false}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && finalised == true}">
 			<acme:submit code="student.activity.form.button.update" action="/student/activity/update"/>
 			<acme:submit code="student.activity.form.button.delete" action="/student/activity/delete"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="student.activity.form.button.create" action="/student/activity/create?enrolmentId=${enrolmentId}"/>
+			<acme:submit code="student.activity.form.button.create" action="/student/activity/create?masterId=${masterId}"/>
 		</jstl:when>		
 	</jstl:choose>
 </acme:form>

@@ -15,70 +15,68 @@ import acme.roles.Assistant;
 @Service
 public class AssistantTutorialSessionShowService extends AbstractService<Assistant, TutorialSession> {
 
-	// Internal state ---------------------------------------------------------
-
 	@Autowired
-	protected AssistantTutorialSessionRepository repository;
-
-	// AbstractService interface ----------------------------------------------
+	protected AssistantTutorialSessionRepository repositorio;
 
 
 	@Override
 	public void check() {
-		boolean status;
-
-		status = super.getRequest().hasData("id", int.class);
-
-		super.getResponse().setChecked(status);
+		Boolean estado;
+		estado = super.getRequest().hasData("id", int.class);
+		super.getResponse().setChecked(estado);
 	}
 
 	@Override
 	public void authorise() {
-		final boolean status;
-		int masterId;
+		final Boolean estado;
+		Integer tutorialId;
 		Tutorial tutorial;
 		TutorialSession tutorialSession;
 		Assistant assistant;
 
-		masterId = super.getRequest().getData("id", int.class);
-		tutorialSession = this.repository.findOneTutorialSessionById(masterId);
-		tutorial = tutorialSession == null ? null : tutorialSession.getTutorial();
-		assistant = tutorial == null ? null : tutorial.getAssitant();
-		status = tutorial != null && tutorialSession != null && super.getRequest().getPrincipal().hasRole(assistant) && //
-			tutorial.getAssitant().getId() == super.getRequest().getPrincipal().getActiveRoleId();
+		tutorialId = super.getRequest().getData("id", int.class);
+		tutorialSession = this.repositorio.findTutorialSessionById(tutorialId);
+		if (tutorialSession == null)
+			tutorial = null;
+		else
+			tutorial = tutorialSession.getTutorial();
+		if (tutorial == null)
+			assistant = null;
+		else
+			assistant = tutorial.getAssitant();
 
-		super.getResponse().setAuthorised(status);
+		estado = tutorial != null && tutorialSession != null && super.getRequest().getPrincipal().hasRole(assistant) && tutorial.getAssitant().getId() == super.getRequest().getPrincipal().getActiveRoleId();
+		super.getResponse().setAuthorised(estado);
 	}
 
 	@Override
 	public void load() {
-		TutorialSession object;
-		int tutorialSessionId;
+		TutorialSession tutorialSession;
+		Integer tutorialSessionId;
 
 		tutorialSessionId = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneTutorialSessionById(tutorialSessionId);
-
-		super.getBuffer().setData(object);
+		tutorialSession = this.repositorio.findTutorialSessionById(tutorialSessionId);
+		super.getBuffer().setData(tutorialSession);
 	}
 
 	@Override
-	public void unbind(final TutorialSession object) {
-		assert object != null;
+	public void unbind(final TutorialSession tutorialSession) {
+		assert tutorialSession != null;
 
-		Tuple tuple;
-		SelectChoices choices;
+		Tuple tupla;
+		final SelectChoices opciones;
 		Tutorial tutorial;
-		boolean draftMode;
+		Boolean draftMode;
 
-		tutorial = object.getTutorial();
+		tutorial = tutorialSession.getTutorial();
 		draftMode = tutorial.isDraftMode();
-		choices = SelectChoices.from(sessionType.class, object.getSessionType());
-		tuple = super.unbind(object, "title", "abstract$", "sessionType", "startSession", "finishSession", "furtherInformation");
-		tuple.put("masterId", super.getRequest().getData("id", int.class));
-		tuple.put("sessionType", choices);
-		tuple.put("tutorial", tutorial);
-		tuple.put("draftMode", draftMode);
-		super.getResponse().setData(tuple);
+		opciones = SelectChoices.from(sessionType.class, tutorialSession.getSessionType());
+		tupla = super.unbind(tutorialSession, "title", "abstract$", "sessionType", "startSession", "finishSession", "furtherInformation");
+		tupla.put("tutorialId", super.getRequest().getData("id", int.class));
+		tupla.put("draftMode", draftMode);
+		tupla.put("tutorial", tutorial);
+		tupla.put("sessionType", opciones);
+		super.getResponse().setData(tupla);
 	}
 
 }

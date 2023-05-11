@@ -1,0 +1,12 @@
+assistant.tutorial.list.label.code = Código
+assistant.tutorial.list.label.title = Título
+assistant.tutorial.form.label.abstract$ = Resumen
+assistant.tutorial.form.label.goals = Objetivos
+assistant.tutorial.list.label.course = Curso
+assistant.tutorial.form.label.estimatedTime = Tiempo estimado
+assistant.tutorial.form.button.sessions = Sesiones
+assistant.tutorial.form.button.update = Actualizar
+assistant.tutorial.form.button.delete =  Borrar
+assistant.tutorial.form.button.publish= Publicar
+assistant.tutorial.form.button.create = Crea un nuevo tutorial
+assistant.tutorial.list.label.goal = Objetivo

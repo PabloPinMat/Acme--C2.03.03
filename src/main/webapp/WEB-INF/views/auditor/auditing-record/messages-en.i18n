@@ -1,23 +1,25 @@
-auditor.auditing-record.list.label.subject = Subject
-auditor.auditing-record.list.label.assessment = Assessment
-auditor.auditing-record.list.button.create = Create
-auditor.auditing-record.list.button.create-exceptional = Create exceptional record
+auditor.auditingRecord.list.label.subject = Subject
+auditor.auditingRecord.list.label.mark = Mark
+auditor.auditingRecord.list.label.isACorrection = Is a correction
+auditor.auditingRecord.list.label.published = Is published
 
-auditor.auditing-record.form.label.subject = Subject
-auditor.auditing-record.form.label.assessment = Assessment
-auditor.auditing-record.form.label.startPeriod = Start Period
-auditor.auditing-record.form.label.endPeriod = End Period
-auditor.auditing-record.form.label.mark = Mark
-auditor.auditing-record.form.label.link = Further Information Link
+auditor.auditingRecord.form.label.subject = Subject
+auditor.auditingRecord.form.label.assessment = Assessment
+auditor.auditingRecord.form.label.link = Link
+auditor.auditingRecord.form.label.mark = Mark
+auditor.auditingRecord.form.label.published = Published
+auditor.auditingRecord.form.label.startPeriod= Start hour
+auditor.auditingRecord.form.label.endPeriod = Finish hour
+auditor.auditingRecord.form.label.hours = Duration
+auditor.auditingRecord.form.label.isACorrection = Correction
 
-auditor.auditing-record.form.error.spam = The introduced text contains words that are considered spam
-auditor.auditing-record.form.error.post-date = End Date before Start Date
-auditor.auditing-record.form.error.not-enough-time = Period of time incorrect
+auditor.auditingRecord.announce.correction = Correction
+auditor.auditingRecord.correction.confirmation = Please confirm
+auditor.auditingRecord.error.date.invalidPeriod = Invalid period
 
-
-
-auditor.auditing-record.form.button.delete = Delete
-auditor.auditing-record.form.button.update = Update
-auditor.auditing-record.form.button.create = Create
-auditor.auditing-record.form.button.confirmation = Confirm exceptional record
-auditor.auditing-record.form.button.create-exceptional = Create exceptional record
+auditor.auditingRecord.create = Create
+auditor.auditingRecord.form.button.delete = Delete
+auditor.auditingRecord.form.button.update = Update
+auditor.auditingRecord.form.button.create = Create
+auditor.auditingRecord.form.button.publish = Publish
+auditor.auditingRecord.form.button.confirmation = Confirm exceptional record
