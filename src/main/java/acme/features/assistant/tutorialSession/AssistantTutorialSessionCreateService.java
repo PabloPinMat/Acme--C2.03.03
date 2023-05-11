@@ -2,7 +2,6 @@
 package acme.features.assistant.tutorialSession;
 
 import java.time.Duration;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,114 +19,99 @@ import acme.roles.Assistant;
 @Service
 public class AssistantTutorialSessionCreateService extends AbstractService<Assistant, TutorialSession> {
 
-	// Internal state ---------------------------------------------------------
-
 	@Autowired
-	protected AssistantTutorialSessionRepository repository;
-
-	// AbstractService interface ----------------------------------------------
+	protected AssistantTutorialSessionRepository repositorio;
 
 
 	@Override
 	public void check() {
-		boolean status;
-
-		status = super.getRequest().hasData("masterId", int.class);
-
-		super.getResponse().setChecked(status);
+		boolean estado;
+		estado = super.getRequest().hasData("tutorialId", int.class);
+		super.getResponse().setChecked(estado);
 	}
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int tutorialId;
+		Boolean estado;
+		Integer tutorialId;
 		Tutorial tutorial;
 		Principal principal;
 
 		principal = super.getRequest().getPrincipal();
-		tutorialId = super.getRequest().getData("masterId", int.class);
-		tutorial = this.repository.findOneTutorialById(tutorialId);
-		status = tutorial != null && (!tutorial.isDraftMode() || tutorial.getAssitant().getId() == principal.getActiveRoleId());
-
-		super.getResponse().setAuthorised(status);
+		tutorialId = super.getRequest().getData("tutorialId", int.class);
+		tutorial = this.repositorio.findTutorialById(tutorialId);
+		estado = tutorial != null && (!tutorial.isDraftMode() || tutorial.getAssitant().getId() == principal.getActiveRoleId());
+		super.getResponse().setAuthorised(estado);
 	}
 
 	@Override
 	public void load() {
-		final TutorialSession object;
-		int tutorialId;
+		final TutorialSession tutorialSession;
+		Integer tutorialId;
 		Tutorial tutorial;
 
-		tutorialId = super.getRequest().getData("masterId", int.class);
-		tutorial = this.repository.findOneTutorialById(tutorialId);
-
-		object = new TutorialSession();
-		object.setTutorial(tutorial);
-
-		super.getBuffer().setData(object);
+		tutorialId = super.getRequest().getData("tutorialId", int.class);
+		tutorial = this.repositorio.findTutorialById(tutorialId);
+		tutorialSession = new TutorialSession();
+		tutorialSession.setTutorial(tutorial);
+		super.getBuffer().setData(tutorialSession);
 	}
 
 	@Override
-	public void bind(final TutorialSession object) {
-		assert object != null;
-
-		super.bind(object, "title", "abstract$", "sessionType", "startSession", "finishSession", "furtherInformation");
+	public void bind(final TutorialSession tutorialSession) {
+		assert tutorialSession != null;
+		super.bind(tutorialSession, "title", "abstract$", "sessionType", "startSession", "finishSession", "furtherInformation");
 	}
 
 	@Override
-	public void validate(final TutorialSession object) {
-		assert object != null;
-		Date actualDate;
-		final boolean validStartDate;
-		final boolean minDuration;
-		final boolean maxDuration;
-		actualDate = MomentHelper.getCurrentMoment();
+	public void validate(final TutorialSession tutorialSession) {
+		assert tutorialSession != null;
+		if (!super.getBuffer().getErrors().hasErrors("finishDate"))
+			super.state(MomentHelper.isBefore(tutorialSession.getStartSession(), tutorialSession.getFinishSession()), "finishDate", "La fecha final no puede ser anterior a la inicial");
 
 	}
 
 	@Override
-	public void perform(final TutorialSession object) {
-		assert object != null;
+	public void perform(final TutorialSession tutorialSession) {
+		assert tutorialSession != null;
 
 		Tutorial tutorial;
-		double totalHours;
-		double sessionHours;
-		double validFormatSessionHours;
-		Duration sessionDuration;
-		String formattedSessionHours;
+		Double horas;
+		Double timeSession;
+		Double timeSessionFormat;
+		Duration duration;
+		String timeSessionString;
 
-		tutorial = object.getTutorial();
-		totalHours = 0.;
-		sessionDuration = MomentHelper.computeDuration(object.getStartSession(), object.getFinishSession());
-		sessionHours = sessionDuration.getSeconds() / 3600.;
-		formattedSessionHours = String.format("%.2f", sessionHours);
-		validFormatSessionHours = Double.parseDouble(formattedSessionHours);
+		tutorial = tutorialSession.getTutorial();
+		duration = MomentHelper.computeDuration(tutorialSession.getStartSession(), tutorialSession.getFinishSession());
+		timeSession = duration.getSeconds() / 3600.0;
+		timeSessionString = String.format("%.2f", timeSession);
+		timeSessionFormat = Double.parseDouble(timeSessionString);
+		horas = timeSessionFormat + tutorial.getEstimatedTime();
+		tutorial.setEstimatedTime(horas);
 
-		totalHours = validFormatSessionHours + tutorial.getEstimatedTime();
-
-		tutorial.setEstimatedTime(totalHours);
-
-		this.repository.save(tutorial);
-		this.repository.save(object);
+		this.repositorio.save(tutorial);
+		this.repositorio.save(tutorialSession);
 	}
 
 	@Override
-	public void unbind(final TutorialSession object) {
-		assert object != null;
+	public void unbind(final TutorialSession tutorialSession) {
+		assert tutorialSession != null;
 
-		Tuple tuple;
-		SelectChoices choices;
+		Tuple tupla;
+		final SelectChoices opciones;
 		Tutorial tutorial;
 		boolean draftMode;
 
-		tutorial = object.getTutorial();
+		tutorial = tutorialSession.getTutorial();
 		draftMode = tutorial.isDraftMode();
-		choices = SelectChoices.from(sessionType.class, object.getSessionType());
-		tuple = super.unbind(object, "title", "abstract$", "sessionType", "startSession", "finishSession", "furtherInformation");
-		tuple.put("masterId", super.getRequest().getData("masterId", int.class));
-		tuple.put("sessionType", choices);
-		tuple.put("draftMode", draftMode);
-		super.getResponse().setData(tuple);
+		opciones = SelectChoices.from(sessionType.class, tutorialSession.getSessionType());
+		tupla = super.unbind(tutorialSession, "title", "abstract$", "sessionType", "startSession", "finishSession", "furtherInformation");
+		tupla.put("draftMode", draftMode);
+		tupla.put("sessionType", opciones);
+		tupla.put("tutorialId", super.getRequest().getData("tutorialId", int.class));
+
+		super.getResponse().setData(tupla);
 	}
 
 }

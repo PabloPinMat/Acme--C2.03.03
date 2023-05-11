@@ -1,3 +1,4 @@
+
 package acme.features.authenticated.audit;
 
 import java.util.Collection;
@@ -15,6 +16,7 @@ public class AuthenticatedAuditListService extends AbstractService<Authenticated
 
 	@Autowired
 	protected AuthenticatedAuditRepository repository;
+
 
 	@Override
 	public void check() {
@@ -41,7 +43,7 @@ public class AuthenticatedAuditListService extends AbstractService<Authenticated
 	public void unbind(final Audit object) {
 		assert object != null;
 		Tuple tuple;
-		tuple = super.unbind(object, "code", "conclusion","strongPoints","weakPoints");
+		tuple = super.unbind(object, "code", "conclusion", "strongPoints", "weakPoints");
 		super.getResponse().setData(tuple);
 	}
 
