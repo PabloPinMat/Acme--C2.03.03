@@ -333,8 +333,7 @@
         
         
         <property name="java-output-path" value="/Hello-World-22.0/target/classes"/>
-                
-        <property name="context-root" value="Acme-L3-D03"/>
+        <property name="context-root" value="Acme-L3-D04"/>
                                                                                                                                                                                                                                                                                                                                                                                                     
     
     
