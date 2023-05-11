@@ -1,8 +1,6 @@
 
 package acme.features.assistant.tutorialSession;
 
-import java.time.Duration;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,64 +9,49 @@ import acme.entities.sessions.sessionType;
 import acme.entities.tutorial.Tutorial;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
-import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Assistant;
 
 @Service
 public class AssistantTutorialSessionDeleteService extends AbstractService<Assistant, TutorialSession> {
 
-	// Internal state ---------------------------------------------------------
-
 	@Autowired
-	protected AssistantTutorialSessionRepository repository;
-
-	// AbstractService interface ----------------------------------------------
+	protected AssistantTutorialSessionRepository repositorio;
 
 
 	@Override
 	public void check() {
-		boolean status;
-
-		status = super.getRequest().hasData("id", int.class);
-
-		super.getResponse().setChecked(status);
+		Boolean estado;
+		estado = super.getRequest().hasData("id", int.class);
+		super.getResponse().setChecked(estado);
 	}
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int tutorialSessionId;
-		TutorialSession tutorialSession;
+		Boolean estado;
+		Integer sessionId;
 		Tutorial tutorial;
-		Assistant assistant;
 
-		tutorialSessionId = super.getRequest().getData("id", int.class);
-		tutorialSession = this.repository.findOneTutorialSessionById(tutorialSessionId);
-		tutorial = tutorialSession == null ? null : tutorialSession.getTutorial();
-		assistant = tutorial == null ? null : tutorial.getAssitant();
-		status = tutorialSession != null && tutorial != null && tutorial.isDraftMode() && tutorial.getAssitant().getId() == super.getRequest().getPrincipal().getActiveRoleId() //
-			&& super.getRequest().getPrincipal().hasRole(assistant);
-
-		super.getResponse().setAuthorised(status);
+		sessionId = super.getRequest().getData("id", int.class);
+		tutorial = this.repositorio.findTutorialByTutorialSessionId(sessionId);
+		estado = tutorial != null && !tutorial.isDraftMode() && super.getRequest().getPrincipal().hasRole(tutorial.getAssitant());
+		super.getResponse().setAuthorised(estado);
 	}
 
 	@Override
 	public void load() {
-		TutorialSession object;
-		int tutorialSessionId;
+		TutorialSession tutorialSession;
+		Integer sessionId;
 
-		tutorialSessionId = super.getRequest().getData("id", int.class);
-		object = this.repository.findOneTutorialSessionById(tutorialSessionId);
-
-		super.getBuffer().setData(object);
+		sessionId = super.getRequest().getData("id", int.class);
+		tutorialSession = this.repositorio.findTutorialSessionById(sessionId);
+		super.getBuffer().setData(tutorialSession);
 	}
 
 	@Override
-	public void bind(final TutorialSession object) {
-		assert object != null;
-
-		super.bind(object, "title", "abstract$", "sessionType", "startSession", "finishSession", "furtherInformation");
+	public void bind(final TutorialSession tutorialSession) {
+		assert tutorialSession != null;
+		super.bind(tutorialSession, "title", "abstract$", "sessionType", "startSession", "finishSession", "furtherInformation");
 
 	}
 
@@ -78,48 +61,27 @@ public class AssistantTutorialSessionDeleteService extends AbstractService<Assis
 	}
 
 	@Override
-	public void perform(final TutorialSession object) {
-		assert object != null;
+	public void perform(final TutorialSession tutorialSession) {
+		assert tutorialSession != null;
+		this.repositorio.delete(tutorialSession);
 
-		Tutorial tutorial;
-		double totalHours;
-		double sessionHours;
-		double validFormatSessionHours;
-		Duration sessionDuration;
-		String formattedSessionHours;
-
-		tutorial = object.getTutorial();
-		totalHours = 0.;
-		sessionDuration = MomentHelper.computeDuration(object.getStartSession(), object.getFinishSession());
-		sessionHours = sessionDuration.getSeconds() / 3600.;
-		formattedSessionHours = String.format("%.2f", sessionHours);
-		validFormatSessionHours = Double.parseDouble(formattedSessionHours);
-
-		totalHours = tutorial.getEstimatedTime() - validFormatSessionHours;
-
-		tutorial.setEstimatedTime(totalHours);
-
-		this.repository.save(tutorial);
-		this.repository.delete(object);
 	}
 
 	@Override
-	public void unbind(final TutorialSession object) {
-		assert object != null;
-
-		Tuple tuple;
-		SelectChoices choices;
+	public void unbind(final TutorialSession tutorialSession) {
+		assert tutorialSession != null;
+		final Tuple tupla;
+		SelectChoices opciones;
 		Tutorial tutorial;
 
-		choices = SelectChoices.from(sessionType.class, object.getSessionType());
-		tutorial = object.getTutorial();
+		opciones = SelectChoices.from(sessionType.class, tutorialSession.getSessionType());
+		tutorial = tutorialSession.getTutorial();
 
-		tuple = super.unbind(object, "title", "abstract$", "sessionType", "startSession", "finishSession", "furtherInformation");
-		tuple.put("masterId", tutorial.getId());
-		tuple.put("draftMode", tutorial.isDraftMode());
-		tuple.put("sessionType", choices);
-
-		super.getResponse().setData(tuple);
+		tupla = super.unbind(tutorialSession, "title", "abstract$", "sessionType", "startSession", "finishSession", "furtherInformation");
+		tupla.put("draftMode", tutorial.isDraftMode());
+		tupla.put("sessionType", opciones);
+		tupla.put("tutorialId", tutorial.getId());
+		super.getResponse().setData(tupla);
 	}
 
 }

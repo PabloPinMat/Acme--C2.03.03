@@ -16,72 +16,61 @@ import acme.roles.Assistant;
 @Service
 public class AssistantTutorialSessionListService extends AbstractService<Assistant, TutorialSession> {
 
-	// Internal state ---------------------------------------------------------
-
 	@Autowired
-	protected AssistantTutorialSessionRepository repository;
-
-	// AbstractService interface ----------------------------------------------
+	protected AssistantTutorialSessionRepository repositorio;
 
 
 	@Override
 	public void check() {
-		boolean status;
-
-		status = super.getRequest().hasData("masterId", int.class);
-
-		super.getResponse().setChecked(status);
+		boolean estado;
+		estado = super.getRequest().hasData("tutorialId", int.class);
+		super.getResponse().setChecked(estado);
 	}
 
 	@Override
 	public void authorise() {
-		final boolean status;
-		int masterId;
+		final boolean estado;
+		Integer tutorialId;
 		Tutorial tutorial;
 		Principal principal;
 
 		principal = super.getRequest().getPrincipal();
-		masterId = super.getRequest().getData("masterId", int.class);
-		tutorial = this.repository.findOneTutorialById(masterId);
-		status = tutorial != null && (!tutorial.isDraftMode() || tutorial.getAssitant().getId() == principal.getActiveRoleId());
-
-		super.getResponse().setAuthorised(status);
+		tutorialId = super.getRequest().getData("tutorialId", int.class);
+		tutorial = this.repositorio.findTutorialById(tutorialId);
+		estado = tutorial != null && (!tutorial.isDraftMode() || tutorial.getAssitant().getId() == principal.getActiveRoleId());
+		super.getResponse().setAuthorised(estado);
 	}
 
 	@Override
 	public void load() {
-		Collection<TutorialSession> objects;
-		int tutorialId;
+		final Collection<TutorialSession> sesiones;
+		Integer tutorialId;
 
-		tutorialId = super.getRequest().getData("masterId", int.class);
-		objects = this.repository.findManySessionsByTutorialId(tutorialId);
-
-		super.getBuffer().setData(objects);
+		tutorialId = super.getRequest().getData("tutorialId", int.class);
+		sesiones = this.repositorio.findSessionsByTutorialId(tutorialId);
+		super.getBuffer().setData(sesiones);
 	}
 
 	@Override
-	public void unbind(final TutorialSession object) {
-		assert object != null;
+	public void unbind(final TutorialSession tutorialSession) {
+		assert tutorialSession != null;
+		Tuple tupla;
 
-		Tuple tuple;
-
-		tuple = super.unbind(object, "title", "sessionType", "startSession", "finishSession");
-		super.getResponse().setData(tuple);
+		tupla = super.unbind(tutorialSession, "title", "sessionType", "startSession", "finishSession");
+		super.getResponse().setData(tupla);
 	}
 
 	@Override
-	public void unbind(final Collection<TutorialSession> objects) {
-		assert objects != null;
-
-		final int tutorialId;
+	public void unbind(final Collection<TutorialSession> tutorialSessions) {
+		assert tutorialSessions != null;
+		final Integer tutorialId;
 		Tutorial tutorial;
-		final boolean showCreate;
+		final Boolean condiciones;
 
-		tutorialId = super.getRequest().getData("masterId", int.class);
-		tutorial = this.repository.findOneTutorialById(tutorialId);
-		showCreate = tutorial.isDraftMode() && super.getRequest().getPrincipal().hasRole(tutorial.getAssitant());
-
-		super.getResponse().setGlobal("masterId", tutorialId);
-		super.getResponse().setGlobal("showCreate", showCreate);
+		tutorialId = super.getRequest().getData("tutorialId", int.class);
+		tutorial = this.repositorio.findTutorialById(tutorialId);
+		condiciones = tutorial.isDraftMode() && super.getRequest().getPrincipal().hasRole(tutorial.getAssitant());
+		super.getResponse().setGlobal("tutorialId", tutorialId);
+		super.getResponse().setGlobal("condiciones", condiciones);
 	}
 }

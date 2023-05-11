@@ -1,0 +1,8 @@
+assistant.tutorial.session.form.label.title = Titulo
+assistant.tutorial.session.form.label.abstract$ = Resumen
+assistant.tutorial.session.form.label.startSession = Inicio de la sesión
+assistant.tutorial.session.form.label.finishSession = Fin de la sesión
+assistant.tutorial.session.form.label.type = Tipo
+assistant.tutorial.session.form.button.update = Actualizar
+assistant.tutorial.session.form.button.delete = Borrar
+assistant.tutorial.session.form.button.create = Crear

@@ -12,4 +12,4 @@
 
 
 
-<acme:button code="assistant.tutorial.session.list.button.create" action="/assistant/tutorial-session/create?masterId=${masterId}"/>
+<acme:button code="assistant.tutorial.session.list.button.create" action="/assistant/tutorial-session/create?tutorialId=${tutorialId}"/>
