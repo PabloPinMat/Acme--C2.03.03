@@ -4,6 +4,7 @@ package acme.features.auditor.auditingRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.audit.Audit;
 import acme.entities.audit.AuditingRecord;
 import acme.entities.audit.Mark;
 import acme.framework.components.jsp.SelectChoices;
@@ -13,23 +14,24 @@ import acme.framework.services.AbstractService;
 import acme.roles.Auditor;
 
 @Service
-public class AuditingRecordUpdateService extends AbstractService<Auditor, AuditingRecord> {
+public class AuditingRecordCorrectionService extends AbstractService<Auditor, AuditingRecord> {
 
 	@Autowired
-	protected AuditingRecordRepository	repository;
+	protected AuditingRecordRepository repository;
 
 
 	@Override
 	public void check() {
-		final boolean status = super.getRequest().hasData("id", int.class);
+		final boolean status = super.getRequest().hasData("auditId", int.class);
 		super.getResponse().setChecked(status);
 	}
 
 	@Override
 	public void authorise() {
+
 		boolean status;
-		final AuditingRecord audintingRecord = this.repository.findAuditingRecordById(super.getRequest().getData("id", int.class));
-		status = super.getRequest().getPrincipal().hasRole(audintingRecord.getAudit().getAuditor()) && audintingRecord.isPublished();
+		final Audit audit = this.repository.findAuditById(super.getRequest().getData("auditId", int.class));
+		status = super.getRequest().getPrincipal().hasRole(audit.getAuditor()) && audit.isPublished();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -38,7 +40,7 @@ public class AuditingRecordUpdateService extends AbstractService<Auditor, Auditi
 	public void load() {
 		AuditingRecord object;
 
-		object = this.repository.findAuditingRecordById(super.getRequest().getData("id", int.class));
+		object = new AuditingRecord();
 		super.getBuffer().setData(object);
 	}
 
@@ -46,19 +48,28 @@ public class AuditingRecordUpdateService extends AbstractService<Auditor, Auditi
 	public void bind(final AuditingRecord object) {
 		assert object != null;
 
-		final Mark mark = super.getRequest().getData("mark", Mark.class);
-		super.bind(object, "subject", "assessment", "startPeriod", "endPeriod", "link");
-		object.setMark(mark);
+		final int auditId = super.getRequest().getData("auditId", int.class);
+		final Audit audit = this.repository.findAuditById(auditId);
+		final String mark = super.getRequest().getData("mark", String.class);
+		super.bind(object,  "subject", "assessment", "startPeriod", "endPeriod", "link");
+		object.setMark(Mark.transform(mark));
+		object.setAudit(audit);
+		object.setPublished(false);
+		object.setCorrection(true);
 	}
 
 	@Override
 	public void validate(final AuditingRecord object) {
 		assert object != null;
+		final Boolean confirm = super.getRequest().getData("confirmation", boolean.class);
+		super.state(confirm, "*", "auditor.auditingRecord.correction.confirmation");
+
 		if (!super.getBuffer().getErrors().hasErrors("startPeriod") && !super.getBuffer().getErrors().hasErrors("endPeriod"))
 			if (!MomentHelper.isBefore(object.getStartPeriod(), object.getEndPeriod()))
-				super.state(false, "startPeriod", "auditor.auditingRecord.error.date.StartFinError");
+				super.state(false, "startPeriod", "auditor.auditingRecord.error.date.invalidPeriod");
 			else
 				super.state(!(object.periodDuration()<= 1), "periodStart", "auditor.auditingRecord.error.date.invalidPeriod");
+
 	}
 
 	@Override
@@ -70,11 +81,15 @@ public class AuditingRecordUpdateService extends AbstractService<Auditor, Auditi
 	@Override
 	public void unbind(final AuditingRecord object) {
 		assert object != null;
+
 		final Tuple tuple;
-		final SelectChoices elecs = SelectChoices.from(Mark.class, object.getMark());
-		tuple = super.unbind(object, "subject", "assessment", "startPeriod", "endPeriod", "mark", "link");
-		tuple.put("elecs", elecs);
+		final SelectChoices marks = SelectChoices.from(Mark.class, object.getMark());
+
+		tuple = super.unbind(object,  "subject", "assessment", "startPeriod", "endPeriod","mark", "link");
+		tuple.put("elecs", marks);
+		tuple.put("auditId", super.getRequest().getData("auditId", int.class));
 
 		super.getResponse().setData(tuple);
 	}
+
 }
