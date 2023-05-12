@@ -27,3 +27,9 @@ lecturer.course.form.button.delete = Borrar
 lecturer.course.form.button.update = Actualizar
 lecturer.course.form.button.publish = Publicar
 lecturer.course.form.button.create = Crear
+
+lecturer.course.error.draftMode.published = You cannot public a course which is already published
+lecturer.course.error.code.duplicated = The code is already in use
+
+lecturer.course.form.error.noLecture = You cannot publish a course which do not have associated lectures
+lecturer.course.form.error.lectureNotPublished = You cannot public a course until you published all the associated lectures

@@ -13,9 +13,6 @@ lecturer.courseLecture.form.label.lecture = Lecture
 lecturer.courseLecture.form.button.delete = Delete
 lecturer.courseLecture.form.button.create = Create
 
-lecturer.courseLecture.form.error.lecture = The selected lecture is yet in the course
-
-lecturer.courseLecture.form.error.course = The selected course is not editable
 
 lecturer.courseLecture.form.label.course = Course
 
@@ -23,6 +20,14 @@ lecturer.courseLecture.form.lecture.title = Title of the lecture
 
 lecturer.courseLecture.form.lecture.summary = Summary of the lecture
 
-lecturer.courseLecture.form.lecture.info = Add the lecture with the following info to a course
+lecturer.courseLecture.form.lecture.info = Add the lecture with this info 
 
-lecturer.courseLecture.form.lecture.delete.info = Delete lecture with the following info from a course
+lecturer.courseLecture.form.lecture.delete.info = Delete lecture with the this info from a course
+
+
+
+lecturer.course-lecture.error.lecture.published = You cannot add a lecture which is not published
+lecturer.course-lecture.error.course.published.add = You cannot add a lecture to a course which is published
+
+
+lecturer.course-lecture.error.course.published.delete = you cannot delete the lectures of a publicated course

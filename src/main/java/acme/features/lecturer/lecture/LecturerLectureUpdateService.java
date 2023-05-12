@@ -68,6 +68,12 @@ public class LecturerLectureUpdateService extends AbstractService<Lecturer, Lect
 	@Override
 	public void validate(final Lecture object) {
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("draftMode")) {
+			final boolean draftMode = object.isDraftMode();
+			super.state(draftMode, "draftMode", "lecturer.lecture.error.draftMode.published");
+		}
+
 	}
 
 	@Override

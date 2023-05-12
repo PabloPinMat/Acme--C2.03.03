@@ -26,3 +26,10 @@ lecturer.courseLecture.form.lecture.summary = Resumen de la lección
 lecturer.courseLecture.form.lecture.info = Añadir la lección con la siguiente información a un curso
 
 lecturer.courseLecture.form.lecture.delete.info = Elimimar la lección con la siguiente información a un curso
+
+
+lecturer.course-lecture.error.lecture.published = No puedes añadir una Lecture que no está publicada
+lecturer.course-lecture.error.course.published.add = No puedes añadir una lección a un curso que está publicado
+
+
+lecturer.course-lecture.error.course.published.delete = No puedes quitar lecciones de un curso que está publicado

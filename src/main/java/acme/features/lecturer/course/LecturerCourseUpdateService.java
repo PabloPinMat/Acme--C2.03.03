@@ -65,9 +65,20 @@ public class LecturerCourseUpdateService extends AbstractService<Lecturer, Cours
 		assert object != null;
 
 		if (!super.getBuffer().getErrors().hasErrors("draftMode")) {
+
 			final boolean draftMode = object.isDraftMode();
 			super.state(draftMode, "draftMode", "lecturer.course.error.draftMode.published");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+
+			final String code = object.getCode();
+			final Course course = this.repository.findCourseByCode(code);
+			final boolean boo = course == null || object.getId() == course.getId();
+			super.state(boo, "code", "lecturer.course.error.code.duplicated");
+
+		}
+
 	}
 
 	@Override

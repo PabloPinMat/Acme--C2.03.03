@@ -27,7 +27,6 @@ lecturer.lecture.form.label.draftMode = Draft mode:
 lecturer.lecture.list.button.create = Create lecture
 
 
-lecturer.lecture.form.error.estimatedLearningTIme = The estimated learning time must be bigger than 0.01
 
 lecturer.lecture.list.button.add = Add lecture to a course
 
@@ -38,4 +37,4 @@ lecturer.lecture.form.button.delete = Delete
 lecturer.lecture.form.button.publish = Publish
 lecturer.lecture.form.button.create = Create
 
-
+lecturer.lecture.error.draftMode.published = No se puede actualizar una lección que está publicada

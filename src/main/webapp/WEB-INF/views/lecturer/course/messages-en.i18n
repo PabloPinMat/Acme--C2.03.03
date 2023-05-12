@@ -29,3 +29,11 @@ lecturer.course.form.button.delete = Delete
 lecturer.course.form.button.update = Update
 lecturer.course.form.button.publish = Publish
 lecturer.course.form.button.create = Create
+
+
+lecturer.course.error.draftMode.published = No se publicar un curso ya publicado
+lecturer.course.error.code.duplicated = El código de curso ya existe
+
+lecturer.course.form.error.noLecture = No se puede publicar un curso que no contenga ninguna lección
+lecturer.course.form.error.lectureNotPublished = No se puede publicar un curso con lecciones no publicadas
+

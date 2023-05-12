@@ -79,7 +79,7 @@ public class LecturerLecturePublishService extends AbstractService<Lecturer, Lec
 
 		if (!super.getBuffer().getErrors().hasErrors("draftMode")) {
 			final boolean draftMode = object.isDraftMode();
-			super.state(draftMode, "draftMode", "ya está publicada");
+			super.state(draftMode, "draftMode", "lecturer.lecture.error.draftMode.published");
 		}
 	}
 

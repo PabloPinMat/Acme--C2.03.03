@@ -68,12 +68,22 @@ public class LecturerCourseLectureCreateService extends AbstractService<Lecturer
 	@Override
 	public void validate(final CourseLecture object) {
 		assert object != null;
+
+		final boolean lectureIsInDraftMode;
+		final boolean courseIsInDraftMode;
+		lectureIsInDraftMode = this.repository.isLectureInDraftModeByCourseId(object.getLecture().getId());
+		courseIsInDraftMode = this.repository.isCourseInDraftModeByCourseId(object.getCourse().getId());
+
+		super.state(!lectureIsInDraftMode, "*", "lecturer.course-lecture.error.lecture.published");
+		super.state(courseIsInDraftMode, "*", "lecturer.course-lecture.error.course.published.add");
+
 	}
 
 	@Override
 	public void perform(final CourseLecture object) {
 		assert object != null;
 		this.repository.save(object);
+
 	}
 
 	@Override
