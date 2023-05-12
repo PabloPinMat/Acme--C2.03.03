@@ -33,4 +33,5 @@ lecturer.lecture.form.button.delete = Borrar
 lecturer.lecture.form.button.publish = Publicar
 lecturer.lecture.form.button.create = Crear
 
-lecturer.lecture.error.draftMode.published = A lesson which is published cannot be updated
+
+lecturer.lecture.error.draftMode.published.update = No se puede actualizar una lección publicada

@@ -10,13 +10,13 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
 import acme.entities.lecture.Lecture;
 import acme.entities.lecture.LectureType;
+import acme.framework.components.datatypes.Money;
 import acme.framework.data.AbstractEntity;
 import acme.roles.Lecturer;
 import lombok.Getter;
@@ -44,8 +44,8 @@ public class Course extends AbstractEntity {
 	@Length(max = 100)
 	protected String			courseAbstract;
 
-	@PositiveOrZero
-	protected Double			retailPrice;
+	@NotNull
+	protected Money				retailPrice;
 
 	@URL
 	protected String			link;

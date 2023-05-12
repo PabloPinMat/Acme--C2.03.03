@@ -15,7 +15,7 @@ lecturer.course.list.label.retailPrice = Precio
 lecturer.course.form.label.code = Código
 lecturer.course.form.label.title = Título
 lecturer.course.form.label.courseAbstract = Resumen
-lecturer.course.form.label.retailPrice = precio
+lecturer.course.list.label.retailPrice = Precio
 lecturer.course.form.label.furtherInformationLink = Información adicional
 lecturer.course.form.label.lecturer = Profesor
 lecturer.course.form.label.drafMode = Modo borrador
@@ -28,8 +28,9 @@ lecturer.course.form.button.update = Actualizar
 lecturer.course.form.button.publish = Publicar
 lecturer.course.form.button.create = Crear
 
-lecturer.course.error.draftMode.published = You cannot public a course which is already published
-lecturer.course.error.code.duplicated = The code is already in use
 
-lecturer.course.form.error.noLecture = You cannot publish a course which do not have associated lectures
-lecturer.course.form.error.lectureNotPublished = You cannot public a course until you published all the associated lectures
+lecturer.course.error.draftMode.published = No se publicar un curso ya publicado
+lecturer.course.error.code.duplicated = El código de curso ya existe
+
+lecturer.course.form.error.noLectures = No se puede publicar un curso que no contenga ninguna lección
+lecturer.course.form.error.lectureNotPublished = No se puede publicar un curso con lecciones no publicadas
