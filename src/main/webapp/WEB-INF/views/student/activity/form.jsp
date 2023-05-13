@@ -21,7 +21,7 @@
 	<acme:input-select code="student.activity.form.label.type" path="activityType" choices="${types}"/>
 	<acme:input-moment code="student.activity.form.label.startDate" path="startDate"/>
 	<acme:input-moment code="student.activity.form.label.endDate" path="endDate"/>	
-	<acme:input-url code="student.activity.form.label.moreInfo" path="link"/>
+	<acme:input-url code="student.activity.form.label.link" path="link"/>
 	
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && finalised == true}">

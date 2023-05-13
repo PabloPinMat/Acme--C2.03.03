@@ -141,7 +141,7 @@ public class StudentEnrolmentUpdateService extends AbstractService<Student, Enro
 		final String ccLowerNibble;
 		Tuple tuple;
 
-		courses = this.repository.findAllCourses();
+		courses = this.repository.findPublishedCourses();
 		choices = SelectChoices.from(courses, "title", object.getCourse());
 
 		ccNumber = super.getRequest().getData("ccNumber", String.class);
