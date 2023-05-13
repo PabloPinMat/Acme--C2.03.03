@@ -1,0 +1,6 @@
+courseIndex,code,title,courseAbstract,retailPrice,link
+0,ABC123,AAAAAAAAACourse1,courseAbstract1,EUR 2.00,https://test.com
+1,ABD123,AEsto es un título que posiblemente contenga 74 caracteres no sé qué poner,courseAbstract2,EUR 2.00,https://test.com
+2,ABE999,BAAAAAAAACourse,courseAbstract3,USD 999.00,https://github.com/ferbaqfer/Acme-L3-D02
+3,ACZ999,CAAAAAAAACourse,Este abstract es bastante bastante largo ya que debe contener 99 caracteres si no llego meto una m,USD 0.01,https://github.com/ferbaqfer/Acme-L3-D02
+4,AZC001,CCCvoy a dejar el link en nulo,Este es el abstract de un curso con precio 0,USD 0.00,

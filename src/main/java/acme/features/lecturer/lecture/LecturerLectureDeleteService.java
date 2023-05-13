@@ -1,5 +1,5 @@
 /*
- * EmployerDutyUpdateService.java
+ * EmployerDutyDeleteService.java
  *
  * Copyright (C) 2012-2023 Rafael Corchuelo.
  *
@@ -12,18 +12,22 @@
 
 package acme.features.lecturer.lecture;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.course.CourseLecture;
 import acme.entities.lecture.Lecture;
 import acme.entities.lecture.LectureType;
+import acme.framework.components.accounts.Principal;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Lecturer;
 
 @Service
-public class LecturerLectureUpdateService extends AbstractService<Lecturer, Lecture> {
+public class LecturerLectureDeleteService extends AbstractService<Lecturer, Lecture> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -44,7 +48,13 @@ public class LecturerLectureUpdateService extends AbstractService<Lecturer, Lect
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		Lecture object;
+		int id;
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findLectureById(id);
+		final Principal principal = super.getRequest().getPrincipal();
+		final int userAccountId = principal.getAccountId();
+		super.getResponse().setAuthorised(object.getLecturer().getUserAccount().getId() == userAccountId && object.isDraftMode());
 	}
 
 	@Override
@@ -71,16 +81,18 @@ public class LecturerLectureUpdateService extends AbstractService<Lecturer, Lect
 
 		if (!super.getBuffer().getErrors().hasErrors("draftMode")) {
 			final boolean draftMode = object.isDraftMode();
-			super.state(draftMode, "draftMode", "lecturer.lecture.error.draftMode.published.update");
+			super.state(draftMode, "draftMode", "lecturer.lecture.error.draftMode.published");
 		}
-
 	}
 
 	@Override
 	public void perform(final Lecture object) {
 		assert object != null;
 
-		this.repository.save(object);
+		final Collection<CourseLecture> courseLectures = this.repository.findCourseLecturesByLecture(object);
+		for (final CourseLecture courseLecture : courseLectures)
+			this.repository.delete(courseLecture);
+		this.repository.delete(object);
 	}
 
 	@Override
@@ -88,7 +100,8 @@ public class LecturerLectureUpdateService extends AbstractService<Lecturer, Lect
 		assert object != null;
 		Tuple tuple;
 
-		tuple = super.unbind(object, "title", "abstractt", "estimatedLearningTime", "body", "draftMode", "lectureType", "furtherInformation");
+		tuple = super.unbind(object, "title", "abstractt", "estimatedLearningTime", "body", "lecturer", "draftMode", "lectureType", "furtherInformation");
+		tuple.put("masterId", super.getRequest().getData("masterId", int.class));
 
 		final SelectChoices choices = SelectChoices.from(LectureType.class, object.getLectureType());
 		tuple.put("lectureType", choices.getSelected().getKey());
