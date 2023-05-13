@@ -12,6 +12,7 @@ import javax.validation.constraints.PositiveOrZero;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
+import acme.framework.components.datatypes.Money;
 import acme.framework.data.AbstractEntity;
 import acme.roles.Lecturer;
 import lombok.Getter;
@@ -42,7 +43,7 @@ public class Course extends AbstractEntity {
 	protected CourseType		courseType;
 
 	@PositiveOrZero
-	protected Double			retailPrice;
+	protected Money			retailPrice;
 
 	@URL
 	protected String			link;

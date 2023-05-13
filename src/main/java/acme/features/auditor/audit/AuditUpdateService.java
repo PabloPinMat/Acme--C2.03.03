@@ -77,9 +77,9 @@ public class AuditUpdateService extends AbstractService<Auditor, Audit> {
 		Tuple tuple;
 		Collection<Course> courses;
 		SelectChoices choices;
-		courses = this.repository.findAllCourses();
+		courses = this.repository.findPublishedCourses();
 		choices = SelectChoices.from(courses, "code", object.getCourse());
-		tuple = super.unbind(object, "code", "conclusion", "strongPoints", "weakPoints", "draftMode","published");
+		tuple = super.unbind(object, "code", "conclusion", "strongPoints", "weakPoints","published");
 		tuple.put("courses", choices);
 		tuple.put("course", choices.getSelected().getKey());
 		super.getResponse().setData(tuple);

@@ -46,7 +46,7 @@ public class AuditingRecordPublishService extends AbstractService<Auditor, Audit
 		assert object != null;
 
 		final Mark mark = super.getRequest().getData("mark", Mark.class);
-		super.bind(object, "subject", "assesment", "periodStart", "periodFin", "link", "draftMode");
+		super.bind(object, "subject", "assesment", "periodStart", "periodFin", "link", "published");
 		object.setMark(mark);
 	}
 
