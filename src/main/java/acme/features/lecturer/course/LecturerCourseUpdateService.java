@@ -79,6 +79,11 @@ public class LecturerCourseUpdateService extends AbstractService<Lecturer, Cours
 
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("retailPrice")) {
+			final double retailPrice = object.getRetailPrice().getAmount();
+			super.state(retailPrice >= 0, "retailPrice", "lecturer.course.error.retailPrice.negative");
+		}
+
 	}
 
 	@Override

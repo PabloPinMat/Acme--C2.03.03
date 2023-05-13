@@ -64,6 +64,11 @@ public class LecturerCourseCreateService extends AbstractService<Lecturer, Cours
 			super.state(instance == null, "code", "lecturer.course.error.code.duplicated");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("retailPrice")) {
+			final double retailPrice = object.getRetailPrice().getAmount();
+			super.state(retailPrice > 0, "retailPrice", "lecturer.course.error.retailPrice.negative");
+		}
+
 	}
 
 	@Override

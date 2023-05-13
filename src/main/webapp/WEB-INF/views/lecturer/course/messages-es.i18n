@@ -34,3 +34,5 @@ lecturer.course.error.code.duplicated = El código de curso ya existe
 
 lecturer.course.form.error.noLectures = No se puede publicar un curso que no contenga ninguna lección
 lecturer.course.form.error.lectureNotPublished = No se puede publicar un curso con lecciones no publicadas
+
+lecturer.course.error.retailPrice.negative = El precio no puede ser negativo

@@ -69,6 +69,11 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 			super.state(draftMode, "draftMode", "lecturer.course.error.draftMode.published");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("retailPrice")) {
+			final double retailPrice = object.getRetailPrice().getAmount();
+			super.state(retailPrice >= 0, "retailPrice", "lecturer.course.error.retailPrice.negative");
+		}
+
 		final Collection<Lecture> lectures = this.repository.findLecturesByCourse(object.getId());
 		super.state(!lectures.isEmpty(), "*", "lecturer.course.form.error.noLectures");
 

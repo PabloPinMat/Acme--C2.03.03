@@ -37,3 +37,5 @@ lecturer.course.error.code.duplicated = The code is already in use
 lecturer.course.form.error.noLectures = You cannot publish a course which do not have associated lectures
 lecturer.course.form.error.lectureNotPublished = You cannot public a course until you published all the associated lectures
 
+lecturer.course.error.retailPrice.negative = The price cannot be negative
+
