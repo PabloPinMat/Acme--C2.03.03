@@ -17,21 +17,20 @@ lecturer.lecture.list.label.estimatedLearningTime = Estimated learning time
 lecturer.lecture.form.label.title = Title:
 lecturer.lecture.form.label.abstractt = abstractt:
 lecturer.lecture.form.label.estimatedLearningTime = Estimated learning Time:
+lecturer.lecture.list.label.lectureType = Lecture Type
+
 lecturer.lecture.form.label.body = Body:
-lecturer.lecture.form.label.lectureType = Tipo:
+lecturer.lecture.form.label.lectureType = Type:
 lecturer.lecture.form.label.furtherInformation = Further information link:
 lecturer.lecture.form.label.draftMode = Draft mode:
 
 lecturer.lecture.list.button.create = Create lecture
 
-lecturer.lecture.form.error.spam = The introduced text is considered spam
 
-lecturer.lecture.form.error.nature = The type of a lecture cannnot be
-lecturer.lecture.form.error.estimatedLearningTIme = The estimated learning time must be bigger than 0.01
 
 lecturer.lecture.list.button.add = Add lecture to a course
 
-lecturer.lecture.list.button.deleteFromCourse = Remove from a course
+lecturer.lecture.list.button.deleteFromCourse = Remove lecture from a course
 
 lecturer.lecture.form.button.update = Update
 lecturer.lecture.form.button.delete = Delete
@@ -39,3 +38,4 @@ lecturer.lecture.form.button.publish = Publish
 lecturer.lecture.form.button.create = Create
 
 
+lecturer.lecture.error.draftMode.published.update = a published lecture cannot be updated

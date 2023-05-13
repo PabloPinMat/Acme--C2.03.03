@@ -12,3 +12,13 @@ student.activity.list.label.title = Título
 student.activity.list.label.type = Tipo
 student.activity.list.label.startDate = Fecha de Inicio
 student.activity.list.label.endDate = Fecha de Fin
+student.activity.list.button.create = Crear
+
+student.activity.form.label.title= Título
+student.activity.form.label.summary=Resumen
+student.activity.form.label.type=Tipo
+student.activity.form.label.startDate = Fecha de inicio
+student.activity.form.label.endDate= Fecha de fin
+student.activity.form.label.link = Link
+student.activity.form.button.delete = Eliminar
+student.activity.form.button.update = Actualizar

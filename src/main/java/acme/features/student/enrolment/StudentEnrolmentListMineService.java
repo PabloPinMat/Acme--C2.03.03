@@ -66,7 +66,7 @@ public class StudentEnrolmentListMineService extends AbstractService<Student, En
 		final Collection<Activity> activities = this.repository.findActivitiesByEnrolmentId(enrolmentId);
 		for (final Activity activity : activities) {
 			final long activityTime = Math.abs(activity.getEndDate().getTime() - activity.getStartDate().getTime());
-			final double activityTimeInHours = activityTime / 3600000;
+			final double activityTimeInHours = (double) activityTime / 3600000;
 			res += activityTimeInHours;
 		}
 		return res;

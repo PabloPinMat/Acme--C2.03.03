@@ -21,5 +21,9 @@ any.course.form.label.retailPrice = Price
 any.course.form.label.link = Further Information
 any.course.form.label.lecturer = Lecturer
 
+
 any.audit.form.button.list = Related audits
+
+authenticated.tutorial.form.button = Related tutorials
+
 
