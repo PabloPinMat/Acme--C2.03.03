@@ -1,6 +1,7 @@
 
 package acme.testing.features.lecturer.course;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -72,6 +73,24 @@ public class LecturerCourseCreateTest extends TestHarness {
 
 		super.checkErrorsExist();
 
+		super.signOut();
+	}
+
+	@Test
+	public void test300Hacking() {
+
+		super.checkLinkExists("Sign in");
+		super.request("/lecturer/course/create");
+		super.checkPanicExists();
+
+		super.signIn("administrator", "administrator");
+		super.request("/lecturer/course/create");
+		super.checkPanicExists();
+		super.signOut();
+
+		super.signIn("auditor1", "auditor1");
+		super.request("/lecturer/course/create");
+		super.checkPanicExists();
 		super.signOut();
 	}
 
