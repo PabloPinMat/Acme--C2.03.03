@@ -67,7 +67,7 @@ public class StudentEnrolmentShowService extends AbstractService<Student, Enrolm
 		Collection<Course> courses;
 		SelectChoices choices;
 
-		courses = this.repository.findAllCourses();
+		courses = this.repository.findPublishedCourses();
 		choices = SelectChoices.from(courses, "title", object.getCourse());
 
 		workTime = this.getWorkTime(object.getId());
@@ -87,7 +87,7 @@ public class StudentEnrolmentShowService extends AbstractService<Student, Enrolm
 		final Collection<Activity> activities = this.repository.findActivitiesByEnrolmentId(enrolmentId);
 		for (final Activity activity : activities) {
 			final long activityTime = Math.abs(activity.getEndDate().getTime() - activity.getStartDate().getTime());
-			final double activityTimeInHours = activityTime / 3600000;
+			final double activityTimeInHours = (double) activityTime / 3600000;
 			res += activityTimeInHours;
 		}
 		return res;

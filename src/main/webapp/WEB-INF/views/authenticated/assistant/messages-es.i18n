@@ -3,5 +3,11 @@ authenticated.assistant.form.label.expertiseField = Campos de experiencia
 authenticated.assistant.form.label.resume = Resumen
 authenticated.assistant.form.label.furtherInformation = Mas información
 
+authenticated.tutorial.list.label.title = Titulo
+authenticated.tutorial.list.label.abstract$ = Resumen
+
+assistant.tutorial.list.label.code = Código
+assistant.tutorial.list.label.title = Título
+
 authenticated.assistant.form.button.create = Crear
 authenticated.assistant.form.button.update = Actualizar

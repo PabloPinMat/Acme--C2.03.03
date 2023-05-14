@@ -15,15 +15,15 @@ lecturer.course.list.label.price = price
 lecturer.course.form.label.code = Code
 lecturer.course.form.label.title = Title
 lecturer.course.form.label.courseAbstract = Summary
-lecturer.course.form.label.retailPrice = Price
+lecturer.course.list.label.retailPrice = Price
 lecturer.course.form.label.link = Further Information
 lecturer.course.form.label.lecturer = Lecturer
 lecturer.course.form.label.drafMode = Draft mode
+lecturer.course.list.label.draftMode = Draft Mode
+lecturer.course.form.label.courseType = Course Type
+lecturer.course.list.label.courseAbstract = Course Abstract
+lecturer.course.form.label.retailPrice = Price
 
-lecturer.course.form.error.spam = The introduced text is considered Spam
-lecturer.course.form.error.nolecture = This course has no lectures
-lecturer.course.form.error.nohandson = This course has no hands-on lectures
-lecturer.course.form.error.lecturenp = Some lecture of this course is not published
 
 lecturer.course.lectures = Lectures
 lecturer.course.create = Create
@@ -31,3 +31,13 @@ lecturer.course.form.button.delete = Delete
 lecturer.course.form.button.update = Update
 lecturer.course.form.button.publish = Publish
 lecturer.course.form.button.create = Create
+
+
+lecturer.course.error.draftMode.published = You cannot public a course which is already published
+lecturer.course.error.code.duplicated = The code is already in use
+
+lecturer.course.form.error.noLectures = You cannot publish a course which do not have associated lectures
+lecturer.course.form.error.lectureNotPublished = You cannot public a course until you published all the associated lectures
+
+lecturer.course.error.retailPrice.negative = The price cannot be negative
+
