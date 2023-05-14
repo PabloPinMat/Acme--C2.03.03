@@ -1,0 +1,10 @@
+student.lecture.form.label.title = Título
+student.lecture.form.label.estimatedLearningTime = Tiempo de aprendizaje estimado 
+student.lecture.form.label.lectureType = Tipo
+student.lecture.form.label.abstractt = Resumen
+student.lecture.form.label.body = Cuerpo
+student.lecture.form.label.furtherInformation = Más información 
+
+student.lecture.list.label.title = Título
+student.lecture.list.label.estimatedLearningTime = Tiempo de aprendizaje estimado 
+student.lecture.list.label.lectureType = Tipo
