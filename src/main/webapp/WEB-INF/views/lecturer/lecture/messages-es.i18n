@@ -15,22 +15,24 @@ lecturer.lecture.list.label.estimatedLearningTime = Tiempo de Aprendizaje estima
 lecturer.lecture.form.label.title = Título:
 lecturer.lecture.form.label.abstractt = Resumen:
 lecturer.lecture.form.label.estimatedLearningTime = Tiempo de aprendizaje estimado:
+lecturer.lecture.list.label.lectureType = Tipo de lección
 lecturer.lecture.form.label.body = Cuerpo:
-lecturer.lecture.form.label.lectureType = Tipo de Clase:
 lecturer.lecture.form.label.furtherInformation = Información adicional:
 lecturer.lecture.form.label.draftMode = Modo borrador:
+lecturer.lecture.list.label.draftMode = Modo Borrador:
+
 
 lecturer.lecture.list.button.create = Crear lección
 
-lecturer.lecture.form.error.spam = El texto introducido es considerado spam
-lecturer.lecture.form.error.nature = La naturaleza de una lección no puede ser balanceada
-lecturer.lecture.form.error.estimatedLearningTIme = El tiempo de aprendizaje estimado debe ser mayor o igual que 0.01
 
 lecturer.lecture.list.button.add=Añadir lección a un curso
 
-lecturer.lecture.list.button.deleteFromCourse = Quitar de un curso
+lecturer.lecture.list.button.deleteFromCourse = Quitar lección de un curso
 
 lecturer.lecture.form.button.update = Actualizar
 lecturer.lecture.form.button.delete = Borrar
 lecturer.lecture.form.button.publish = Publicar
 lecturer.lecture.form.button.create = Crear
+
+
+lecturer.lecture.error.draftMode.published.update = No se puede actualizar una lección publicada

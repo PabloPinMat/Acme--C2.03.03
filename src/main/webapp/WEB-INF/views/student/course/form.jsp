@@ -24,6 +24,7 @@
 	<acme:input-url code="student.course.form.label.link" path="link"/>
 	
 	<acme:button code="student.course.form.button.lectures" action="/student/lecture/list?courseId=${id}"/>
+	<acme:button code="student.course.form.button.lecturer" action="/student/lecturer/show?courseId=${id}"/>
 </acme:form>
 
 <div></div>

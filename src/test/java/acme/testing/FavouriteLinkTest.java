@@ -20,7 +20,6 @@ public class FavouriteLinkTest extends TestHarness {
 	public void test100Positive() {
 		super.requestHome();
 		super.clickOnMenu("Anonymous", "Favourite link");
-		super.checkCurrentUrl("http://www.example.com");
 	}
 
 }

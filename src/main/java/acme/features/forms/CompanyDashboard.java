@@ -1,5 +1,5 @@
 
-package acme.forms;
+package acme.features.forms;
 
 import acme.framework.data.AbstractForm;
 import lombok.Getter;

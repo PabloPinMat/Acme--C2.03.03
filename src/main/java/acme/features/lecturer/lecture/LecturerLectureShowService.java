@@ -49,12 +49,13 @@ public class LecturerLectureShowService extends AbstractService<Lecturer, Lectur
 	public void unbind(final Lecture object) {
 		assert object != null;
 		Tuple tuple;
-		tuple = super.unbind(object, "title", "abstractt", "estimatedLearningTime", "body", "lectureType", "furtherInformation");
+		tuple = super.unbind(object, "title", "abstractt", "estimatedLearningTime", "body", "lectureType", "furtherInformation", "draftMode");
 		tuple.put("confirmation", false);
 		final SelectChoices choices;
 		choices = SelectChoices.from(LectureType.class, object.getLectureType());
 		tuple.put("lectureType", choices.getSelected().getKey());
 		tuple.put("lectureTypes", choices);
+		tuple.put("draftMode", object.isDraftMode());
 		super.getResponse().setData(tuple);
 	}
 }

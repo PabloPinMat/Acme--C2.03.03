@@ -63,6 +63,27 @@ public class LecturerCourseUpdateService extends AbstractService<Lecturer, Cours
 	@Override
 	public void validate(final Course object) {
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("draftMode")) {
+
+			final boolean draftMode = object.isDraftMode();
+			super.state(draftMode, "draftMode", "lecturer.course.error.draftMode.published");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+
+			final String code = object.getCode();
+			final Course course = this.repository.findCourseByCode(code);
+			final boolean boo = course == null || object.getId() == course.getId();
+			super.state(boo, "code", "lecturer.course.error.code.duplicated");
+
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("retailPrice")) {
+			final double retailPrice = object.getRetailPrice().getAmount();
+			super.state(retailPrice >= 0, "retailPrice", "lecturer.course.error.retailPrice.negative");
+		}
+
 	}
 
 	@Override
@@ -77,7 +98,7 @@ public class LecturerCourseUpdateService extends AbstractService<Lecturer, Cours
 		Tuple tuple;
 		tuple = super.unbind(object, "code", "title", "courseAbstract", "retailPrice", "link", "draftMode", "lecturer");
 		final List<Lecture> lectures = this.repository.findLecturesByCourse(object.getId()).stream().collect(Collectors.toList());
-		final CourseType courseType = object.getCourseType();
+		final CourseType courseType = object.calculateCourseType(lectures);
 		tuple.put("courseType", courseType);
 		super.getResponse().setData(tuple);
 	}
