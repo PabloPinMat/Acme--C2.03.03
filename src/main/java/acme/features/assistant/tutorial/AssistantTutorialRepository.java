@@ -30,6 +30,9 @@ public interface AssistantTutorialRepository extends AbstractRepository {
 	@Query("SELECT course FROM Course course")
 	Collection<Course> findAllCourses();
 
+	@Query("SELECT c FROM Course c WHERE c.draftMode = false")
+	Collection<Course> findPublishedCourses();
+
 	@Query("SELECT assistant FROM Assistant assistant WHERE assistant.id = :id")
 	Assistant findAssistantById(Integer id);
 
