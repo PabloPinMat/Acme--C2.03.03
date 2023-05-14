@@ -65,6 +65,11 @@ master.menu.student = Student
 master.menu.student.list-my-enrolments = My enrolments
 master.menu.student.courses = Courses
 
+# master.menu.assistant ####################################################
+
+master.menu.assistant = Assistant
+master.menu.assistant.tutorial = My tutorials
+
 # master.menu.company ##########################################################
 
 master.menu.company = Company
@@ -96,6 +101,8 @@ master.menu.user-account.lecturer = Lecturer data
 master.menu.user-account.become-lecturer = Become a lecturer
 master.menu.user-account.student = Student data
 master.menu.user-account.become-student = Become a student
+master.menu.user-account.assistant = Assistant data
+master.menu.user-account.become-assistant = Become an assistant
 
 
 # master.menu.any ####################################################
