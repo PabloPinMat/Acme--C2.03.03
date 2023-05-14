@@ -10,7 +10,6 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.PositiveOrZero;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -47,9 +46,7 @@ public class Course extends AbstractEntity {
 
 	protected CourseType		courseType;
 
-	@PositiveOrZero
-	protected Money			retailPrice;
-
+	protected Money				retailPrice;
 
 	@URL
 	protected String			link;
