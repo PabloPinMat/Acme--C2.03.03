@@ -19,6 +19,7 @@ lecturer.lecture.list.label.lectureType = Tipo de lección
 lecturer.lecture.form.label.body = Cuerpo:
 lecturer.lecture.form.label.furtherInformation = Información adicional:
 lecturer.lecture.form.label.draftMode = Modo borrador:
+lecturer.lecture.list.label.draftMode = Modo Borrador:
 
 
 lecturer.lecture.list.button.create = Crear lección

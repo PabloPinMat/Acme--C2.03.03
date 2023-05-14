@@ -23,6 +23,7 @@ lecturer.lecture.form.label.body = Body:
 lecturer.lecture.form.label.lectureType = Type:
 lecturer.lecture.form.label.furtherInformation = Further information link:
 lecturer.lecture.form.label.draftMode = Draft mode:
+lecturer.lecture.list.label.draftMode = Draft mode:
 
 lecturer.lecture.list.button.create = Create lecture
 

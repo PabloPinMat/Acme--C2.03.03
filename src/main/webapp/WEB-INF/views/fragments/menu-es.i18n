@@ -46,8 +46,9 @@ master.menu.provider.favourite-link = Enlace favorito
 # master.menu.lecturer ########################################################
 
 master.menu.lecturer = Profesor
-master.menu.lecturer.course.list = Listar Cursos
-master.menu.lecturer.lecture = Listar lecciones
+master.menu.lecturer.course.list = Mis Cursos
+master.menu.lecturer.lecture = Mis lecciones
+master.menu.lecturer.dashboard = Dashboard
 
 # master.menu.consumer ##########################################################
 

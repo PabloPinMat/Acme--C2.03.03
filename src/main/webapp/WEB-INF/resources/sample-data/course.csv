@@ -2,4 +2,5 @@ key,code,title,courseAbstract,retailPrice,draftMode,link,key:lecturer
 course-01,AAA999,Course1,courseAbstract1,EUR 2.00,true,https://github.com/ferbaqfer/Acme-L3-D02,lecturer-01
 course-02,AAB998,Course2,courseAbstract2,EUR 3.20,true,https://github.com/ferbaqfer/Acme-L3-D02,lecturer-02
 course-03,AAA997,Course3,courseAbstract3,EUR 2.00,false,https://github.com/ferbaqfer/Acme-L3-D02,lecturer-01
-course-04,AAA996,Course4,courseAbstract4,EUR 2.00,false,https://github.com/ferbaqfer/Acme-L3-D02,lecturer-02
+course-04,AAA996,Course4,courseAbstract4,USD 2.00,false,https://github.com/ferbaqfer/Acme-L3-D02,lecturer-02
+course-05,AAA995,Course5,courseAbstract5,USD 2.00,true,https://test.com,lecturer-01
