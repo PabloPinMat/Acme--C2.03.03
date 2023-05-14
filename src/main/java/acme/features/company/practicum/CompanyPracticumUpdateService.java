@@ -75,17 +75,17 @@ public class CompanyPracticumUpdateService extends AbstractService<Company, Prac
 	public void validate(final Practicum object) {
 		assert object != null;
 
-		//		if (!super.getBuffer().getErrors().hasErrors("code"))
-		//			super.state(this.repository.findPracticumByCode(object.getCode()) == null || this.repository.findPracticumByCode(object.getCode()).equals(object), "code", "company.practicum.form.error.code");
-		//
-		//		if (!super.getBuffer().getErrors().hasErrors("title"))
-		//			super.state(this.auxiliarService.validateTextImput(object.getTitle()), "title", "company.practicum.form.error.spam");
-		//
-		//		if (!super.getBuffer().getErrors().hasErrors("abstract$"))
-		//			super.state(this.auxiliarService.validateTextImput(object.getAbstract$()), "abstract$", "company.practicum.form.error.spam");
-		//
-		//		if (!super.getBuffer().getErrors().hasErrors("goals"))
-		//			super.state(this.auxiliarService.validateTextImput(object.getGoals()), "goals", "company.practicum.form.error.spam");
+		if (!super.getBuffer().getErrors().hasErrors("code"))
+			super.state(this.repository.findPracticumByCode(object.getCode()) == null || this.repository.findPracticumByCode(object.getCode()).equals(object), "code", "company.practicum.form.error.code");
+
+		//				if (!super.getBuffer().getErrors().hasErrors("title"))
+		//					super.state(this.auxiliarService.validateTextImput(object.getTitle()), "title", "company.practicum.form.error.spam");
+		//		
+		//				if (!super.getBuffer().getErrors().hasErrors("abstract$"))
+		//					super.state(this.auxiliarService.validateTextImput(object.getAbstract$()), "abstract$", "company.practicum.form.error.spam");
+		//		
+		//				if (!super.getBuffer().getErrors().hasErrors("goals"))
+		//					super.state(this.auxiliarService.validateTextImput(object.getGoals()), "goals", "company.practicum.form.error.spam");
 	}
 
 	@Override

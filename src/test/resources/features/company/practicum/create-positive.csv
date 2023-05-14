@@ -1,0 +1,8 @@
+practicumIndex,code,course,title,abstractPracticum,goals,estimatedTotalTime
+1,ABB1651,AAA997,title-01,abstractPracticum-01,goal-01,1.00
+2,ABB1652,AAA997,title-02,abstractPracticum-02,goal-02,2.00
+3,ACC1653,AAA997,title-03,abstractPracticum-03,goal-03,2.50
+4,ADD1654,AAA997,T,abstractPracticum-04,goal-04,3.00
+4,ADD1653,AAA997,Probando un título que tenga como máximo 74 caracteres para el campo title,A,G,3.50
+4,ADD1652,AAA996,Probando un título que tenga como máximo 75 caracteres para el campo titlee,Esto es un resumen de maximo 99 caracteres para abstractPracticum el campo summary del archivo csv.,Esto es un goal de máximo 99 caracteres para abstractPracticum el campo summary del archivo csv....,4.50
+4,ADD1651,AAA996,Probando un título que tenga como máximo 75 caracteres para el campo titlee,Esto es un resumen de maximo 100 caracteres para abstractPracticum el campo summary del archivo csv.,Esto es un goal de máximo 100 caracteres para abstractPracticum el campo summary del archivo csv....,4.50
