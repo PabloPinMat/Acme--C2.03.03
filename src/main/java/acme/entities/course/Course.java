@@ -1,6 +1,9 @@
 
 package acme.entities.course;
 
+import java.util.Collection;
+import java.util.stream.Collectors;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -12,6 +15,9 @@ import javax.validation.constraints.PositiveOrZero;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
 
+import acme.entities.lecture.Lecture;
+import acme.entities.lecture.LectureType;
+import acme.framework.components.datatypes.Money;
 import acme.framework.data.AbstractEntity;
 import acme.roles.Lecturer;
 import lombok.Getter;
@@ -42,7 +48,8 @@ public class Course extends AbstractEntity {
 	protected CourseType		courseType;
 
 	@PositiveOrZero
-	protected Double			retailPrice;
+	protected Money			retailPrice;
+
 
 	@URL
 	protected String			link;
@@ -53,4 +60,21 @@ public class Course extends AbstractEntity {
 
 	protected boolean			draftMode;
 
+
+	public CourseType calculateCourseType(final Collection<Lecture> lectures) {
+
+		Integer handsOnLectures;
+		Integer theoricalLectures;
+
+		handsOnLectures = lectures.stream().filter(x -> x.getLectureType().equals(LectureType.HANDS_ON)).collect(Collectors.toList()).size();
+
+		theoricalLectures = lectures.stream().filter(x -> x.getLectureType().equals(LectureType.THEORICAL)).collect(Collectors.toList()).size();
+
+		if (handsOnLectures.equals(theoricalLectures))
+			return CourseType.BALANCED;
+		if (theoricalLectures > handsOnLectures)
+			return CourseType.THEORY_COURSE;
+
+		return CourseType.HANDS_ON_COURSE;
+	}
 }
