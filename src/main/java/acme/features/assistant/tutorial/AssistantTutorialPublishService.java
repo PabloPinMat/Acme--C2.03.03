@@ -60,13 +60,18 @@ public class AssistantTutorialPublishService extends AbstractService<Assistant, 
 
 		cursoId = super.getRequest().getData("course", int.class);
 		curso = this.repositorio.findCourseById(cursoId);
-		super.bind(object, "code", "title", "abstract$", "goals");
+		super.bind(object, "code", "title", "abstract$", "goals", "estimatedTime");
 		object.setCourse(curso);
 	}
 
 	@Override
 	public void validate(final Tutorial object) {
-		assert object != null;
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			Tutorial existing;
+
+			existing = this.repositorio.findTutorialByCode(object.getCode());
+			super.state(existing == null || existing.getId() == object.getId(), "code", "El tutorial ya existe");
+		}
 	}
 
 	@Override
@@ -85,9 +90,9 @@ public class AssistantTutorialPublishService extends AbstractService<Assistant, 
 		SelectChoices opciones;
 		Tuple tupla;
 
-		cursos = this.repositorio.findAllCourses();
+		cursos = this.repositorio.findPublishedCourses();
 		opciones = SelectChoices.from(cursos, "code", object.getCourse());
-		tupla = super.unbind(object, "code", "title", "abstract$", "goals");
+		tupla = super.unbind(object, "code", "title", "abstract$", "goals", "estimatedTime");
 		tupla.put("course", opciones.getSelected().getKey());
 		tupla.put("courses", opciones);
 		super.getResponse().setData(tupla);
