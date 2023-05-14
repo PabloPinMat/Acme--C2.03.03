@@ -43,6 +43,7 @@ public interface AuditRepository extends AbstractRepository {
 	@Query("select c from Course c where c.draftMode = false")
 	Collection<Course> findPublishedCourses();
 
-
+	@Query("select c from Course c where c.draftMode = false")
+	Collection<Course> findPublishedCourses();
 
 }

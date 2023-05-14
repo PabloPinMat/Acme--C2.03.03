@@ -19,7 +19,9 @@ lecturer.course.list.label.retailPrice = Precio
 lecturer.course.form.label.furtherInformationLink = Información adicional
 lecturer.course.form.label.lecturer = Profesor
 lecturer.course.form.label.drafMode = Modo borrador
+lecturer.course.list.label.draftMode = Modo borrador
 lecturer.course.form.label.courseType = Tipo del Curso
+lecturer.course.form.label.retailPrice = Precio
 
 lecturer.course.lectures = Lecciones
 lecturer.course.create= Crear

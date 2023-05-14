@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import acme.entities.audit.Audit;
 import acme.entities.course.Course;
 import acme.framework.components.accounts.Principal;
@@ -17,7 +18,8 @@ import acme.roles.Auditor;
 public class AuditUpdateService extends AbstractService<Auditor, Audit> {
 
 	@Autowired
-	protected AuditRepository	repository;
+	protected AuditRepository repository;
+
 
 	@Override
 	public void check() {
@@ -38,7 +40,7 @@ public class AuditUpdateService extends AbstractService<Auditor, Audit> {
 		final int userAccountId = principal.getAccountId();
 		super.getResponse().setAuthorised(object.getAuditor().getUserAccount().getId() == userAccountId && !object.isPublished());
 	}
-	
+
 	@Override
 	public void validate(final Audit object) {
 		assert object != null;
