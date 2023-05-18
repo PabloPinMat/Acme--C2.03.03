@@ -71,6 +71,16 @@ public class StudentEnrolmentCreateService extends AbstractService<Student, Enro
 			existing = this.repository.findOneEnrolmentByCode(object.getCode());
 			super.state(existing == null, "code", "Duplicado");
 		}
+		//		if (!super.getBuffer().getErrors().hasErrors("course")) {
+		//			Course course;
+		//
+		//			final Collection<Course> courses = this.repository.findPublishedCourses();
+		//			course = super.getRequest().getData("course", Course.class);
+		//			courses.stream().collect(Collectors.toList());
+		//			final Boolean state = courses.contains(course);
+		//			super.state(state, "course", "Duplicado");
+		//		}
+
 	}
 
 	@Override

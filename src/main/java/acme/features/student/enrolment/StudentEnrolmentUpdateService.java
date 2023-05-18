@@ -103,21 +103,21 @@ public class StudentEnrolmentUpdateService extends AbstractService<Student, Enro
 			ccNumber = super.getRequest().getData("ccNumber", String.class);
 			if (!ccNumber.equals("")) {
 				final String ccNumberRegex = "\\d{16}";
-				super.state(ccNumber.matches(ccNumberRegex), "ccNumber", "student.enrolment.form.error.wrong-cardNumber");
+				super.state(ccNumber.matches(ccNumberRegex), "ccNumber", "student.enrolment.form.error.cardNumber");
 			}
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("expiryDate")) {
 			expiryDate = super.getRequest().getData("expiryDate", Date.class);
 			if (expiryDate != null)
-				super.state(MomentHelper.isFuture(expiryDate), "expiryDate", "student.enrolment.form.error.card-expired");
+				super.state(MomentHelper.isFuture(expiryDate), "expiryDate", "student.enrolment.form.error.expired");
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("cvc")) {
 			cvc = super.getRequest().getData("cvc", String.class);
 			if (!cvc.equals("")) {
 				final String cvcRegex = "\\d{3}";
-				super.state(cvc.matches(cvcRegex), "cvc", "student.enrolment.form.error.wrong-cvc");
+				super.state(cvc.matches(cvcRegex), "cvc", "student.enrolment.form.error.cvc");
 			}
 		}
 	}

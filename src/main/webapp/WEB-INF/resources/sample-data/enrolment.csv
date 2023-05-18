@@ -1,3 +1,5 @@
 key,code,motivation,goals,finalised,key:student,key:course
-enrolment-01,AA2333,ae,ae,true,student-02,course-03
+enrolment-01,AA2333,ae,ae,false,student-02,course-03
+enrolment-03,AA2334,ae,ae,false,student-02,course-03
 enrolment-02,BBB2333,ae,ae,true,student-02,course-04
+enrolment-04,BBB2334,ae,ae,false,student-02,course-04
