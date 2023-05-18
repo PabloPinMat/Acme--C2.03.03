@@ -46,6 +46,7 @@ public class Course extends AbstractEntity {
 
 	protected CourseType		courseType;
 
+	@NotNull
 	protected Money				retailPrice;
 
 	@URL

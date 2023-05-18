@@ -72,10 +72,16 @@ public class LecturerCourseLectureCreateService extends AbstractService<Lecturer
 		final boolean lectureIsInDraftMode;
 		final boolean courseIsInDraftMode;
 		lectureIsInDraftMode = this.repository.isLectureInDraftModeByCourseId(object.getLecture().getId());
-		courseIsInDraftMode = this.repository.isCourseInDraftModeByCourseId(object.getCourse().getId());
+
+		boolean cursoNulo;
+		cursoNulo = object.getCourse() == null;
+
+		if (!cursoNulo) {
+			courseIsInDraftMode = this.repository.isCourseInDraftModeByCourseId(object.getCourse().getId());
+			super.state(courseIsInDraftMode, "*", "lecturer.course-lecture.error.course.published.add");
+		}
 
 		super.state(!lectureIsInDraftMode, "*", "lecturer.course-lecture.error.lecture.published");
-		super.state(courseIsInDraftMode, "*", "lecturer.course-lecture.error.course.published.add");
 
 	}
 
@@ -105,6 +111,7 @@ public class LecturerCourseLectureCreateService extends AbstractService<Lecturer
 		tuple.put("courses", choices);
 
 		super.getResponse().setData(tuple);
+
 	}
 
 }
