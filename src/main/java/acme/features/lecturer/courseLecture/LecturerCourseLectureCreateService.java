@@ -81,7 +81,7 @@ public class LecturerCourseLectureCreateService extends AbstractService<Lecturer
 			super.state(courseIsInDraftMode, "*", "lecturer.course-lecture.error.course.published.add");
 		}
 
-		super.state(!lectureIsInDraftMode, "*", "lecturer.course-lecture.error.lecture.published");
+		super.state(!lectureIsInDraftMode, "*", "You cannot add a lecture which is not published");
 
 	}
 

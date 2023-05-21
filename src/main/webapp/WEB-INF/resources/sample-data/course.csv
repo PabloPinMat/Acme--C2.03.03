@@ -8,4 +8,4 @@ course-06,AAA994,Course6,courseAbstract6,EUR 2.00,true,https://github.com/ferbaq
 course-07,AAA993,Course7,courseAbstract7,EUR 2.00,true,https://github.com/ferbaqfer/Acme-L3-D02,lecturer-01
 course-08,AAA992,Course8,courseAbstract8,EUR 2.00,true,https://github.com/ferbaqfer/Acme-L3-D02,lecturer-02
 course-09,AAA991,Course9,courseAbstract9,EUR 2.00,true,https://github.com/ferbaqfer/Acme-L3-D02,lecturer-02
-course-10,AAA990,Course10,courseAbstract9,EUR -2.00,true,https://github.com/ferbaqfer/Acme-L3-D02,lecturer-02
+course-10,AAA990,Course10,PrecioNegativo Para test del update,EUR -2.00,true,https://github.com/ferbaqfer/Acme-L3-D02,lecturer-02

@@ -20,6 +20,7 @@ any.course.form.label.courseAbstract = Summary
 any.course.form.label.retailPrice = Price
 any.course.form.label.link = Further Information
 any.course.form.label.lecturer = Lecturer
+lecturer.course.label.courseType = Course Type
 
 
 any.audit.form.button.list = Related audits

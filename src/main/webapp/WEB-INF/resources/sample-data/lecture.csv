@@ -1,6 +1,6 @@
 key,title,abstractt,estimatedLearningTime,body,lectureType,draftMode,furtherInformation,key:lecturer
-lecture-01,lecture1,abstractt1,3,body1,THEORICAL,false,https://github.com/ferbaqfer/Acme-L3-D02,lecturer-01
-lecture-02,lecture2,abstractt2,3,body2,THEORICAL,false,https://github.com/ferbaqfer/Acme-L3-D02,lecturer-02
-lecture-03,lecture3,abstractt2,3,body2,THEORICAL,false,https://github.com/ferbaqfer/Acme-L3-D02,lecturer-01
-lecture-04,lecture4,abstractt2,3,body2,THEORICAL,true,https://github.com/ferbaqfer/Acme-L3-D02,lecturer-02
-lecture-05,lecture5,abstractt5,3,body5,THEORICAL,false,https://github.com/ferbaqfer/Acme-L3-D02,lecturer-01
+lecture-01,lecture1,abstractt1,3,body1,HANDS_ON,false,https://github.com/ferbaqfer/Acme-L3-D02,lecturer-01
+lecture-02,lecture2,abstractt2,3,body2,HANDS_ON,false,https://github.com/ferbaqfer/Acme-L3-D02,lecturer-02
+lecture-03,lecture3,abstractt2,3,body2,HANDS_ON,false,https://github.com/ferbaqfer/Acme-L3-D02,lecturer-01
+lecture-04,lecture4,abstractt2,3,body2,HANDS_ON,true,https://github.com/ferbaqfer/Acme-L3-D02,lecturer-02
+lecture-05,lecture5,abstractt5,3,body5,HANDS_ON,false,https://github.com/ferbaqfer/Acme-L3-D02,lecturer-01
