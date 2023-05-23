@@ -1,6 +1,7 @@
 
 package acme.testing.features.lecturer.lecture;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -22,6 +23,24 @@ public class LecturerLectureListTest extends TestHarness {
 		super.checkColumnHasValue(lectureIndex, 1, abstractt);
 		super.checkColumnHasValue(lectureIndex, 2, estimatedLearningTime);
 
+		super.signOut();
+	}
+
+	@Test
+	public void test300Hacking() {
+
+		super.checkLinkExists("Sign in");
+		super.request("/lecturer/lecture/list-all");
+		super.checkPanicExists();
+
+		super.signIn("administrator", "administrator");
+		super.request("/lecturer/lecture/list-all");
+		super.checkPanicExists();
+		super.signOut();
+
+		super.signIn("auditor1", "auditor1");
+		super.request("/lecturer/lecture/list-all");
+		super.checkPanicExists();
 		super.signOut();
 	}
 }
