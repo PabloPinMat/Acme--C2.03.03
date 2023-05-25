@@ -1,0 +1,8 @@
+tutorialIndex,code,title,abstract$,goals,course,estimatedTime
+0,AA111,TutorialTest1,Falta un número en el código,goal1,Course4,1.3
+1,AAAA1111,TutorialTest2,Mas letras en el código de lo permitido,goal2,Course3,1.2
+2,AA1112,TutorialTest3,Tiempo estimado 0,goal3,Course3,0.0
+3,AA1113,TutorialTest4,Tiempo estimado negativo,goal4,Course4,-1.2
+4,AA1114,TutorialTest5,Caracteres especiales goals,1000caracter99caracter99caracter99caracter99caracter99caracter99caracter99caracter99caracter99caracte,Course3,1.2
+5,AA1115,TutorialTest6,1000caracter99caracter99caracter99caracter99caracter99caracter99caracter99caracter99caracter99caracte,goal6,Course4,1.2
+6,AA1116,TutorialTest7,1000caracter99caracter99caracter99caracter99caracter99caracter99caracter99caracter99caracter99caracte,1000caracter99caracter99caracter99caracter99caracter99caracter99caracter99caracter99caracter99caracte,Course4,1.2

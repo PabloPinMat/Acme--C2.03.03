@@ -1,0 +1,124 @@
+
+package acme.testing.assistant.tutorialSession;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import acme.testing.TestHarness;
+
+public class AssistantTutorialSessionCreateTest extends TestHarness {
+
+	@Autowired
+	protected AssistantTutorialSessionRepositoryTest repository;
+
+
+	@ParameterizedTest
+	@CsvFileSource(resources = "/features/assistant/tutorialSession/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
+	public void test100Positive(final int tutorialSessionIndex, final String code, final String title, final String resume, final String sessionType, final String startSession, final String finishSession) {
+
+		super.signIn("assistant2", "assistant2");
+
+		super.clickOnMenu("Assistant", "My tutorials");
+		super.checkListingExists();
+		super.sortListing(0, "asc");
+
+		final String titulo = this.repository.findTutorialTitleByCode(code);
+
+		super.checkColumnHasValue(tutorialSessionIndex, 0, titulo);
+		super.clickOnListingRecord(tutorialSessionIndex);
+		super.checkInputBoxHasValue("code", code);
+		super.clickOnButton("Sessions");
+
+		super.clickOnButton("Create session");
+
+		super.fillInputBoxIn("title", title);
+		super.fillInputBoxIn("abstract$", resume);
+		super.fillInputBoxIn("startSession", startSession);
+		super.fillInputBoxIn("finishSession", finishSession);
+		super.fillInputBoxIn("sessionType", sessionType);
+
+		super.clickOnSubmit("Create");
+
+		super.signOut();
+		super.signIn("assistant2", "assistant2");
+
+		super.clickOnMenu("Assistant", "My tutorials");
+
+		super.checkListingExists();
+		super.sortListing(0, "asc");
+
+		super.checkColumnHasValue(tutorialSessionIndex, 0, titulo);
+		super.clickOnListingRecord(tutorialSessionIndex);
+		super.checkInputBoxHasValue("code", code);
+		super.clickOnButton("Sessions");
+
+		super.checkColumnHasValue(tutorialSessionIndex, 0, title);
+		super.checkColumnHasValue(tutorialSessionIndex, 1, sessionType);
+		super.checkColumnHasValue(tutorialSessionIndex, 2, startSession);
+		super.checkColumnHasValue(tutorialSessionIndex, 3, finishSession);
+
+		super.clickOnListingRecord(tutorialSessionIndex);
+		super.checkFormExists();
+
+		super.checkInputBoxHasValue("title", title);
+		super.checkInputBoxHasValue("abstract$", resume);
+		super.checkInputBoxHasValue("startSession", startSession);
+		super.checkInputBoxHasValue("finishSession", finishSession);
+		super.checkInputBoxHasValue("sessionType", sessionType);
+
+		super.signOut();
+	}
+
+	@ParameterizedTest
+	@CsvFileSource(resources = "/features/assistant/tutorialSession/create-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
+	public void test100Negative(final int tutorialSessionIndex, final String code, final String title, final String resume, final String sessionType, final String startSession, final String finishSession) {
+
+		super.signIn("assistant2", "assistant2");
+
+		super.clickOnMenu("Assistant", "My tutorials");
+		super.checkListingExists();
+		super.sortListing(0, "asc");
+
+		final String titulo = this.repository.findTutorialTitleByCode(code);
+
+		super.checkColumnHasValue(tutorialSessionIndex, 0, titulo);
+		super.clickOnListingRecord(tutorialSessionIndex);
+		super.checkInputBoxHasValue("code", code);
+		super.clickOnButton("Sessions");
+
+		super.clickOnButton("Create session");
+
+		super.fillInputBoxIn("title", title);
+		super.fillInputBoxIn("abstract$", resume);
+		super.fillInputBoxIn("startSession", startSession);
+		super.fillInputBoxIn("finishSession", finishSession);
+		super.fillInputBoxIn("sessionType", sessionType);
+
+		super.clickOnSubmit("Create");
+
+		super.checkErrorsExist();
+
+		super.signOut();
+	}
+
+	@Test
+	public void test300Hacking() {
+
+		super.checkLinkExists("Sign in");
+		super.request("/assistant/tutorial/create");
+		super.checkPanicExists();
+
+		super.signIn("administrator", "administrator");
+		super.request("/assistant/tutorial/create");
+		super.checkPanicExists();
+		super.signOut();
+
+		super.signIn("lecturer1", "lecturer1");
+		super.request("/assistant/tutorial/create");
+		super.checkPanicExists();
+		super.signOut();
+	}
+
+}

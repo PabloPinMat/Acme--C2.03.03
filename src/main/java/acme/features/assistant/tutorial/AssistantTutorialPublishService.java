@@ -91,7 +91,7 @@ public class AssistantTutorialPublishService extends AbstractService<Assistant, 
 		Tuple tupla;
 
 		cursos = this.repositorio.findPublishedCourses();
-		opciones = SelectChoices.from(cursos, "code", object.getCourse());
+		opciones = SelectChoices.from(cursos, "title", object.getCourse());
 		tupla = super.unbind(object, "code", "title", "abstract$", "goals", "estimatedTime");
 		tupla.put("course", opciones.getSelected().getKey());
 		tupla.put("courses", opciones);
