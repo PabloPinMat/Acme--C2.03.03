@@ -1,5 +1,5 @@
 
-package acme.testing.student.enrolment;
+package acme.testing.features.student.enrolment;
 
 import java.util.Collection;
 
@@ -29,7 +29,6 @@ public class StudentEnrolmentShowTest extends TestHarness {
 
 		super.clickOnMenu("Student", "My enrolments");
 		super.checkListingExists();
-		super.sortListing(0, "asc");
 		super.clickOnListingRecord(enrolmentIndex);
 		super.checkFormExists();
 
@@ -54,7 +53,7 @@ public class StudentEnrolmentShowTest extends TestHarness {
 		Collection<Enrolment> enrolments;
 		String param;
 
-		enrolments = this.repository.findEnrolmentsByStudentUsername("student2");
+		enrolments = this.repository.findEnrolmentsByStudentId(29);
 		for (final Enrolment enrolment : enrolments) {
 			param = String.format("id=%d", enrolment.getId());
 

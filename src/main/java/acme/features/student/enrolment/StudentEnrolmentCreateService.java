@@ -69,18 +69,14 @@ public class StudentEnrolmentCreateService extends AbstractService<Student, Enro
 			Enrolment existing;
 
 			existing = this.repository.findOneEnrolmentByCode(object.getCode());
-			super.state(existing == null, "code", "Duplicado");
+			super.state(existing == null, "code", "student.enrolment.form.error.courseNotPublished");
 		}
-		//		if (!super.getBuffer().getErrors().hasErrors("course")) {
-		//			Course course;
-		//
-		//			final Collection<Course> courses = this.repository.findPublishedCourses();
-		//			course = super.getRequest().getData("course", Course.class);
-		//			courses.stream().collect(Collectors.toList());
-		//			final Boolean state = courses.contains(course);
-		//			super.state(state, "course", "Duplicado");
-		//		}
 
+		if (!super.getBuffer().getErrors().hasErrors("course"))
+			if (object.getCourse() != null)
+				super.state(!object.getCourse().isDraftMode(), "course", "student.enrolment.form.error.courseNotPublished");
+			else
+				super.state(false, "course", "student.enrolment.form.error.courseNull");
 	}
 
 	@Override

@@ -106,6 +106,11 @@ public class StudentEnrolmentUpdateService extends AbstractService<Student, Enro
 				super.state(ccNumber.matches(ccNumberRegex), "ccNumber", "student.enrolment.form.error.cardNumber");
 			}
 		}
+		if (!super.getBuffer().getErrors().hasErrors("course"))
+			if (object.getCourse() != null)
+				super.state(!object.getCourse().isDraftMode(), "course", "student.enrolment.form.error.courseNotPublished");
+			else
+				super.state(false, "course", "student.enrolment.form.error.courseNull");
 
 		if (!super.getBuffer().getErrors().hasErrors("expiryDate")) {
 			expiryDate = super.getRequest().getData("expiryDate", Date.class);

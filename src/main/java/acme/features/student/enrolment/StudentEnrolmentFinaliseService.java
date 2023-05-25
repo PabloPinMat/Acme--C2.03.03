@@ -104,12 +104,20 @@ public class StudentEnrolmentFinaliseService extends AbstractService<Student, En
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("expiryDate")) {
-			Date expiryDate;
+			final Date expiryDate;
+			String expiryDateString;
 
-			expiryDate = super.getRequest().getData("expiryDate", Date.class);
-			super.state(expiryDate != null, "expiryDate", "student.enrolment.form.error.null-expiryDate");
-			if (expiryDate != null)
-				super.state(MomentHelper.isFuture(expiryDate), "expiryDate", "Card expired");
+			expiryDateString = super.getRequest().getData("expiryDate", String.class);
+
+			super.state(expiryDateString != null, "expiryDate", "student.enrolment.form.error.null-expiryDate");
+
+			if (expiryDateString != null)
+				if (!expiryDateString.matches("\\d{4}/\\d{2}/\\d{2} \\d{2}:\\d{2}"))
+					super.state(false, "expiryDate", "student.enrolment.form.error.wrongFormat");
+				else {
+					expiryDate = super.getRequest().getData("expiryDate", Date.class);
+					super.state(MomentHelper.isFuture(expiryDate), "expiryDate", "student.enrolment.form.error.cardExpired");
+				}
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("cvc")) {

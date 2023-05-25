@@ -1,5 +1,5 @@
 
-package acme.testing.student.enrolment;
+package acme.testing.features.student.enrolment;
 
 import java.util.Collection;
 
@@ -12,7 +12,7 @@ import acme.framework.repositories.AbstractRepository;
 @Repository
 public interface StudentEnrolmentRepositoryTest extends AbstractRepository {
 
-	@Query("SELECT e FROM Enrolment e WHERE e.student.userAccount.username = :username")
-	Collection<Enrolment> findEnrolmentsByStudentUsername(String username);
+	@Query("SELECT e FROM Enrolment e WHERE e.student.id = :studentId")
+	Collection<Enrolment> findEnrolmentsByStudentId(int studentId);
 
 }
