@@ -1,13 +1,21 @@
 
 package acme.testing.assistant.tutorial;
 
+import java.util.Collection;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.entities.tutorial.Tutorial;
 import acme.testing.TestHarness;
 
 public class AssistantTutorialListTest extends TestHarness {
+
+	@Autowired
+	protected AssistantTutorialRepositoryTest repository;
+
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/features/assistant/tutorials/list-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
@@ -31,19 +39,33 @@ public class AssistantTutorialListTest extends TestHarness {
 		// HINT: this test tries to list the applications of an employer as a
 		// HINT+ principal with the wrong role.
 
-		super.checkLinkExists("Sign in");
-		super.request("/assistant/tutorial/list");
-		super.checkPanicExists();
+		Collection<Tutorial> tutorials;
+		String param;
 
-		super.signIn("administrator", "administrator");
-		super.request("/assistant/tutorial/list");
-		super.checkPanicExists();
-		super.signOut();
+		tutorials = this.repository.findTutorialsByAssistantId("assistant2");
+		for (final Tutorial tutorial : tutorials)
+			if (tutorial.isDraftMode()) {
+				param = String.format("id=%d", tutorial.getId());
 
-		super.signIn("lecturer1", "lecturer1");
-		super.request("/assistant/tutorial/list");
-		super.checkPanicExists();
-		super.signOut();
+				super.checkLinkExists("Sign in");
+				super.request("/assistant/tutorial/list", param);
+				super.checkPanicExists();
+
+				super.signIn("administrator", "administrator");
+				super.request("/assistant/tutorial/list", param);
+				super.checkPanicExists();
+				super.signOut();
+
+				super.signIn("lecturer2", "lecturer2");
+				super.request("/assistant/tutorial/list", param);
+				super.checkPanicExists();
+				super.signOut();
+
+				super.signIn("student1", "student1");
+				super.request("/assistant/tutorial/list", param);
+				super.checkPanicExists();
+				super.signOut();
+			}
 	}
 
 }

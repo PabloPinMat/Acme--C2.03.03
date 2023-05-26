@@ -1,5 +1,8 @@
-tutorialSessionIndex,code,title,abstract$,startSession,finishSession,sessionType
-0,ABC9124,ATutorialSessionTestaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,ATutorialSessionTestaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,2023/06/20 12:00, 2023/06/20 13:00,HANDS_ON_SESSION
-1,ABC9124,BTutorialSessionTestaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,ATutorialSessionTestaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,2023/07/15 12:00, 2023/07/15 13:00,HANDS_ON_SESSION
-2,ABC9125,CTutorialSessionTestaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,ATutorialSessionTestaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,2023/08/16 12:00, 2023/08/16 13:00,HANDS_ON_SESSION
-3,ABC9126,DTutorialSessionTestaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,ATutorialSessionTestaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,2023/09/17 12:00, 2023/09/17 13:00,HANDS_ON_SESSION
+tutorialIndex,tutorialSessionIndex,code,title,abstract$,startSession,finishSession,sessionType,furtherInformation
+2,0,ABC9126,ATutorialSessionTestaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,ATutorialSessionTestaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,2023/07/20 12:00,2023/07/20 13:00,HANDS_ON_SESSION,https://www.google.com/
+2,1,ABC9126,BTutorialSessionTestaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,ATutorialSessionTestaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,2023/08/15 12:00,2023/08/15 13:00,HANDS_ON_SESSION,https://www.google.com/
+2,2,ABC9126,CTutorialSessionTestaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,ATutorialSessionTestaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,2023/09/16 12:00,2023/09/16 13:00,HANDS_ON_SESSION,https://www.google.com/
+2,3,ABC9126,DTutorialSessionTestaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,ATutorialSessionTestaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,2023/10/17 12:00,2023/10/17 13:00,HANDS_ON_SESSION,https://www.google.com/
+2,4,ABC9126,E,A,2023/10/17 23:00,2023/10/18 00:00,HANDS_ON_SESSION,https://www.google.com/
+2,5,ABC9126,F,A,2023/10/17 12:00,2023/10/17 17:00,HANDS_ON_SESSION,https://www.google.com/
+2,6,ABC9126,G,A,2027/10/17 12:00,2027/10/17 13:00,HANDS_ON_SESSION,https://www.google.com/

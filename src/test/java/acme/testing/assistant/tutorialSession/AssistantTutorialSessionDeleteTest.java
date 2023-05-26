@@ -12,9 +12,7 @@ import acme.entities.sessions.TutorialSession;
 import acme.entities.tutorial.Tutorial;
 import acme.testing.TestHarness;
 
-public class AssistantTutorialSessionListTest extends TestHarness {
-
-	// Internal state ---------------------------------------------------------
+public class AssistantTutorialSessionDeleteTest extends TestHarness {
 
 	@Autowired
 	protected AssistantTutorialSessionRepositoryTest repository;
@@ -23,8 +21,11 @@ public class AssistantTutorialSessionListTest extends TestHarness {
 
 
 	@ParameterizedTest
-	@CsvFileSource(resources = "/features/assistant/tutorialSession/list-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void test100Positive(final int tutorialIndex, final int tutorialSessionIndex, final String code, final String title, final String startSession, final String finishSession, final String sessionType) {
+	@CsvFileSource(resources = "/features/assistant/tutorialSession/delete.csv", encoding = "utf-8", numLinesToSkip = 1)
+	public void test100Positive(final int tutorialIndex, final int tutorialSessionIndex, final String code, final String title, final String resume, final String startSession, final String finishSession, final String sessionType,
+		final String furtherInformation) {
+		// HINT: this test authenticates as an employer, lists his or her applications,
+		// HINT+ changes their status and checks that it's been updated.
 
 		super.signIn("assistant2", "assistant2");
 
@@ -39,18 +40,23 @@ public class AssistantTutorialSessionListTest extends TestHarness {
 		super.checkInputBoxHasValue("code", code);
 		super.clickOnButton("Sessions");
 
-		super.checkColumnHasValue(tutorialSessionIndex, 0, title);
-		super.checkColumnHasValue(tutorialSessionIndex, 1, sessionType);
-		super.checkColumnHasValue(tutorialSessionIndex, 2, startSession);
-		super.checkColumnHasValue(tutorialSessionIndex, 3, finishSession);
+		super.checkListingExists();
+		super.sortListing(0, "asc");
+		super.clickOnListingRecord(tutorialSessionIndex);
+		super.checkFormExists();
+
+		super.checkInputBoxHasValue("title", title);
+		super.checkInputBoxHasValue("abstract$", resume);
+		super.checkInputBoxHasValue("startSession", startSession);
+		super.checkInputBoxHasValue("finishSession", finishSession);
+		super.checkInputBoxHasValue("sessionType", sessionType);
+		super.checkInputBoxHasValue("furtherInformation", furtherInformation);
+
+		super.clickOnSubmit("Delete");
+
+		super.checkNotErrorsExist();
 
 		super.signOut();
-	}
-
-	@Test
-	public void test200Negative() {
-		// HINT: this is a listing, which implies that no data must be entered in any forms.
-		// HINT+ Then, there are not any negative test cases for this feature.
 	}
 
 	@Test
@@ -67,16 +73,16 @@ public class AssistantTutorialSessionListTest extends TestHarness {
 				uri = String.format("tutorialId=%d", session.getId());
 
 				super.checkLinkExists("Sign in");
-				super.request("/assistant/tutorial-session/list", uri);
+				super.request("/assistant/tutorial-session/delete", uri);
 				super.checkPanicExists();
 
 				super.signIn("administrator", "administrator");
-				super.request("/assistant/tutorial-session/list", uri);
+				super.request("/assistant/tutorial-session/delete", uri);
 				super.checkPanicExists();
 				super.signOut();
 
 				super.signIn("lecturer1", "lecturer1");
-				super.request("/assistant/tutorial-session/list", uri);
+				super.request("/assistant/tutorial-session/delete", uri);
 				super.checkPanicExists();
 				super.signOut();
 

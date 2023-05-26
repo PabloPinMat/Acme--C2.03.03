@@ -73,7 +73,7 @@ public class AssistantTutorialUpdateService extends AbstractService<Assistant, T
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Tutorial duplica;
 			duplica = this.repositorio.findTutorialByCode(object.getCode());
-			super.state(duplica == null || duplica.equals(object), "code", "El tutorial ya existe");
+			super.state(duplica == null || duplica.equals(object), "code", "assistant.tutorial.form.error.existing");
 		}
 
 	}
