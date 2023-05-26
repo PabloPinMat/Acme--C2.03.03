@@ -26,3 +26,4 @@ student.enrolment.form.error.expired = Card is expired
 student.enrolment.form.error.cvc = Wrong CVC
 student.enrolment.form.error.courseNotPublished= Course not published
 student.enrolment.form.error.courseNull = Course cannot be null
+student.enrolment.form.error.wrongFormat = Wrong date format
