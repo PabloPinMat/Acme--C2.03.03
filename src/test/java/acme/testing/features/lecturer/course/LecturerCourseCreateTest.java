@@ -50,7 +50,6 @@ public class LecturerCourseCreateTest extends TestHarness {
 		super.signOut();
 
 	}
-
 	@ParameterizedTest
 	@CsvFileSource(resources = "/features/lecturer/course/create-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test100Negative(final int courseIndex, final String code, final String title, final String courseAbstract, final String retailPrice, final String link) {

@@ -20,6 +20,7 @@
 	<acme:list-column code="lecturer.lecture.list.label.abstractt" path="abstractt" width="40%" />
 	<acme:list-column code="lecturer.lecture.list.label.estimatedLearningTime" path="estimatedLearningTime" width="20%" />
 	<acme:list-column code="lecturer.lecture.list.label.lectureType" path="lectureType" width="20%"/>
+	<acme:list-column code="lecturer.lecture.list.label.draftMode" path="draftMode" width="20%"/>
 </acme:list>
 
 <acme:button code="lecturer.lecture.list.button.create" action="/lecturer/lecture/create"/>

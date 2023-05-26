@@ -1,0 +1,4 @@
+courseIndex,code,title,courseAbstract,retailPrice,draftMode,link
+0,AAA999,Course1,courseAbstract1,EUR 2.00,true,https://github.com/ferbaqfer/Acme-L3-D02
+1,AAA997,Course3,courseAbstract3,EUR 2.00,false,https://github.com/ferbaqfer/Acme-L3-D02
+

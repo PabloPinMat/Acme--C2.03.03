@@ -17,7 +17,8 @@ import acme.roles.Auditor;
 public class AuditCreateService extends AbstractService<Auditor, Audit> {
 
 	@Autowired
-	protected AuditRepository	repository;
+	protected AuditRepository repository;
+
 
 	@Override
 	public void check() {
@@ -28,14 +29,13 @@ public class AuditCreateService extends AbstractService<Auditor, Audit> {
 	public void authorise() {
 		super.getResponse().setAuthorised(true);
 	}
-	
+
 	@Override
 	public void validate(final Audit object) {
 		assert object != null;
 		
 		if (!super.getBuffer().getErrors().hasErrors("course"))
 			super.state(!object.getCourse().isDraftMode(), "course", "auditor.audit.form.error.courseNotPublished");
-
 
 		if (!super.getBuffer().getErrors().hasErrors("code"))
 			super.state(this.repository.findAuditByCode(object.getCode()) == null, "code", "auditor.audit.form.error.courseNotPublished");
@@ -62,7 +62,6 @@ public class AuditCreateService extends AbstractService<Auditor, Audit> {
 		super.bind(object, "code", "conclusion", "strongPoints", "weakPoints");
 		object.setCourse(course);
 	}
-	
 
 	@Override
 	public void perform(final Audit object) {

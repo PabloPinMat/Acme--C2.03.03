@@ -2,6 +2,8 @@
 package acme.features.assistant.tutorialSession;
 
 import java.time.Duration;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -66,8 +68,29 @@ public class AssistantTutorialSessionCreateService extends AbstractService<Assis
 	@Override
 	public void validate(final TutorialSession tutorialSession) {
 		assert tutorialSession != null;
-		if (!super.getBuffer().getErrors().hasErrors("finishDate"))
-			super.state(MomentHelper.isBefore(tutorialSession.getStartSession(), tutorialSession.getFinishSession()), "finishDate", "La fecha final no puede ser anterior a la inicial");
+		Boolean duracionMin;
+		Boolean duracionMax;
+		Boolean fechaInicio;
+		final Boolean fechaInicio2;
+		final Date fechaActual2 = new Date(System.currentTimeMillis());
+
+		if (!super.getBuffer().getErrors().hasErrors("startSession")) {
+			fechaInicio = MomentHelper.isLongEnough(fechaActual2, tutorialSession.getStartSession(), 24, ChronoUnit.HOURS);
+			super.state(fechaInicio, "startSession", "La fecha debe ser de un día despues de la fecha actual");
+			fechaInicio2 = MomentHelper.isBefore(fechaActual2, tutorialSession.getStartSession());
+			super.state(fechaInicio2, "startSession", "La fecha inicial no puede ser anterior a la actual");
+
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("finishSession"))
+			super.state(MomentHelper.isBefore(tutorialSession.getStartSession(), tutorialSession.getFinishSession()), "finishSession", "La fecha final no puede ser anterior a la inicial");
+
+		if (!super.getBuffer().getErrors().hasErrors("startSession") && !super.getBuffer().getErrors().hasErrors("finishDate")) {
+			duracionMin = MomentHelper.isLongEnough(tutorialSession.getStartSession(), tutorialSession.getFinishSession(), 1, ChronoUnit.HOURS);
+			super.state(duracionMin, "startSession", "Error en la duración minima de la sesión");
+			duracionMax = MomentHelper.computeDuration(tutorialSession.getStartSession(), tutorialSession.getFinishSession()).getSeconds() <= Duration.ofHours(5).getSeconds();
+			super.state(duracionMax, "finishSession", "Error en la duración máxima de la sesión");
+		}
 
 	}
 
