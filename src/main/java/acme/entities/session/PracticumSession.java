@@ -49,6 +49,9 @@ public class PracticumSession extends AbstractEntity {
 	@URL
 	protected String			furtherInformationLink;
 
+	@NotNull
+	protected boolean			confirmationSession;
+
 	// Derived attributes -----------------------------------------------------
 
 	// Relationships ----------------------------------------------------------

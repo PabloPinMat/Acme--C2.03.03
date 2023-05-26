@@ -16,8 +16,8 @@
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="auditor.audit.list.label.courseTitle" path="courseTitle"  width="15%"/>
 	<acme:list-column code="auditor.audit.list.label.auditCode" path="code"  width="15%"/>
+	<acme:list-column code="auditor.audit.list.label.courseTitle" path="courseTitle"  width="15%"/>
 	<acme:list-column code="auditor.audit.list.label.strongPoints" path="strongPoints"  width="20%"/>
 	<acme:list-column code="auditor.audit.list.label.weakPoints" path="weakPoints"  width="20%"/>
 	<acme:list-column code="auditor.audit.list.label.isPublished" path="published"  width="15%"/>

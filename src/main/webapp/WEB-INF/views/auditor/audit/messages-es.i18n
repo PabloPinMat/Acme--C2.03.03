@@ -13,6 +13,7 @@ auditor.audit.form.label.weakPoints = Puntos débiles
 auditor.audit.form.label.mark = Notas
 
 auditor.audit.form.error.duplicateCode = Este código ya existe, prueba con otro
+auditor.audit.form.error.courseNotPublished = Este curso no está publicado.
 auditor.audit.form.button.auditingRecord.list = Registros de auditoría
 auditor.audit.form.button.auditingRecord.create = Crear un nuevo registro
 auditor.audit.form.button.auditingRecord.addCorrection = Añadir un nuevo registro excepcional

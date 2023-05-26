@@ -11,7 +11,6 @@ import acme.entities.course.Course;
 import acme.entities.enrolments.Enrolment;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
-import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Student;
 
@@ -91,8 +90,8 @@ public class StudentEnrolmentUpdateService extends AbstractService<Student, Enro
 
 		Enrolment existing;
 		final String ccNumber;
-		final Date expiryDate;
 		final String cvc;
+		final Date expiryDate;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			existing = this.repository.findOneEnrolmentByCode(object.getCode());
@@ -103,21 +102,20 @@ public class StudentEnrolmentUpdateService extends AbstractService<Student, Enro
 			ccNumber = super.getRequest().getData("ccNumber", String.class);
 			if (!ccNumber.equals("")) {
 				final String ccNumberRegex = "\\d{16}";
-				super.state(ccNumber.matches(ccNumberRegex), "ccNumber", "student.enrolment.form.error.wrong-cardNumber");
+				super.state(ccNumber.matches(ccNumberRegex), "ccNumber", "student.enrolment.form.error.cardNumber");
 			}
 		}
-
-		if (!super.getBuffer().getErrors().hasErrors("expiryDate")) {
-			expiryDate = super.getRequest().getData("expiryDate", Date.class);
-			if (expiryDate != null)
-				super.state(MomentHelper.isFuture(expiryDate), "expiryDate", "student.enrolment.form.error.card-expired");
-		}
+		if (!super.getBuffer().getErrors().hasErrors("course"))
+			if (object.getCourse() != null)
+				super.state(!object.getCourse().isDraftMode(), "course", "student.enrolment.form.error.courseNotPublished");
+			else
+				super.state(false, "course", "student.enrolment.form.error.courseNull");
 
 		if (!super.getBuffer().getErrors().hasErrors("cvc")) {
 			cvc = super.getRequest().getData("cvc", String.class);
 			if (!cvc.equals("")) {
 				final String cvcRegex = "\\d{3}";
-				super.state(cvc.matches(cvcRegex), "cvc", "student.enrolment.form.error.wrong-cvc");
+				super.state(cvc.matches(cvcRegex), "cvc", "student.enrolment.form.error.cvc");
 			}
 		}
 	}
