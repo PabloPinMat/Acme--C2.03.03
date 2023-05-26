@@ -63,6 +63,9 @@ public class AssistantTutorialCreateService extends AbstractService<Assistant, T
 			duplica = this.repositorio.findTutorialByCode(object.getCode());
 			super.state(duplica == null, "code", "assistant.tutorial.form.error.existing");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("course"))
+			super.state(!object.getCourse().isDraftMode(), "code", "company.practicum.form.error.code2");
 	}
 
 	@Override
