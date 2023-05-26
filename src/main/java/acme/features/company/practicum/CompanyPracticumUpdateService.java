@@ -80,7 +80,7 @@ public class CompanyPracticumUpdateService extends AbstractService<Company, Prac
 			super.state(this.repository.findPracticumByCode(object.getCode()) == null || this.repository.findPracticumByCode(object.getCode()).equals(object), "code", "company.practicum.form.error.code");
 
 		if (!super.getBuffer().getErrors().hasErrors("course"))
-			super.state(!object.getCourse().isDraftMode(), "course", "No puedes usar ese curso trápala");
+			super.state(!object.getCourse().isDraftMode(), "course", "company.practicum.form.error.code2");
 
 	}
 
