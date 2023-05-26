@@ -24,6 +24,9 @@ administrator.banner.form.label.pictureLink = Link de la imagen
 administrator.banner.form.label.slogan = Eslogan
 administrator.banner.form.label.webDocument = Link del Doc
 
+administrator.banner.form.error.finishDate-too-soon = La fecha es muy pronto
+administrator.banner.form.error.initDate-too-soon =  La fecha debe ser posterior a la fecha de instanciación
+
 
 administrator.banner.list.button.create = Crear
 
