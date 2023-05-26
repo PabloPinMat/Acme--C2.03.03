@@ -4,6 +4,7 @@ package acme.features.lecturer.course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.configuration.Configuration;
 import acme.entities.course.Course;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -55,6 +56,9 @@ public class LecturerCourseCreateService extends AbstractService<Lecturer, Cours
 	public void validate(final Course object) {
 		assert object != null;
 
+		Configuration conf;
+		conf = this.repository.findSystemConfiguration();
+
 		if (!super.getBuffer().getErrors().hasErrors("draftMode")) {
 			final boolean draftMode = object.isDraftMode();
 			super.state(draftMode, "draftMode", "lecturer.course.error.draftMode.published");
@@ -66,8 +70,14 @@ public class LecturerCourseCreateService extends AbstractService<Lecturer, Cours
 
 		if (!super.getBuffer().getErrors().hasErrors("retailPrice")) {
 			final double retailPrice = object.getRetailPrice().getAmount();
-			super.state(retailPrice >= 0, "retailPrice", "lecturer.course.error.retailPrice.negative");
+			super.state(retailPrice >= 0, "retailPrice", "Must be greater than 0");
 		}
+
+		if (object.getRetailPrice() != null) {
+			if (!conf.getAcceptedCurrencies().contains(object.getRetailPrice().getCurrency()))
+				super.state(false, "*", "Wrong price format");
+		} else
+			super.state(false, "*", "Price must not be null");
 
 	}
 

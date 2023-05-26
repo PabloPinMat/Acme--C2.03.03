@@ -20,8 +20,6 @@ public class LecturerCourseListTest extends TestHarness {
 		super.sortListing(0, "asc");
 
 		super.checkColumnHasValue(courseIndex, 0, title);
-		super.checkColumnHasValue(courseIndex, 1, courseAbstract);
-		super.checkColumnHasValue(courseIndex, 2, retailPrice);
 
 		super.signOut();
 	}

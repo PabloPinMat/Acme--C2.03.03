@@ -6,9 +6,12 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.components.SystemConfigurationService;
 import acme.entities.course.Course;
 import acme.entities.lecture.Lecture;
+import acme.entities.lecture.LectureType;
 import acme.framework.components.accounts.Principal;
+import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Lecturer;
@@ -17,9 +20,10 @@ import acme.roles.Lecturer;
 public class LecturerLectureListService extends AbstractService<Lecturer, Lecture> {
 
 	@Autowired
-	protected LecturerLectureRepository repository;
+	protected LecturerLectureRepository		repository;
 
-	// AbstractService interface ----------------------------------------------
+	@Autowired
+	protected SystemConfigurationService	configurationService;
 
 
 	@Override
@@ -52,12 +56,19 @@ public class LecturerLectureListService extends AbstractService<Lecturer, Lectur
 	@Override
 	public void unbind(final Lecture object) {
 		assert object != null;
+		final String lang = super.getRequest().getLocale().getLanguage();
 		Tuple tuple;
-		tuple = super.unbind(object, "title", "abstractt", "estimatedLearningTime");
+		tuple = super.unbind(object, "title", "abstractt", "estimatedLearningTime", "lectureType", "draftMode");
 		int masterId;
 		masterId = super.getRequest().getData("masterId", int.class);
 		super.getResponse().setGlobal("masterId", masterId);
 		tuple.put("masterId", masterId);
+		final SelectChoices choices;
+		choices = SelectChoices.from(LectureType.class, object.getLectureType());
+		tuple.put("lectureType", choices.getSelected().getKey());
+		tuple.put("lectureTypes", choices);
+		tuple.put("draftMode", this.configurationService.booleanTranslated(object.isDraftMode(), lang));
+
 		final Course c = this.repository.findCourseById(masterId);
 		final boolean showCreate = c.isDraftMode();
 		super.getResponse().setGlobal("showCreate", showCreate);

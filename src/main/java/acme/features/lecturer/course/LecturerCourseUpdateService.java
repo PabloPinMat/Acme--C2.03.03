@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.configuration.Configuration;
 import acme.entities.course.Course;
 import acme.entities.course.CourseType;
 import acme.entities.lecture.Lecture;
@@ -63,6 +64,8 @@ public class LecturerCourseUpdateService extends AbstractService<Lecturer, Cours
 	@Override
 	public void validate(final Course object) {
 		assert object != null;
+		Configuration conf;
+		conf = this.repository.findSystemConfiguration();
 
 		if (!super.getBuffer().getErrors().hasErrors("draftMode")) {
 
@@ -83,6 +86,12 @@ public class LecturerCourseUpdateService extends AbstractService<Lecturer, Cours
 			final double retailPrice = object.getRetailPrice().getAmount();
 			super.state(retailPrice >= 0, "retailPrice", "lecturer.course.error.retailPrice.negative");
 		}
+
+		if (object.getRetailPrice() != null) {
+			if (!conf.getAcceptedCurrencies().contains(object.getRetailPrice().getCurrency()))
+				super.state(false, "*", "Wrong price format");
+		} else
+			super.state(false, "*", "Price must not be null");
 
 	}
 

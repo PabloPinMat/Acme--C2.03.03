@@ -13,6 +13,7 @@ lecturer.course.list.label.courseAbstract = Resumen
 lecturer.course.list.label.retailPrice = Precio
 
 lecturer.course.form.label.code = Código
+lecturer.course.list.label.code = Código
 lecturer.course.form.label.title = Título
 lecturer.course.form.label.courseAbstract = Resumen
 lecturer.course.list.label.retailPrice = Precio
