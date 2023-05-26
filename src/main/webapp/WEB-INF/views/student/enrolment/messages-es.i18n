@@ -25,3 +25,4 @@ student.enrolment.form.error.expired = La tarjeta ha expirado
 student.enrolment.form.error.cvc = CVC erróneo
 student.enrolment.form.error.courseNotPublished = Este curso no está publicado
 student.enrolment.form.error.courseNull = El curso no puede ser nulo
+student.enrolment.form.error.wrongFormat = Formato de fecha incorrecto
