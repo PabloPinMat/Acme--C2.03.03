@@ -24,6 +24,9 @@ public interface StudentEnrolmentRepository extends AbstractRepository {
 	@Query("SELECT e FROM Enrolment e WHERE e.student.id = :studentId")
 	Collection<Enrolment> findEnrolmentsByStudentId(int studentId);
 
+	@Query("SELECT e FROM Enrolment e WHERE e.student.userAccount.username = :username")
+	Collection<Enrolment> findEnrolmentsByStudentUsername(String username);
+
 	@Query("SELECT a FROM Activity a WHERE a.enrolment.id = :enrolmentId")
 	Collection<Activity> findActivitiesByEnrolmentId(int enrolmentId);
 

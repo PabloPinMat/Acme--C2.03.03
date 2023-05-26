@@ -10,6 +10,8 @@
 	<acme:input-moment code="assistant.tutorial.session.form.label.finishSession" path="finishSession"/>
 	
 	<acme:input-select code="assistant.tutorial.session.form.label.type" path="sessionType" choices="${sessionType}"/>
+	<acme:input-moment code="assistant.tutorial.session.form.label.furtherInformation" path="furtherInformation"/>
+	
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')}">		
 			<acme:submit code="assistant.tutorial.session.form.button.update" action="/assistant/tutorial-session/update"/>
