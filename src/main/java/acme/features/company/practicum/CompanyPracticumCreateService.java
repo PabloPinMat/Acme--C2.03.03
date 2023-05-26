@@ -61,6 +61,9 @@ public class CompanyPracticumCreateService extends AbstractService<Company, Prac
 	public void validate(final Practicum object) {
 		assert object != null;
 
+		if (!super.getBuffer().getErrors().hasErrors("course"))
+			super.state(!object.getCourse().isDraftMode(), "code", "No puedes usar ese curso trápala");
+
 	}
 
 	@Override

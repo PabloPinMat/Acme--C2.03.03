@@ -18,6 +18,7 @@ company.practicum-session.form.label.abstract-session = Resumen
 company.practicum-session.form.label.start-time-period = Fecha de inicio
 company.practicum-session.form.label.end-time-period = Fecha de fin
 company.practicum-session.form.label.further-information-link = Más información
+company.practicum-session.list.label.confirmation = Sesión excepcional
 
 company.practicum-session.form.button.update = Actualizar
 company.practicum-session.form.button.delete = Borrar
@@ -29,6 +30,8 @@ company.practicum-session.form.button.create-exceptional = Creación excepcional
 company.practicum-session.list.button.create = Crear
 
 company.practicum-session.list.button.create-exceptional = Crear
+company.practicum-session.list.label.yes = Si
+company.practicum-session.list.label.no = No
 
 company.practicum-session.form.error.start-time-period = La fecha de inicio debe estar al menos una semana por delante del momento actual
 company.practicum-session.form.error.end-time-period = La fecha de fin debe estar al menos una semana por delante de la fecha de inicio
