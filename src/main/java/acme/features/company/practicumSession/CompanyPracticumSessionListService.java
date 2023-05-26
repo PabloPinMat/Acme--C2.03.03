@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.components.SystemConfigurationService;
 import acme.entities.practicum.Practicum;
 import acme.entities.session.PracticumSession;
 import acme.framework.components.models.Tuple;
@@ -16,7 +17,10 @@ import acme.roles.Company;
 public class CompanyPracticumSessionListService extends AbstractService<Company, PracticumSession> {
 
 	@Autowired
-	protected CompanyPracticumSessionRepository repository;
+	protected CompanyPracticumSessionRepository	repository;
+
+	@Autowired
+	protected SystemConfigurationService		configurationService;
 
 
 	@Override
@@ -57,8 +61,10 @@ public class CompanyPracticumSessionListService extends AbstractService<Company,
 		assert object != null;
 
 		Tuple tuple;
+		final String lang = super.getRequest().getLocale().getLanguage();
 
 		tuple = super.unbind(object, "title", "startTimePeriod", "endTimePeriod", "confirmationSession");
+		tuple.put("exceptional", this.configurationService.booleanTranslated(object.isConfirmationSession(), lang));
 
 		super.getResponse().setData(tuple);
 

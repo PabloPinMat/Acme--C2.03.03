@@ -20,15 +20,10 @@
 	<acme:list-column code="company.practicum-session.list.label.title" path="title" width="60"/>	
 	<acme:list-column code="company.practicum-session.list.label.start-time-period" path="startTimePeriod" width="20%"/>
 	<acme:list-column code="company.practicum-session.list.label.end-time-period" path="endTimePeriod" width="10%"/>
-	
-	
-        <jstl:if test="${confirmationSession}">
-            <acme:list-column code="company.practicum-session.list.label.confirmation" path="confirmationSession" width="10%"/>
-        </jstl:if>
-        <jstl:if test="${!confirmationSession}">
-            <acme:list-column code="company.practicum-session.list.label.confirmation" path="confirmationSession" width="10%"/>
-            
-        </jstl:if>
+	<acme:list-column code="company.practicum-session.list.label.confirmation" path="exceptional" width="10%"/>
+        
+           
+         
        
         
 	

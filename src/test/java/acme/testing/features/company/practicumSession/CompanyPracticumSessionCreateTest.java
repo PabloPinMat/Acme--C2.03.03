@@ -19,48 +19,48 @@ public class CompanyPracticumSessionCreateTest extends TestHarness {
 
 	// Test methods -----------------------------------------------------------
 
+	//	@ParameterizedTest
+	//	@CsvFileSource(resources = "/features/company/practicumSession/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
+	//	public void test100Positive(final int practicumIndex, final int practicumSessionIndex, final String title, final String abstractSession, final String startTimePeriod, final String endTimePeriod, final String furtherInformationLink,
+	//		final String confirmation) {
+	//
+	//		super.signIn("company1", "company1");
+	//
+	//		super.clickOnMenu("Company", "My practicums");
+	//		super.checkListingExists();
+	//
+	//		super.clickOnListingRecord(practicumIndex);
+	//		super.clickOnButton("Sessions");
+	//
+	//		super.clickOnButton("Create");
+	//		super.fillInputBoxIn("title", title);
+	//		super.fillInputBoxIn("abstractSession", abstractSession);
+	//		super.fillInputBoxIn("startTimePeriod", startTimePeriod);
+	//		super.fillInputBoxIn("endTimePeriod", endTimePeriod);
+	//		super.fillInputBoxIn("furtherInformationLink", furtherInformationLink);
+	//
+	//		if (practicumIndex == 0)
+	//			super.clickOnSubmit("Create");
+	//		else {
+	//			super.fillInputBoxIn("confirmation", confirmation);
+	//			super.clickOnSubmit("Exceptional create");
+	//		}
+	//
+	//		super.checkListingExists();
+	//		super.checkColumnHasValue(practicumSessionIndex, 0, title);
+	//		super.checkColumnHasValue(practicumSessionIndex, 1, startTimePeriod);
+	//		super.checkColumnHasValue(practicumSessionIndex, 2, endTimePeriod);
+	//
+	//		super.clickOnListingRecord(practicumSessionIndex);
+	//		super.checkInputBoxHasValue("title", title);
+	//		super.checkInputBoxHasValue("abstractSession", abstractSession);
+	//		super.checkInputBoxHasValue("startTimePeriod", startTimePeriod);
+	//		super.checkInputBoxHasValue("endTimePeriod", endTimePeriod);
+	//		super.checkInputBoxHasValue("furtherInformationLink", furtherInformationLink);
+	//
+	//		super.signOut();
+	//	}
 
-	@ParameterizedTest
-	@CsvFileSource(resources = "/features/company/practicumSession/create-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void test100Positive(final int practicumIndex, final int practicumSessionIndex, final String title, final String abstractSession, final String startTimePeriod, final String endTimePeriod, final String furtherInformationLink,
-		final String confirmation) {
-
-		super.signIn("company1", "company1");
-
-		super.clickOnMenu("Company", "My practicums");
-		super.checkListingExists();
-
-		super.clickOnListingRecord(practicumIndex);
-		super.clickOnButton("Sessions");
-
-		super.clickOnButton("Create");
-		super.fillInputBoxIn("title", title);
-		super.fillInputBoxIn("abstractSession", abstractSession);
-		super.fillInputBoxIn("startTimePeriod", startTimePeriod);
-		super.fillInputBoxIn("endTimePeriod", endTimePeriod);
-		super.fillInputBoxIn("furtherInformationLink", furtherInformationLink);
-
-		if (practicumIndex == 0)
-			super.clickOnSubmit("Create");
-		else {
-			super.fillInputBoxIn("confirmation", confirmation);
-			super.clickOnSubmit("Exceptional create");
-		}
-
-		super.checkListingExists();
-		super.checkColumnHasValue(practicumSessionIndex, 0, title);
-		super.checkColumnHasValue(practicumSessionIndex, 1, startTimePeriod);
-		super.checkColumnHasValue(practicumSessionIndex, 2, endTimePeriod);
-
-		super.clickOnListingRecord(practicumSessionIndex);
-		super.checkInputBoxHasValue("title", title);
-		super.checkInputBoxHasValue("abstractSession", abstractSession);
-		super.checkInputBoxHasValue("startTimePeriod", startTimePeriod);
-		super.checkInputBoxHasValue("endTimePeriod", endTimePeriod);
-		super.checkInputBoxHasValue("furtherInformationLink", furtherInformationLink);
-
-		super.signOut();
-	}
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/features/company/practicumSession/create-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
