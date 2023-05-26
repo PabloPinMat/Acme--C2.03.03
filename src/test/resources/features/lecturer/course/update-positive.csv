@@ -1,0 +1,5 @@
+courseIndex,code,title,courseAbstract,retailPrice,link
+0,ABC123,AAAAAAAAACourse1,courseAbstract1,EUR 2.00,https://test.com
+1,ABD123,AEsto es un título que posiblemente contenga 74 caracteres no sé qué poner,courseAbstract2,EUR 2.00,https://test.com
+0,ACZ997,CAAAAAAACourse,Este abstract es bastante bastante largo,USD 0.01,https://test.com
+0,AZC000,CCvoy a dejar el link en nulo,Este es el abstract de un curso con precio 0,USD 0.00,https://test.com

@@ -48,4 +48,6 @@ public interface LecturerCourseLecturerRepository extends AbstractRepository {
 	@Query("select l.draftMode from Lecture l where l.id = :id")
 	boolean isLectureInDraftModeByCourseId(int id);
 
+	@Query("select c from Course c where c.code = :code")
+	Course findCourseByCode(String code);
 }
