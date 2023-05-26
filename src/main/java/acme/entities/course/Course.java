@@ -33,7 +33,7 @@ public class Course extends AbstractEntity {
 	//	Attributes ----------------------------------------------
 	@Column(unique = true)
 	@NotBlank
-	@Pattern(regexp = "[A-Z]{1,3}[0-9]{3}")
+	@Pattern(regexp = "^[A-Z]{1,3}[0-9]{3}$")
 	protected String			code;
 
 	@NotBlank
@@ -46,7 +46,10 @@ public class Course extends AbstractEntity {
 
 	protected CourseType		courseType;
 
+
+	@NotNull
 	protected Money				retailPrice;
+
 
 	@URL
 	protected String			link;

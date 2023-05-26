@@ -17,12 +17,12 @@
 <jstl:choose>	 
 	<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
 		<h2>
-			<acme:message code="lecturer.courseLecture.form.lecture.delete.info"/>
+			
 		</h2>
 	</jstl:when>
 	<jstl:when test="${_command == 'create'}">
 		<h2>
-			<acme:message code="lecturer.courseLecture.form.lecture.info"/>
+
 		</h2>
 
 	</jstl:when>		
@@ -36,14 +36,6 @@
 		</th>
 		<td>
 			<acme:print value="${lecture.getTitle()}"/>
-		</td>
-	</tr>
-	<tr>
-		<th scope="row">
-			<acme:message code="lecturer.courseLecture.form.lecture.summary"/>
-		</th>
-		<td>
-			<acme:print value="${lecture.getAbstractt()}"/>
 		</td>
 	</tr>
 	</table>

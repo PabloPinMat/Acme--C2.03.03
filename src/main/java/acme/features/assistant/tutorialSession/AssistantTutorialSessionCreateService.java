@@ -71,11 +71,15 @@ public class AssistantTutorialSessionCreateService extends AbstractService<Assis
 		Boolean duracionMin;
 		Boolean duracionMax;
 		Boolean fechaInicio;
+		final Boolean fechaInicio2;
 		final Date fechaActual2 = new Date(System.currentTimeMillis());
 
 		if (!super.getBuffer().getErrors().hasErrors("startSession")) {
 			fechaInicio = MomentHelper.isLongEnough(fechaActual2, tutorialSession.getStartSession(), 24, ChronoUnit.HOURS);
 			super.state(fechaInicio, "startSession", "La fecha debe ser de un día despues de la fecha actual");
+			fechaInicio2 = MomentHelper.isBefore(fechaActual2, tutorialSession.getStartSession());
+			super.state(fechaInicio2, "startSession", "La fecha inicial no puede ser anterior a la actual");
+
 		}
 
 		if (!super.getBuffer().getErrors().hasErrors("finishSession"))
