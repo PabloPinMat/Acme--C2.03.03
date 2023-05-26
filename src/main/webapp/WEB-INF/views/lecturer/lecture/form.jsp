@@ -22,14 +22,13 @@
 	<acme:input-textbox code="lecturer.lecture.form.label.body" path="body"/>	
 	<acme:input-select code="lecturer.lecture.form.label.lectureType" path="lectureType" choices="${lectureTypes}"/>	
 	<acme:input-textbox code="lecturer.lecture.form.label.furtherInformation" path="furtherInformation"/>
-	<acme:input-textbox code="lecturer.lecture.form.label.draftMode" path="draftMode" readonly="true"/>
 	
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode.equalsIgnoreCase('No')}">	 
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == false}">	 
 			<acme:button code="lecturer.lecture.list.button.add" action="/lecturer/course-lecture/create?lectureId=${id}"/>
 			<acme:button code="lecturer.lecture.list.button.deleteFromCourse" action="/lecturer/course-lecture/delete?lectureId=${id}"/>
 		</jstl:when>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode.equalsIgnoreCase('Yes') || draftMode.equalsIgnoreCase('Si')}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">
 			<acme:submit code="lecturer.lecture.form.button.update" action="/lecturer/lecture/update"/>
 			<acme:submit code="lecturer.lecture.form.button.delete" action="/lecturer/lecture/delete"/>
 			<acme:submit code="lecturer.lecture.form.button.publish" action="/lecturer/lecture/publish"/>
