@@ -1,0 +1,10 @@
+student.lecture.form.label.title = Title
+student.lecture.form.label.estimatedLearningTime = Estimated Learning Time 
+student.lecture.form.label.lectureType = Lecture Type
+student.lecture.form.label.abstractt = Summary
+student.lecture.form.label.body = Body
+student.lecture.form.label.furtherInformation = Further info 
+
+student.lecture.list.label.title = Title
+student.lecture.list.label.estimatedLearningTime = Estimated Learning Time 
+student.lecture.list.label.lectureType = Lecture Type

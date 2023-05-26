@@ -51,29 +51,4 @@ public class Audit extends AbstractEntity {
 
 	protected boolean			published;
 
-	/*
-	 * public Mark calculateMark() {
-	 * 
-	 * final Map<Mark, Integer> markCounts = new HashMap<>();
-	 * for (final AuditingRecord record : this.records) {
-	 * 
-	 * final Mark mark = record.getMark();
-	 * if (markCounts.containsKey(mark))
-	 * markCounts.put(mark, markCounts.get(mark) + 1);
-	 * else
-	 * markCounts.put(mark, 1);
-	 * 
-	 * }
-	 * Mark mode = Mark.F_MINUS;
-	 * 
-	 * int maxCount = 0;
-	 * for (final Map.Entry<Mark, Integer> entry : markCounts.entrySet())
-	 * if (entry.getValue() > maxCount) {
-	 * maxCount = entry.getValue();
-	 * mode = entry.getKey();
-	 * }
-	 * 
-	 * return mode;
-	 * }
-	 */
 }

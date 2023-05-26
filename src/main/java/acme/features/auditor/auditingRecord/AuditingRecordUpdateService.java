@@ -29,7 +29,7 @@ public class AuditingRecordUpdateService extends AbstractService<Auditor, Auditi
 	public void authorise() {
 		boolean status;
 		final AuditingRecord audintingRecord = this.repository.findAuditingRecordById(super.getRequest().getData("id", int.class));
-		status = super.getRequest().getPrincipal().hasRole(audintingRecord.getAudit().getAuditor()) && audintingRecord.isPublished();
+		status = super.getRequest().getPrincipal().hasRole(audintingRecord.getAudit().getAuditor()) && !audintingRecord.isPublished();
 
 		super.getResponse().setAuthorised(status);
 	}
