@@ -56,7 +56,7 @@ public class LecturerCourseListService extends AbstractService<Lecturer, Course>
 		final String lang = super.getRequest().getLocale().getLanguage();
 		Tuple tuple;
 
-		tuple = super.unbind(object, "title", "courseAbstract", "retailPrice", "draftMode");
+		tuple = super.unbind(object, "title", "code", "courseAbstract", "retailPrice", "draftMode");
 		tuple.put("draftMode", this.configurationService.booleanTranslated(object.isDraftMode(), lang));
 
 		super.getResponse().setData(tuple);
