@@ -16,3 +16,5 @@ assistant.tutorial.form.label.title = Titulo
 assistant.tutorial.form.label.course = Curso
 
 assistant.tutorial.list.button.create = Crear tutorial
+
+assistant.tutorial.form.error.existing = El tutorial ya existe
