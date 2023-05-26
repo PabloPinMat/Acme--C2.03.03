@@ -29,7 +29,7 @@ public class AuditingRecordDeleteService extends AbstractService<Auditor, Auditi
 		boolean status;
 		AuditingRecord auditingRecord;
 		auditingRecord = this.repository.findAuditingRecordById(super.getRequest().getData("id", int.class));
-		status = auditingRecord != null && super.getRequest().getPrincipal().hasRole(auditingRecord.getAudit().getAuditor()) && auditingRecord.isPublished();
+		status = auditingRecord != null && super.getRequest().getPrincipal().hasRole(auditingRecord.getAudit().getAuditor()) && !auditingRecord.isPublished();
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -48,7 +48,7 @@ public class AuditingRecordDeleteService extends AbstractService<Auditor, Auditi
 		final String mark = super.getRequest().getData("mark", String.class);
 		super.bind(object, "subject", "assessment", "startPeriod", "endPeriod", "link");
 		object.setMark(Mark.transform(mark));
-		object.setPublished(true);;
+		object.setPublished(true);
 		object.setCorrection(false);
 	}
 

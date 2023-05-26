@@ -16,7 +16,7 @@ import acme.roles.Auditor;
 @Repository
 public interface AuditRepository extends AbstractRepository {
 
-	@Query("select a from Audit a where a.auditor.userAccount.id = :id")
+	@Query("select a from Audit a where a.auditor.id = :id")
 	Collection<Audit> findAuditsByAuditorId(int id);
 
 	@Query("select a from Audit a where a.id = :id")

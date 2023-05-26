@@ -1,3 +1,4 @@
 key,code,title,abstract_practicum,goals,estimated_total_time,publish,key:company,key:course
 practicum-01,AAA9999,Practicum1,Práctica de iniciación,"Conocer, entender, aprender",2.0,false,company-01,course-03
 practicum-02,AA9999,Practicum2,Práctica de iniciación,"Conocer, entender, aprender",3.5,true,company-02,course-04
+practicum-03,ABB9999,Practicum3,Práctica de iniciación,"Conocer, entender, aprender",2.0,true,company-01,course-03

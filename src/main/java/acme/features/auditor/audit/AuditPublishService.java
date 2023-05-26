@@ -29,13 +29,13 @@ public class AuditPublishService extends AbstractService<Auditor, Audit> {
 
 	@Override
 	public void authorise() {
-		Audit object;
+		Audit audit;
 		int id;
 		id = super.getRequest().getData("id", int.class);
-		object = this.repository.findAuditById(id);
+		audit = this.repository.findAuditById(id);
 		final Principal principal = super.getRequest().getPrincipal();
 		final int userAccountId = principal.getAccountId();
-		super.getResponse().setAuthorised(object.getAuditor().getUserAccount().getId() == userAccountId && !object.isPublished());
+		super.getResponse().setAuthorised(audit.getAuditor().getUserAccount().getId() == userAccountId && !audit.isPublished());
 	}
 
 	@Override
@@ -70,7 +70,7 @@ public class AuditPublishService extends AbstractService<Auditor, Audit> {
 		Tuple tuple;
 		Collection<Course> courses;
 		SelectChoices choices;
-		courses = this.repository.findAllCourses();
+		courses = this.repository.findPublishedCourses();
 		choices = SelectChoices.from(courses, "code", object.getCourse());
 		tuple = super.unbind(object, "code", "conclusion", "strongPoints", "weakPoints", "published");
 		tuple.put("courses", choices);

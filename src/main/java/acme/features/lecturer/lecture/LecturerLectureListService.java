@@ -63,6 +63,7 @@ public class LecturerLectureListService extends AbstractService<Lecturer, Lectur
 		super.getResponse().setGlobal("showCreate", showCreate);
 		super.getResponse().setData(tuple);
 	}
+
 	@Override
 	public void unbind(final Collection<Lecture> object) {
 		assert object != null;

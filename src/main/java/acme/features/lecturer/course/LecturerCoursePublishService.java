@@ -86,6 +86,9 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 		final boolean boo = course == null || object.getId() == course.getId();
 		super.state(boo, "code", "lecturer.course.error.code.duplicated");
 
+		final List<Lecture> lecturesInCourse = this.repository.findLecturesByCourse(object.getId()).stream().collect(Collectors.toList());
+		final CourseType courseType = object.calculateCourseType(lecturesInCourse);
+		super.state(courseType != CourseType.THEORY_COURSE, "*", "you cant publish a theoretical course");
 	}
 
 	@Override

@@ -33,8 +33,8 @@ public class AuditListService extends AbstractService<Auditor, Audit> {
 	public void load() {
 		Collection<Audit> objects;
 		final Principal principal = super.getRequest().getPrincipal();
-		final int userAccountId = principal.getAccountId();
-		objects = this.repository.findAuditsByAuditorId(userAccountId);
+		final int id = principal.getActiveRoleId();
+		objects = this.repository.findAuditsByAuditorId(id);
 		super.getBuffer().setData(objects);
 	}
 
