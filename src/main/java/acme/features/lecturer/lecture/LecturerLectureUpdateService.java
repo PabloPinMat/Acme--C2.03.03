@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.lecture.Lecture;
 import acme.entities.lecture.LectureType;
+import acme.framework.components.accounts.Principal;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -45,6 +46,13 @@ public class LecturerLectureUpdateService extends AbstractService<Lecturer, Lect
 	@Override
 	public void authorise() {
 		super.getResponse().setAuthorised(true);
+		int id;
+		Lecture object;
+		id = super.getRequest().getData("id", int.class);
+		object = this.repository.findLectureById(id);
+		final Principal principal = super.getRequest().getPrincipal();
+		final int userAccountId = principal.getAccountId();
+		super.getResponse().setAuthorised(object.getLecturer().getUserAccount().getId() == userAccountId);
 	}
 
 	@Override
@@ -68,6 +76,12 @@ public class LecturerLectureUpdateService extends AbstractService<Lecturer, Lect
 	@Override
 	public void validate(final Lecture object) {
 		assert object != null;
+
+		if (!super.getBuffer().getErrors().hasErrors("draftMode")) {
+			final boolean draftMode = object.isDraftMode();
+			super.state(draftMode, "draftMode", "lecturer.lecture.error.draftMode.published.update");
+		}
+
 	}
 
 	@Override

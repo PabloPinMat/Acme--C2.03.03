@@ -1,0 +1,19 @@
+courseCode, code, conclusion, strongPoints, weakPoints
+,,,,
+AAA997, BFK9382,Esto es una prueba de conclusion que tiene que fallar al llegar a los 101 caracteres pero tiene que s,Esto son unos strongPoints validos, Esto son unos weakPoints validos
+AAA997, BEL5768,Esto es una conclusion valida,Esto es una prueba de strongPoints que tiene que fallar al llegar a los 101 caracteres necesito una t, Esto son unos weakPoints validos
+AAA997, BDI3456,Esto es una conclusion valida,Esto son unos strongPoints validos,Esto es una prueba de weakPoints que tiene que fallar al llegar a los 100 caracteres necesito unos ll
+AAA997, 4567,0 letra y 4 numeros,Esto son unos strongPoints validos,Esto son unos weakPoints validos
+AAA997, CFF,3 letras 0 numeros,Esto son unos strongPoints validos,Esto son unos weakPoints validos
+AAA997, CFFR5555,4 letras 4 numeros,Esto son unos strongPoints validos,Esto son unos weakPoints validos
+AAA996, BBZ9,3 letras 1 numero,Esto son unos strongPoints validos,Esto son unos weakPoints validos
+AAA996, AFC12,3 letras 2 numeros,Esto son unos strongPoints validos,Esto son unos weakPoints validos
+AAA996, AFC123,3 letras 3 numeros,Esto son unos strongPoints validos,Esto son unos weakPoints validos
+AAA997, CFF65433,3 letras 5 numeros,Esto son unos strongPoints validos,Esto son unos weakPoints validos
+AAA997, CFF3425555,3 letras 7 numeros,Esto son unos strongPoints validos,Esto son unos weakPoints validos
+AAA997, C1F2F34,mezclados,Esto son unos strongPoints validos,Esto son unos weakPoints validos
+AAA997, 1133CFF,al reves,Esto son unos strongPoints validos,Esto son unos weakPoints validos
+AAA997, vfr5678,minusculas,Esto son unos strongPoints validos,Esto son unos weakPoints validos
+AAA997, BDI3456,,Esto son unos strongPoints validos,Esto son unos weakPoints validos
+AAA997, BDI3456,Esto es una conclusion valida,,Esto son unos weakPoints validos
+AAA997, BDI3456,Esto es una conclusion valida,Esto son unos strongPoints validos,

@@ -1,0 +1,38 @@
+# messages-es.i18n
+#
+# Copyright (C) 2012-2023 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+
+company.practicum-session.list.label.title = Título
+company.practicum-session.list.label.start-time-period = Fecha de inicio
+company.practicum-session.list.label.end-time-period = Fecha de fin
+
+company.practicum-session.form.label.title = Título
+company.practicum-session.form.label.abstract-session = Resumen
+company.practicum-session.form.label.start-time-period = Fecha de inicio
+company.practicum-session.form.label.end-time-period = Fecha de fin
+company.practicum-session.form.label.further-information-link = Más información
+company.practicum-session.list.label.confirmation = Sesión excepcional
+
+company.practicum-session.form.button.update = Actualizar
+company.practicum-session.form.button.delete = Borrar
+company.practicum-session.form.button.create = Crear
+
+company.practicum-session.form.label.confirmation = Confirmación
+company.practicum-session.form.button.create-exceptional = Creación excepcional
+
+company.practicum-session.list.button.create = Crear
+
+company.practicum-session.list.button.create-exceptional = Crear
+company.practicum-session.list.label.yes = Si
+company.practicum-session.list.label.no = No
+
+company.practicum-session.form.error.start-time-period = La fecha de inicio debe estar al menos una semana por delante del momento actual
+company.practicum-session.form.error.end-time-period = La fecha de fin debe estar al menos una semana por delante de la fecha de inicio
+

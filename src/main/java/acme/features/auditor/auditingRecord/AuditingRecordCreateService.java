@@ -53,7 +53,7 @@ public class AuditingRecordCreateService extends AbstractService<Auditor, Auditi
 		super.bind(object, "subject", "assessment", "startPeriod", "endPeriod", "link");
 		object.setMark(Mark.transform(mark));
 		object.setAudit(audit);
-		object.setPublished(true);
+		object.setPublished(false);
 		object.setCorrection(false);
 	}
 
@@ -65,7 +65,7 @@ public class AuditingRecordCreateService extends AbstractService<Auditor, Auditi
 			if (!MomentHelper.isBefore(object.getStartPeriod(), object.getEndPeriod()))
 				super.state(false, "startPeriod", "auditor.auditingRecord.error.date.startFinError");
 			else
-				super.state(!(object.periodDuration() <= 1), "periodStart", "auditor.auditingRecord.error.date.invalidPeriod");
+				super.state(!(object.periodDuration() < 1), "startPeriod", "auditor.auditingRecord.error.date.invalidPeriod");
 
 	}
 

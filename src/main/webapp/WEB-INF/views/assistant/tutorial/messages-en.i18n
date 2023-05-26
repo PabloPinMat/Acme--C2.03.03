@@ -10,3 +10,11 @@ assistant.tutorial.form.button.delete =  Delete
 assistant.tutorial.form.button.publish= Publish
 assistant.tutorial.form.button.create = Create
 assistant.tutorial.list.label.goal = Goal
+assistant.tutorial.list.label.abstract$ = Abstract
+assistant.tutorial.form.label.code = Code
+assistant.tutorial.form.label.title = Title
+assistant.tutorial.form.label.course = Course
+
+assistant.tutorial.list.button.create = Create tutorial
+
+assistant.tutorial.form.error.existing = The tutorial already exists

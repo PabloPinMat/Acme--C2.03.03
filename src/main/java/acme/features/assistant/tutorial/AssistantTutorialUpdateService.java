@@ -62,7 +62,7 @@ public class AssistantTutorialUpdateService extends AbstractService<Assistant, T
 
 		cursoId = super.getRequest().getData("course", int.class);
 		curso = this.repositorio.findCourseById(cursoId);
-		super.bind(object, "code", "title", "abstract$", "goal");
+		super.bind(object, "code", "title", "abstract$", "goals", "estimatedTime");
 		object.setCourse(curso);
 	}
 
@@ -73,8 +73,11 @@ public class AssistantTutorialUpdateService extends AbstractService<Assistant, T
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			Tutorial duplica;
 			duplica = this.repositorio.findTutorialByCode(object.getCode());
-			super.state(duplica == null || duplica.equals(object), "code", "El tutorial ya existe");
+			super.state(duplica == null || duplica.equals(object), "code", "assistant.tutorial.form.error.existing");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("course"))
+			super.state(!object.getCourse().isDraftMode(), "code", "company.practicum.form.error.code2");
 
 	}
 
@@ -93,9 +96,9 @@ public class AssistantTutorialUpdateService extends AbstractService<Assistant, T
 		SelectChoices opciones;
 		Tuple tupla;
 
-		cursos = this.repositorio.findAllCourses();
-		opciones = SelectChoices.from(cursos, "code", object.getCourse());
-		tupla = super.unbind(object, "code", "title", "abstract$", "goal");
+		cursos = this.repositorio.findPublishedCourses();
+		opciones = SelectChoices.from(cursos, "title", object.getCourse());
+		tupla = super.unbind(object, "code", "title", "abstract$", "goals", "estimatedTime");
 		tupla.put("course", opciones.getSelected().getKey());
 		tupla.put("courses", opciones);
 		super.getResponse().setData(tupla);

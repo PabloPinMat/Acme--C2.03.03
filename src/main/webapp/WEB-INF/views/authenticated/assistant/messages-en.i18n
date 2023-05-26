@@ -3,5 +3,8 @@ authenticated.assistant.form.label.expertiseField = Expertise fields
 authenticated.assistant.form.label.resume = Resume
 authenticated.assistant.form.label.furtherInformation = Further information
 
+authenticated.tutorial.list.label.title = Title
+authenticated.tutorial.list.label.abstract$ = Abstract
+
 authenticated.assistant.form.button.create = Create
 authenticated.assistant.form.button.update = Update

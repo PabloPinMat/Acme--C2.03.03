@@ -1,0 +1,6 @@
+enrolmentIndex,activityIndex,title,summary,activityType,startDate,endDate,link
+0,0,Title 1111,Test summary,THEORY,2022/07/30 10:00,2022/07/30 18:00,
+0,0,Title 02,Test summary,THEORY,2022/07/30 10:00,2022/07/30 18:00,
+0,0,Title 03,This text has less than 100 characters!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!,THEORY,2022/07/30 10:00,2022/07/30 18:00,http://www.example.org
+0,0,75characts75characts75characts75characts75characts75characts75characts75,Test summary,THEORY,2022/07/30 10:00,2022/07/30 18:00,http://www.example.org
+0,0,ÁÉÍóÚ,ñ,THEORY,2022/07/30 10:00,2022/07/30 18:00,

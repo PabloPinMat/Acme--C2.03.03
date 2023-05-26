@@ -29,7 +29,7 @@ public class AuditingRecordUpdateService extends AbstractService<Auditor, Auditi
 	public void authorise() {
 		boolean status;
 		final AuditingRecord audintingRecord = this.repository.findAuditingRecordById(super.getRequest().getData("id", int.class));
-		status = super.getRequest().getPrincipal().hasRole(audintingRecord.getAudit().getAuditor()) && audintingRecord.isPublished();
+		status = super.getRequest().getPrincipal().hasRole(audintingRecord.getAudit().getAuditor()) && !audintingRecord.isPublished();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -58,7 +58,7 @@ public class AuditingRecordUpdateService extends AbstractService<Auditor, Auditi
 			if (!MomentHelper.isBefore(object.getStartPeriod(), object.getEndPeriod()))
 				super.state(false, "startPeriod", "auditor.auditingRecord.error.date.StartFinError");
 			else
-				super.state(!(object.periodDuration()<= 1), "periodStart", "auditor.auditingRecord.error.date.invalidPeriod");
+				super.state(!(object.periodDuration()<= 1), "startPeriod", "auditor.auditingRecord.error.date.invalidPeriod");
 	}
 
 	@Override

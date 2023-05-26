@@ -6,3 +6,17 @@ assistant.tutorial.session.form.label.type = Type
 assistant.tutorial.session.form.button.update = Update
 assistant.tutorial.session.form.button.delete = Delete
 assistant.tutorial.session.form.button.create = Create
+assistant.tutorial.session.form.label.furtherInformation = Further Information
+
+assistant.tutorial.session.list.label.title = Title
+assistant.tutorial.session.list.label.type = Type
+assistant.tutorial.session.list.label.startDate = Start date
+assistant.tutorial.session.list.label.finishDate = Finish date
+assistant.tutorial.session.list.button.create = Create session
+
+assistant.tutorial.session.form.error.dateAfterCurrent = The date must be one day after the current date
+assistant.tutorial.session.form.error.initialDateBeforeCurrent = The start date cannot be earlier than the current one
+assistant.tutorial.session.form.error.endDateEarlierInitial = The end date cannot be earlier than the start date
+assistant.tutorial.session.form.error.minimunDuration = Error in the minimum duration of the session
+assistant.tutorial.session.form.error.maximunDuration = Error in maximum session duration
+assistant.tutorial.session.form.error.datesMisspelled = The dates are misspelled

@@ -1,0 +1,10 @@
+authenticated.tutorial.form.label.code = Codigo
+authenticated.tutorial.form.label.title = Titulo
+authenticated.tutorial.form.label.course.title = Titulo del curso
+authenticated.tutorial.form.label.abstract$ = resumen
+authenticated.tutorial.form.label.goals = Objetivos
+authenticated.tutorial.form.label.estimatedTime = Tiempo estimado
+authenticated.tutorial.form.label.assitant.supervisor = Supervisor
+authenticated.tutorial.form.label.assitant.expertiseField = Campos de experiencia
+authenticated.tutorial.form.label.assitant.resume = Resumen
+authenticated.tutorial.form.label.assitant.furtherInformation = Mas información

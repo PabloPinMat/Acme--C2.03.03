@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.components.SystemConfigurationService;
 import acme.entities.audit.Audit;
 import acme.framework.components.accounts.Principal;
 import acme.framework.components.models.Tuple;
@@ -17,6 +18,10 @@ public class AuditListService extends AbstractService<Auditor, Audit> {
 
 	@Autowired
 	protected AuditRepository repository;
+	
+	@Autowired
+	protected SystemConfigurationService configuration;
+
 
 	@Override
 	public void check() {
@@ -33,8 +38,8 @@ public class AuditListService extends AbstractService<Auditor, Audit> {
 	public void load() {
 		Collection<Audit> objects;
 		final Principal principal = super.getRequest().getPrincipal();
-		final int userAccountId = principal.getAccountId();
-		objects = this.repository.findAuditsByAuditorId(userAccountId);
+		final int id = principal.getActiveRoleId();
+		objects = this.repository.findAuditsByAuditorId(id);
 		super.getBuffer().setData(objects);
 	}
 
@@ -43,8 +48,9 @@ public class AuditListService extends AbstractService<Auditor, Audit> {
 		assert object != null;
 
 		Tuple tuple;
-
-		tuple = super.unbind(object,  "code", "strongPoints","weakPoints","published", "conclusion");
+		final String lang = super.getRequest().getLocale().getLanguage();
+		tuple = super.unbind(object,  "code", "strongPoints","weakPoints", "conclusion");
+		tuple.put("published", this.configuration.booleanTranslated(object.isPublished(),lang));
 		tuple.put("courseTitle", object.getCourse().getTitle());
 		super.getResponse().setData(tuple);
 	}

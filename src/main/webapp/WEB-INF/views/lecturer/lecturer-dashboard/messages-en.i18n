@@ -1,0 +1,22 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2023 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+
+lecturer.course.form.label.totalLectures = Number of lectures
+lecturer.course.form.label.handsOnLectures = Hands on lectures
+lecturer.course.form.label.theoricalLectures = Theorical lectures 
+lecturer.course.form.label.averageTimeOfLectures = Average time of lectures
+lecturer.course.form.label.deviationTimeOfLectures = Deviation time of lectures
+lecturer.course.form.label.minimumTimeOfLectures = Minimum time of lectures
+lecturer.course.form.label.maximumTimeOfLectures = Maximum time of lectures
+lecturer.course.form.label.averageTimeOfCourses = Average time of courses
+lecturer.course.form.label.deviationTimeOfCourses = Deviation time of courses
+lecturer.course.form.label.minimumTimeOfCourses = Minimum time of courses
+lecturer.course.form.label.maximumTimeOfCourses = Maximum time of courses

@@ -1,6 +1,6 @@
 auditor.auditingRecord.list.label.subject = Subject
 auditor.auditingRecord.list.label.mark = Mark
-auditor.auditingRecord.list.label.isACorrection = Is a correction
+auditor.auditingRecord.list.label.correction = Is a correction
 auditor.auditingRecord.list.label.published = Is published
 
 auditor.auditingRecord.form.label.subject = Subject
@@ -16,6 +16,7 @@ auditor.auditingRecord.form.label.isACorrection = Correction
 auditor.auditingRecord.announce.correction = Correction
 auditor.auditingRecord.correction.confirmation = Please confirm
 auditor.auditingRecord.error.date.invalidPeriod = Invalid period
+auditor.auditingRecord.error.date.startFinError = Invalid date
 
 auditor.auditingRecord.create = Create
 auditor.auditingRecord.form.button.delete = Delete

@@ -12,3 +12,19 @@ student.activity.list.label.title = Title
 student.activity.list.label.type = Type
 student.activity.list.label.startDate = Start Date
 student.activity.list.label.endDate = End Date
+student.activity.list.button.create = Create
+
+student.activity.form.label.title= Title
+student.activity.form.label.summary=Summary
+student.activity.form.label.type=Type
+student.activity.form.label.startDate = Start Date
+student.activity.form.label.endDate= End Date
+student.activity.form.label.link = Link
+student.activity.form.button.delete = Delete
+student.activity.form.button.update = Update
+student.activity.form.button.create = Create
+
+student.activity.form.error.dateNull = Date cannot be null
+student.activity.form.error.wrong-dates = Start date cannot be later than end date
+student.activity.form.error.wrong-start = The start date cannot be earlier than the current date
+student.activity.form.error.wrong-end = The end date cannot be earlier than the current date

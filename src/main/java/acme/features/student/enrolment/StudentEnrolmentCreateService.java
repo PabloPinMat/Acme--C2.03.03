@@ -69,8 +69,14 @@ public class StudentEnrolmentCreateService extends AbstractService<Student, Enro
 			Enrolment existing;
 
 			existing = this.repository.findOneEnrolmentByCode(object.getCode());
-			super.state(existing == null, "code", "Duplicado");
+			super.state(existing == null, "code", "student.enrolment.form.error.courseNotPublished");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("course"))
+			if (object.getCourse() != null)
+				super.state(!object.getCourse().isDraftMode(), "course", "student.enrolment.form.error.courseNotPublished");
+			else
+				super.state(false, "course", "student.enrolment.form.error.courseNull");
 	}
 
 	@Override
@@ -88,7 +94,7 @@ public class StudentEnrolmentCreateService extends AbstractService<Student, Enro
 		SelectChoices choices;
 		Tuple tuple;
 
-		courses = this.repository.findAllCourses();
+		courses = this.repository.findPublishedCourses();
 		choices = SelectChoices.from(courses, "title", object.getCourse());
 
 		tuple = super.unbind(object, "code", "motivation", "goals", "finalised");

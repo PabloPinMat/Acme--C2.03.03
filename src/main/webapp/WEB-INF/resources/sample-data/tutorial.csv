@@ -1,3 +1,7 @@
 key,code,title,abstract$,goals,estimatedTime,draftMode,key:assitant,key:course
-tutorial-01,ABC1123,Primero,Primer tutorial del curso 1,Insercion de datos1,1.4,true,assistant-01,course-01
-tutorial-02,ABC9124,Segundo,Primer tutorial del curso 2,Insercion de datos2,2.5,true,assistant-02,course-02
+tutorial-01,ABC1123,Primero,Primer tutorial del curso 1,Insercion de datos1,1.4,true,assistant-01,course-03
+tutorial-02,ABC9124,ASegundo,Primer tutorial del curso 2,Insercion de datos2,2.5,true,assistant-02,course-04
+tutorial-03,ABC9125,BTercero,Tercer tutorial del curso 2,Insercion de datos2,2.5,false,assistant-02,course-03
+tutorial-04,ABC9126,Cuarto,Cuarto tutorial del curso 2,Insercion de datos2,2.5,false,assistant-02,course-03
+tutorial-05,ABC9127,DQuinto,Quinto tutorial del curso 2,Insercion de datos2,2.5,false,assistant-02,course-04
+tutorial-06,ABC9128,ESexto,Sexto tutorial del curso 2,Insercion de datos2,2.5,true,assistant-02,course-04

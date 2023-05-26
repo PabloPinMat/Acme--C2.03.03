@@ -61,8 +61,11 @@ public class AssistantTutorialCreateService extends AbstractService<Assistant, T
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			final Tutorial duplica;
 			duplica = this.repositorio.findTutorialByCode(object.getCode());
-			super.state(duplica == null, "code", "Tutorial ya creado");
+			super.state(duplica == null, "code", "assistant.tutorial.form.error.existing");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("course"))
+			super.state(!object.getCourse().isDraftMode(), "code", "company.practicum.form.error.code2");
 	}
 
 	@Override
@@ -79,8 +82,8 @@ public class AssistantTutorialCreateService extends AbstractService<Assistant, T
 		SelectChoices opciones;
 		Tuple tupla;
 
-		cursos = this.repositorio.findAllCourses();
-		opciones = SelectChoices.from(cursos, "code", object.getCourse());
+		cursos = this.repositorio.findPublishedCourses();
+		opciones = SelectChoices.from(cursos, "title", object.getCourse());
 
 		tupla = super.unbind(object, "code", "title", "abstract$", "goals", "estimatedTime");
 		tupla.put("course", opciones.getSelected().getKey());

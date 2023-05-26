@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.components.SystemConfigurationService;
 import acme.entities.audit.Audit;
 import acme.entities.audit.AuditingRecord;
 import acme.framework.components.models.Tuple;
@@ -16,6 +17,9 @@ public class AuditingRecordListService extends AbstractService<Auditor, Auditing
 
 	@Autowired
 	protected AuditingRecordRepository repository;
+	
+	@Autowired
+	protected SystemConfigurationService configuration;
 
 	@Override
 	public void check() {
@@ -44,8 +48,11 @@ public class AuditingRecordListService extends AbstractService<Auditor, Auditing
 	public void unbind(final AuditingRecord object) {
 		
 		assert object != null;
+		final String lang = super.getRequest().getLocale().getLanguage();
 		Tuple tuple;
-		tuple = super.unbind(object, "subject", "correction", "published");
+		tuple = super.unbind(object, "subject");
+		tuple.put("correction", this.configuration.booleanTranslated(object.isCorrection(),lang));
+		tuple.put("published", this.configuration.booleanTranslated(object.isPublished(),lang));
 		tuple.put("mark", object.getMark().toString());
 		super.getResponse().setData(tuple);
 	}
