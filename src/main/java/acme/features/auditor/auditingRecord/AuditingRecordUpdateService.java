@@ -58,7 +58,7 @@ public class AuditingRecordUpdateService extends AbstractService<Auditor, Auditi
 			if (!MomentHelper.isBefore(object.getStartPeriod(), object.getEndPeriod()))
 				super.state(false, "startPeriod", "auditor.auditingRecord.error.date.StartFinError");
 			else
-				super.state(!(object.periodDuration()<= 1), "periodStart", "auditor.auditingRecord.error.date.invalidPeriod");
+				super.state(!(object.periodDuration()<= 1), "startPeriod", "auditor.auditingRecord.error.date.invalidPeriod");
 	}
 
 	@Override

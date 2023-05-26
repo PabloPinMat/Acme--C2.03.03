@@ -36,7 +36,7 @@ public class AuditingRecordPublishTest extends TestHarness {
 		super.clickOnSubmit("Create");
 		super.clickOnButton("Auditing records");
 		
-		super.checkColumnHasValue(0, 3, "false");
+		super.checkColumnHasValue(0, 3, "No");
 		
 		super.clickOnListingRecord(0);
 
@@ -44,7 +44,7 @@ public class AuditingRecordPublishTest extends TestHarness {
 
 		super.checkListingExists();
 
-		super.checkColumnHasValue(0, 3, "true");
+		super.checkColumnHasValue(0, 3, "Yes");
 
 		super.signOut();
 

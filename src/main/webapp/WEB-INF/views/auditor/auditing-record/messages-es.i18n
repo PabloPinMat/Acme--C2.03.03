@@ -1,6 +1,6 @@
 auditor.auditingRecord.list.label.subject = Asignatura
 auditor.auditingRecord.list.label.mark = Nota
-auditor.auditingRecord.list.label.isACorrection = Es una corrección
+auditor.auditingRecord.list.label.correction = Es una corrección
 auditor.auditingRecord.list.label.published = Está publicado
 
 auditor.auditingRecord.form.label.subject = Asignatura
@@ -16,6 +16,7 @@ auditor.auditingRecord.form.label.isACorrection = Corrección
 auditor.auditingRecord.announce.correction = Corrección
 auditor.auditingRecord.correction.confirmation = Confirme por favor
 auditor.auditingRecord.error.date.invalidPeriod = Periodo inválido
+auditor.auditingRecord.error.date.startFinError = Fecha inválida
 
 auditor.auditingRecord.create = Crear
 auditor.auditingRecord.form.button.delete = Borrar
