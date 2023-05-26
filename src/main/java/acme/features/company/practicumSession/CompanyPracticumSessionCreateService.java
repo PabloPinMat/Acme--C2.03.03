@@ -2,6 +2,7 @@
 package acme.features.company.practicumSession;
 
 import java.time.temporal.ChronoUnit;
+import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,12 +49,19 @@ public class CompanyPracticumSessionCreateService extends AbstractService<Compan
 		PracticumSession object;
 		int practicumId;
 		Practicum practicum;
+		boolean publish;
 
 		practicumId = super.getRequest().getData("masterId", int.class);
 		practicum = this.repository.findPracticumById(practicumId);
+		publish = practicum.isPublish();
 
 		object = new PracticumSession();
 		object.setPracticum(practicum);
+
+		if (publish)
+			object.setConfirmationSession(true);
+		else
+			object.setConfirmationSession(false);
 
 		super.getBuffer().setData(object);
 	}
@@ -76,11 +84,10 @@ public class CompanyPracticumSessionCreateService extends AbstractService<Compan
 		else {
 			confirmation = super.getRequest().getData("confirmation", boolean.class);
 			if (confirmation) {
-
-				if (this.repository.findPracticumSessionsByPracticumId(object.getPracticum().getId()).isEmpty())
-					confirmation = true;
-				else
-					confirmation = false;
+				final Collection<PracticumSession> res = this.repository.findPracticumSessionsByPracticumId(object.getPracticum().getId());
+				for (final PracticumSession ps : res)
+					if (ps.isConfirmationSession())
+						confirmation = false;
 			} else
 				confirmation = false;
 		}
@@ -90,12 +97,12 @@ public class CompanyPracticumSessionCreateService extends AbstractService<Compan
 			Date minimumStartDate;
 			minimumStartDate = MomentHelper.deltaFromCurrentMoment(7, ChronoUnit.DAYS);
 			super.state(MomentHelper.isAfterOrEqual(object.getStartTimePeriod(), minimumStartDate), "startTimePeriod", "company.practicum-session.form.error.start-time-period");
-		}
 
-		if (!super.getBuffer().getErrors().hasErrors("endTimePeriod")) {
-			Date minimumEndDate;
-			minimumEndDate = MomentHelper.deltaFromMoment(object.getStartTimePeriod(), 7, ChronoUnit.DAYS);
-			super.state(MomentHelper.isAfterOrEqual(object.getEndTimePeriod(), minimumEndDate), "endTimePeriod", "company.practicum-session.form.error.end-time-period");
+			if (!super.getBuffer().getErrors().hasErrors("endTimePeriod")) {
+				Date minimumEndDate;
+				minimumEndDate = MomentHelper.deltaFromMoment(object.getStartTimePeriod(), 7, ChronoUnit.DAYS);
+				super.state(MomentHelper.isAfterOrEqual(object.getEndTimePeriod(), minimumEndDate), "endTimePeriod", "company.practicum-session.form.error.end-time-period");
+			}
 		}
 
 	}

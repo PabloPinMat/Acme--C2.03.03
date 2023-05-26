@@ -67,16 +67,14 @@ public class CompanyPracticumSessionUpdateService extends AbstractService<Compan
 
 		if (!super.getBuffer().getErrors().hasErrors("startTimePeriod")) {
 			Date minimumStartDate;
-			Date minimumEndDate;
-			minimumEndDate = MomentHelper.deltaFromMoment(MomentHelper.getCurrentMoment(), 7, ChronoUnit.DAYS);
 			minimumStartDate = MomentHelper.deltaFromCurrentMoment(7, ChronoUnit.DAYS);
 			super.state(MomentHelper.isAfterOrEqual(object.getStartTimePeriod(), minimumStartDate), "startTimePeriod", "company.practicum-session.form.error.start-time-period");
-		}
 
-		if (!super.getBuffer().getErrors().hasErrors("endTimePeriod")) {
-			Date minimumEndDate;
-			minimumEndDate = MomentHelper.deltaFromMoment(object.getStartTimePeriod(), 7, ChronoUnit.DAYS);
-			super.state(MomentHelper.isAfterOrEqual(object.getEndTimePeriod(), minimumEndDate), "endTimePeriod", "company.practicum-session.form.error.end-time-period");
+			if (!super.getBuffer().getErrors().hasErrors("endTimePeriod")) {
+				Date minimumEndDate;
+				minimumEndDate = MomentHelper.deltaFromMoment(object.getStartTimePeriod(), 7, ChronoUnit.DAYS);
+				super.state(MomentHelper.isAfterOrEqual(object.getEndTimePeriod(), minimumEndDate), "endTimePeriod", "company.practicum-session.form.error.end-time-period");
+			}
 		}
 
 	}
@@ -95,6 +93,7 @@ public class CompanyPracticumSessionUpdateService extends AbstractService<Compan
 		Tuple tuple;
 
 		tuple = super.unbind(object, "title", "abstractSession", "startTimePeriod", "endTimePeriod", "furtherInformationLink");
+		tuple.put("publish", false);
 
 		super.getResponse().setData(tuple);
 	}
