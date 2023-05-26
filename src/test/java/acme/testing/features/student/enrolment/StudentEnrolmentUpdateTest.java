@@ -13,7 +13,7 @@ public class StudentEnrolmentUpdateTest extends TestHarness {
 	@Autowired
 	protected StudentEnrolmentRepositoryTest repository;
 
-	// Test methods -----------------------------------------------------------
+	// Test methods ----------------------------------------------------------
 
 
 	@ParameterizedTest
