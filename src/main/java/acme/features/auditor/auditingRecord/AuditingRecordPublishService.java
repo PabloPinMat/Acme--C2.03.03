@@ -7,7 +7,6 @@ import acme.entities.audit.AuditingRecord;
 import acme.entities.audit.Mark;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
-import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Auditor;
 
@@ -29,42 +28,37 @@ public class AuditingRecordPublishService extends AbstractService<Auditor, Audit
 
 		boolean status;
 		final AuditingRecord ar = this.repository.findAuditingRecordById(super.getRequest().getData("id", int.class));
-		status = super.getRequest().getPrincipal().hasRole(ar.getAudit().getAuditor()) && ar.isPublished();
+		status = super.getRequest().getPrincipal().hasRole(ar.getAudit().getAuditor()) && !ar.isPublished();
 
 		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
 	public void load() {
-		AuditingRecord object;
-		object = this.repository.findAuditingRecordById(super.getRequest().getData("id", int.class));
-		super.getBuffer().setData(object);
+		AuditingRecord ar;
+		ar = this.repository.findAuditingRecordById(super.getRequest().getData("id", int.class));
+		super.getBuffer().setData(ar);
 	}
 
 	@Override
-	public void bind(final AuditingRecord object) {
-		assert object != null;
+	public void bind(final AuditingRecord ar) {
+		assert ar != null;
 
 		final Mark mark = super.getRequest().getData("mark", Mark.class);
-		super.bind(object, "subject", "assesment", "periodStart", "periodFin", "link", "published");
-		object.setMark(mark);
+		super.bind(ar, "subject", "assesment", "startPeriod", "endPeriod", "link");
+		ar.setMark(mark);
 	}
 
 	@Override
 	public void validate(final AuditingRecord object) {
 		assert object != null;
-		if (!super.getBuffer().getErrors().hasErrors("startPeriod") && !super.getBuffer().getErrors().hasErrors("endPeriod"))
-			if (!MomentHelper.isBefore(object.getStartPeriod(), object.getEndPeriod()))
-				super.state(false, "startPeriod", "auditor.auditingRecord.error.date.StartFinError");
-			else
-				super.state(!(object.periodDuration()<= 1), "periodStart", "auditor.auditingRecord.error.date.invalidPeriod");
 	}
 
 	@Override
-	public void perform(final AuditingRecord object) {
-		assert object != null;
-		object.setPublished(false);
-		this.repository.save(object);
+	public void perform(final AuditingRecord ar) {
+		assert ar != null;
+		ar.setPublished(true);
+		this.repository.save(ar);
 	}
 
 	@Override
@@ -72,7 +66,7 @@ public class AuditingRecordPublishService extends AbstractService<Auditor, Audit
 		assert object != null;
 		final Tuple tuple;
 		final SelectChoices elecs = SelectChoices.from(Mark.class, object.getMark());
-		tuple = super.unbind(object, "subject", "assessment", "startPeriod", "endPeriod", "mark", "link");
+		tuple = super.unbind(object, "subject", "assessment", "startPeriod", "endPeriod", "mark", "link","published");
 		tuple.put("elecs", elecs);
 
 		super.getResponse().setData(tuple);

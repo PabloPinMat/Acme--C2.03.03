@@ -13,6 +13,7 @@ auditor.audit.form.label.weakPoints = Weak Points
 auditor.audit.form.label.mark = Marks
 
 auditor.audit.form.error.duplicateCode = This code already exists, try another one
+auditor.audit.form.error.courseNotPublished = This course is not published.
 auditor.audit.form.button.auditingRecord.list = Auditing records
 auditor.audit.form.button.auditingRecord.create = Create auditing record
 auditor.audit.form.button.auditingRecord.addCorrection = Add correction auditing record

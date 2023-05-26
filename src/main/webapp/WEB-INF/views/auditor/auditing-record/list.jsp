@@ -16,8 +16,8 @@
 <%@taglib prefix="acme" uri="http://www.the-acme-framework.org/"%>
 
 <acme:list>
-    <acme:list-column code="auditor.auditingRecord.list.label.subject" path="subject"/>
+	<acme:list-column code="auditor.auditingRecord.list.label.subject" path="subject"/>
+	<acme:list-column code="auditor.auditingRecord.list.label.correction" path="correction"/>
     <acme:list-column code="auditor.auditingRecord.list.label.mark" path="mark"/> 
-    <acme:list-column code="auditor.auditingRecord.list.label.isACorrection" path="correction"/>
     <acme:list-column code="auditor.auditingRecord.list.label.published" path="published"/> 
 </acme:list>

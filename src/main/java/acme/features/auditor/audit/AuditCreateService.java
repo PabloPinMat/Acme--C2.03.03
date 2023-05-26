@@ -33,8 +33,12 @@ public class AuditCreateService extends AbstractService<Auditor, Audit> {
 	public void validate(final Audit object) {
 		assert object != null;
 		
+		if (!super.getBuffer().getErrors().hasErrors("course"))
+			super.state(!object.getCourse().isDraftMode(), "course", "auditor.audit.form.error.courseNotPublished");
+
+
 		if (!super.getBuffer().getErrors().hasErrors("code"))
-			super.state(this.repository.findAuditByCode(object.getCode()) == null, "code", "auditor.audit.form.error.duplicateCode");
+			super.state(this.repository.findAuditByCode(object.getCode()) == null, "code", "auditor.audit.form.error.courseNotPublished");
 
 	}
 
