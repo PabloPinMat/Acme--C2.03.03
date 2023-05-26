@@ -1,0 +1,6 @@
+subject,assessment,link,startHour,finishHour,mark, confirmation
+EPrueba de subject con 74 caract·res para &so tengo que añadir un poco mas,assessment valido,http://prueba.com,2023/02/20 11:20,2023/02/22 11:25,A,true
+DPrueba de subj@ct con 73 €aracteres para eso tengo que añadir u^ poco ma,assessment valido,http://prueba.com,2023/02/20 11:20,2023/02/22 11:25,A_PLUS,true
+CSubject valido,Prueba de assessment que tiene que llegar a 100 caracteres para eso tengo añadir mas caracteres mass,http://prueba.com,2023/02/20 11:20,2023/02/22 11:25,C,true
+BSubject valido,Prueba de assessment que tiene que llegar a 99 caracteres para eso tengo añadir mas caracteres mass,http://prueba.com,2023/02/20 11:20,2023/02/22 11:25,F,true
+ASubject valido,assessment valido,http://prueba.com,2023/02/20 11:20,2023/02/22 11:25,F,true
