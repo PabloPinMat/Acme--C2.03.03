@@ -72,6 +72,9 @@ public class AssistantTutorialPublishService extends AbstractService<Assistant, 
 			existing = this.repositorio.findTutorialByCode(object.getCode());
 			super.state(existing == null || existing.getId() == object.getId(), "code", "assistant.tutorial.form.error.existing");
 		}
+
+		if (!super.getBuffer().getErrors().hasErrors("course"))
+			super.state(!object.getCourse().isDraftMode(), "code", "company.practicum.form.error.code2");
 	}
 
 	@Override
