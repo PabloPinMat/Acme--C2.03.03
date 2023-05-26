@@ -35,8 +35,8 @@ public class StudentEnrolmentUpdateTest extends TestHarness {
 
 		super.checkFormExists();
 
-		super.fillInputBoxIn("course", course);
 		super.fillInputBoxIn("code", code);
+		super.fillInputBoxIn("course", course);
 		super.fillInputBoxIn("motivation", motivation);
 		super.fillInputBoxIn("goals", goals);
 

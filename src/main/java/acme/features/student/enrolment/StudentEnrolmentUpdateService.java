@@ -11,7 +11,6 @@ import acme.entities.course.Course;
 import acme.entities.enrolments.Enrolment;
 import acme.framework.components.jsp.SelectChoices;
 import acme.framework.components.models.Tuple;
-import acme.framework.helpers.MomentHelper;
 import acme.framework.services.AbstractService;
 import acme.roles.Student;
 
@@ -91,8 +90,8 @@ public class StudentEnrolmentUpdateService extends AbstractService<Student, Enro
 
 		Enrolment existing;
 		final String ccNumber;
-		final Date expiryDate;
 		final String cvc;
+		final Date expiryDate;
 
 		if (!super.getBuffer().getErrors().hasErrors("code")) {
 			existing = this.repository.findOneEnrolmentByCode(object.getCode());
@@ -111,12 +110,6 @@ public class StudentEnrolmentUpdateService extends AbstractService<Student, Enro
 				super.state(!object.getCourse().isDraftMode(), "course", "student.enrolment.form.error.courseNotPublished");
 			else
 				super.state(false, "course", "student.enrolment.form.error.courseNull");
-
-		if (!super.getBuffer().getErrors().hasErrors("expiryDate")) {
-			expiryDate = super.getRequest().getData("expiryDate", Date.class);
-			if (expiryDate != null)
-				super.state(MomentHelper.isFuture(expiryDate), "expiryDate", "student.enrolment.form.error.expired");
-		}
 
 		if (!super.getBuffer().getErrors().hasErrors("cvc")) {
 			cvc = super.getRequest().getData("cvc", String.class);

@@ -1,7 +1,7 @@
 student.enrolment.list.label.code=Codigo
 student.enrolment.list.label.motivation=Motivacion
 student.enrolment.list.label.goals=Objetivos
-student.enrolment.list.label.workTime = Tiempo de Trabajo
+student.enrolment.list.label.workTime= Tiempo de Trabajo
 student.enrolment.form.label.workTime=Tiempo de trabajo
 student.enrolment.list.label.course = Curso
 student.enrolment.list.button.create = Crear
@@ -23,3 +23,5 @@ student.enrolment.form.error.code-duplicated = Codigo duplicado
 student.enrolment.form.error.cardNumber = Número de tarjeta erróneo
 student.enrolment.form.error.expired = La tarjeta ha expirado
 student.enrolment.form.error.cvc = CVC erróneo
+student.enrolment.form.error.courseNotPublished = Este curso no está publicado
+student.enrolment.form.error.courseNull = El curso no puede ser nulo

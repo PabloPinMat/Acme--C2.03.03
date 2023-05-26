@@ -53,7 +53,7 @@ public class StudentEnrolmentShowTest extends TestHarness {
 		Collection<Enrolment> enrolments;
 		String param;
 
-		enrolments = this.repository.findEnrolmentsByStudentId(29);
+		enrolments = this.repository.findEnrolmentsByStudentUsername("student2");
 		for (final Enrolment enrolment : enrolments) {
 			param = String.format("id=%d", enrolment.getId());
 

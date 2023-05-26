@@ -1,0 +1,7 @@
+enrolmentIndex,activityIndex,title,summary,activityType,startDate,endDate,link
+0,1,Title 01,Test summary,THEORY,2022/07/30 10:00,2022/07/30 18:00,http://www.example.org
+0,2,Title 02,Test summary,THEORY,2022/07/30 10:00,2022/07/30 18:00,
+0,3,Title 03,This text has exactly 100 characters!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!,THEORY,2022/07/30 10:00,2022/07/30 18:00,http://www.example.org
+0,0,75characts75characts75characts75characts75characts75characts75characts75,Test summary,THEORY,2022/07/30 10:00,2022/07/30 18:00,http://www.example.org
+0,1,75characts75characts75characts75characts75characts75characts75characts75!!!,This text has exactly 100 characters!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!,HANDS_ON,2022/07/30 10:00,2022/07/30 18:00,http://www.example.org
+2,1,Z1 ÁÉÍÓÚ,ñ,THEORY,2022/07/30 10:00,2022/07/30 18:00,http://www.example.org

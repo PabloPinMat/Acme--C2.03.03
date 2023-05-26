@@ -1,0 +1,11 @@
+enrolmentIndex,activityIndex,title,summary,activityType,startDate,endDate,link
+0,0,,,---,,,
+0,0, , ,---, , ,
+0,0,Title 03,This text has more than 100 characters!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!,THEORY,2023/07/30 10:00,2023/07/30 18:00,http://www.example.org
+0,0,More than 75characts75characts75characts75characts75characts75characts75!!!!!!!!!!!!!!!!!!!,Test summary,THEORY,2023/07/30 10:00,2023/07/30 18:00,http://www.example.org
+0,0,Start date later than end date,ñ,THEORY,2023/07/30 18:00,2023/07/30 10:00,
+0,0,Start date null,ñ,THEORY,,2022/07/30 10:00,
+0,0,End date null,ñ,THEORY,2022/07/30 18:00,,
+0,0,Start date earlier than current date,ñ,THEORY,2000/07/30 18:00,2022/07/30 10:00,
+0,0,End date earlier than current date,ñ,THEORY,2030/07/30 18:00,2022/07/30 10:00,
+0,0,More than 75characts75characts75characts75characts75characts75characts75!!!!!!!!!!!!!!!!!!!!!!!!!!,ñ,THEORY,2023/07/30,2023/07/30 10:00,

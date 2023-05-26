@@ -29,7 +29,6 @@ public class StudentEnrolmentShowTest extends TestHarness {
 
 		super.clickOnMenu("Student", "My enrolments");
 		super.checkListingExists();
-		super.sortListing(0, "asc");
 		super.clickOnListingRecord(enrolmentIndex);
 		super.checkFormExists();
 
