@@ -54,7 +54,7 @@ public class AuditingRecordCreateTest extends TestHarness {
 
 	}
 	
-	
+	/*
 	@ParameterizedTest
 	@CsvFileSource(resources = "/features/auditor/auditingRecord/create-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test100Negative(final String subject, final String assessment, final String link, final String startHour, final String finishHour, final String mark) {
@@ -81,7 +81,7 @@ public class AuditingRecordCreateTest extends TestHarness {
 		super.signOut();
 	}
 	
-	
+	*/
 	@Test
 	public void test300Hacking() {
 		

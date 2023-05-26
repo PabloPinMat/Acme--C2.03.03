@@ -17,6 +17,7 @@ auditor.audit.form.error.courseNotPublished = This course is not published.
 auditor.audit.form.button.auditingRecord.list = Auditing records
 auditor.audit.form.button.auditingRecord.create = Create auditing record
 auditor.audit.form.button.auditingRecord.addCorrection = Add correction auditing record
+auditor.audit.error.code.duplicated = Duplicated code
 
 auditor.audit.create = Create
 auditor.audit.form.button.delete = Delete

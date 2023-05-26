@@ -48,8 +48,10 @@ public class AuditUpdateService extends AbstractService<Auditor, Audit> {
 		if (!super.getBuffer().getErrors().hasErrors("course"))
 			super.state(!object.getCourse().isDraftMode(), "course", "auditor.audit.form.error.courseNotPublished");
 
-		if (!super.getBuffer().getErrors().hasErrors("code"))
-			super.state(this.repository.findAuditByCode(object.getCode()) == null, "code", "auditor.audit.form.error.courseNotPublished");
+		if (!super.getBuffer().getErrors().hasErrors("code")) {
+			final boolean existing = this.repository.duplicatedCode(object.getCode(), object.getId());
+			super.state(!existing, "code", "auditor.audit.error.code.duplicated");
+		}
 
 	}
 

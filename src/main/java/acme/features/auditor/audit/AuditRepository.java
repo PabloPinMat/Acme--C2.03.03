@@ -42,5 +42,8 @@ public interface AuditRepository extends AbstractRepository {
 
 	@Query("select c from Course c where c.draftMode = false")
 	Collection<Course> findPublishedCourses();
+	
+	@Query("select count(a)>0 from Audit a where a.code = :code and a.id != :id")
+	boolean duplicatedCode(String code, int id);
 
 }
