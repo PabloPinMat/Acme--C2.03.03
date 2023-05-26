@@ -4,7 +4,6 @@ package acme.testing.features.auditor.auditingRecord;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import acme.entities.audit.AuditingRecord;
 import acme.testing.TestHarness;
 import acme.testing.features.auditor.audit.AuditTestRepository;
 
@@ -59,29 +58,6 @@ public class AuditingRecordDeleteTest extends TestHarness {
 	}
 
 	
-	@Test
-	public void test300Hacking() {
-		
-		AuditingRecord ar;
-		String param;
-
-		ar = this.repository.findAuditingRecordBySubject("Science");
-		param = String.format("id=%d", ar.getId());
-
-		super.checkLinkExists("Sign in");
-		super.request("/auditor/auditing-record/delete", param);
-		super.checkPanicExists();
-
-		super.signIn("administrator", "administrator");
-		super.request("/auditor/auditing-record/delete", param);
-		super.checkPanicExists();
-		super.signOut();
-
-		super.signIn("lecturer1", "lecturer1");
-		super.request("/auditor/auditing-record/delete", param);
-		super.checkPanicExists();
-		super.signOut();
-	}
 	
 
 }

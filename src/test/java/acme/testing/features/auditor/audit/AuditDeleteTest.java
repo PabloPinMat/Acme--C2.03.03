@@ -1,12 +1,10 @@
 
 package acme.testing.features.auditor.audit;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import acme.entities.audit.Audit;
 import acme.testing.TestHarness;
 
 public class AuditDeleteTest extends TestHarness {

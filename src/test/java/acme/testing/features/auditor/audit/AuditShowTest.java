@@ -19,7 +19,7 @@ public class AuditShowTest extends TestHarness {
 		Audit audit;
 		String param;
 
-		audit = this.repository.findAuditByCode("A2345");
+		audit = this.repository.findAuditByCode("X2345");
 		param = String.format("auditId=%d", audit.getId());
 		
 		super.checkLinkExists("Sign in");

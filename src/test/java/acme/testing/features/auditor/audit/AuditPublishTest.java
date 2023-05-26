@@ -21,7 +21,7 @@ public class AuditPublishTest extends TestHarness {
 
 		super.checkListingExists();
 
-		super.checkColumnHasValue(0, 4, "false");
+		super.checkColumnHasValue(0, 4, "No");
 		
 		super.clickOnListingRecord(0);
 
@@ -29,7 +29,7 @@ public class AuditPublishTest extends TestHarness {
 
 		super.checkListingExists();
 
-		super.checkColumnHasValue(0, 4, "true");
+		super.checkColumnHasValue(0, 4, "Yes");
 
 		super.signOut();
 
@@ -43,7 +43,7 @@ public class AuditPublishTest extends TestHarness {
 		Audit audit;
 		String param;
 
-		audit = this.repository.findAuditByCode("A2345");
+		audit = this.repository.findAuditByCode("X2345");
 		param = String.format("id=%d", audit.getId());
 
 		super.checkLinkExists("Sign in");

@@ -1,4 +1,5 @@
 courseCode, code, conclusion, strongPoints, weakPoints
+,,,,
 AAA996, BFK9382,Esto es una prueba de conclusion que tiene que fallar al llegar a los 101 caracteres pero tiene que s,Esto son unos strongPoints validos, Esto son unos weakPoints validos
 AAA997, BEL5768,Esto es una conclusion valida,Esto es una prueba de strongPoints que tiene que fallar al llegar a los 101 caracteres necesito una t, Esto son unos weakPoints validos
 AAA997, BDI3456,Esto es una conclusion valida,Esto son unos strongPoints validos,Esto es una prueba de weakPoints que tiene que fallar al llegar a los 100 caracteres necesito unos ll

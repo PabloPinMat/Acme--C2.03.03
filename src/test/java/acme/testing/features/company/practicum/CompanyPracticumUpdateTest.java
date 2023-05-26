@@ -18,7 +18,7 @@ public class CompanyPracticumUpdateTest extends TestHarness {
 
 	// Test methods ------------------------------------------------------------
 
-
+	
 	@ParameterizedTest
 	@CsvFileSource(resources = "/features/company/practicum/update-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	public void test100Positive(final int practicumIndex, final String code, final String course, final String title, final String abstractPracticum, final String goals, final String estimatedTotalTime) {
@@ -81,7 +81,7 @@ public class CompanyPracticumUpdateTest extends TestHarness {
 
 		super.signOut();
 	}
-
+	
 	@Test
 	public void test300Hacking() {
 
