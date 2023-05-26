@@ -24,6 +24,8 @@ company.practicum.form.label.estimatedTotalTime = Tiempo estimado
 company.practicum.list.button.create = Crear
 
 company.practicum.form.button.create = Crear
+company.practicum.form.error.code = Este código está en uso
+company.practicum.form.error.code2 = Este curso no esta permitido
 
 company.practicum.form.button.update = Actualizar
 company.practicum.form.button.delete = Borrar
