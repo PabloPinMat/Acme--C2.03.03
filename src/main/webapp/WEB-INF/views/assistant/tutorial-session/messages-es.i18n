@@ -6,9 +6,17 @@ assistant.tutorial.session.form.label.type = Tipo
 assistant.tutorial.session.form.button.update = Actualizar
 assistant.tutorial.session.form.button.delete = Borrar
 assistant.tutorial.session.form.button.create = Crear
+assistant.tutorial.session.form.label.furtherInformation = Mas información
 
 assistant.tutorial.session.list.label.title = Titulo
 assistant.tutorial.session.list.label.type = Tipo
 assistant.tutorial.session.list.label.startDate = Fecha de inicio
 assistant.tutorial.session.list.label.finishDate = Fecha de fin
 assistant.tutorial.session.list.button.create = Crear sesión
+
+assistant.tutorial.session.form.error.dateAfterCurrent = La fecha debe ser de un día despues de la fecha actual
+assistant.tutorial.session.form.error.initialDateBeforeCurrent = La fecha inicial no puede ser anterior a la actual
+assistant.tutorial.session.form.error.endDateEarlierInitial = La fecha final no puede ser anterior a la inicial
+assistant.tutorial.session.form.error.minimunDuration = Error en la duración minima de la sesión
+assistant.tutorial.session.form.error.maximunDuration = Error en la duración máxima de la sesión
+assistant.tutorial.session.form.error.datesMisspelled = Las fechas estan mal escritas

@@ -83,7 +83,7 @@ public class AssistantTutorialDeleteService extends AbstractService<Assistant, T
 		Tuple tupla;
 
 		cursos = this.repositorio.findAllCourses();
-		opciones = SelectChoices.from(cursos, "code", object.getCourse());
+		opciones = SelectChoices.from(cursos, "title", object.getCourse());
 		tupla = super.unbind(object, "code", "title", "abstract$", "goals");
 		tupla.put("course", opciones.getSelected().getKey());
 		tupla.put("courses", opciones);

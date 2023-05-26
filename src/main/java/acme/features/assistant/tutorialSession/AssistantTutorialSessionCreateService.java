@@ -74,24 +74,28 @@ public class AssistantTutorialSessionCreateService extends AbstractService<Assis
 		final Boolean fechaInicio2;
 		final Date fechaActual2 = new Date(System.currentTimeMillis());
 
-		if (!super.getBuffer().getErrors().hasErrors("startSession")) {
-			fechaInicio = MomentHelper.isLongEnough(fechaActual2, tutorialSession.getStartSession(), 24, ChronoUnit.HOURS);
-			super.state(fechaInicio, "startSession", "La fecha debe ser de un día despues de la fecha actual");
-			fechaInicio2 = MomentHelper.isBefore(fechaActual2, tutorialSession.getStartSession());
-			super.state(fechaInicio2, "startSession", "La fecha inicial no puede ser anterior a la actual");
+		if (tutorialSession.getStartSession() != null && tutorialSession.getFinishSession() != null) {
 
-		}
+			if (!super.getBuffer().getErrors().hasErrors("startSession")) {
+				fechaInicio = MomentHelper.isLongEnough(fechaActual2, tutorialSession.getStartSession(), 24, ChronoUnit.HOURS);
+				super.state(fechaInicio, "startSession", "assistant.tutorial.session.form.error.dateAfterCurrent");
+				fechaInicio2 = MomentHelper.isBefore(fechaActual2, tutorialSession.getStartSession());
+				super.state(fechaInicio2, "startSession", "assistant.tutorial.session.form.error.initialDateBeforeCurrent");
 
-		if (!super.getBuffer().getErrors().hasErrors("finishSession"))
-			super.state(MomentHelper.isBefore(tutorialSession.getStartSession(), tutorialSession.getFinishSession()), "finishSession", "La fecha final no puede ser anterior a la inicial");
+			}
 
-		if (!super.getBuffer().getErrors().hasErrors("startSession") && !super.getBuffer().getErrors().hasErrors("finishDate")) {
-			duracionMin = MomentHelper.isLongEnough(tutorialSession.getStartSession(), tutorialSession.getFinishSession(), 1, ChronoUnit.HOURS);
-			super.state(duracionMin, "startSession", "Error en la duración minima de la sesión");
-			duracionMax = MomentHelper.computeDuration(tutorialSession.getStartSession(), tutorialSession.getFinishSession()).getSeconds() <= Duration.ofHours(5).getSeconds();
-			super.state(duracionMax, "finishSession", "Error en la duración máxima de la sesión");
-		}
+			if (!super.getBuffer().getErrors().hasErrors("finishSession"))
+				super.state(MomentHelper.isBefore(tutorialSession.getStartSession(), tutorialSession.getFinishSession()), "finishSession", "assistant.tutorial.session.form.error.endDateEarlierInitial");
 
+			if (!super.getBuffer().getErrors().hasErrors("startSession") && !super.getBuffer().getErrors().hasErrors("finishDate")) {
+				duracionMin = MomentHelper.isLongEnough(tutorialSession.getStartSession(), tutorialSession.getFinishSession(), 1, ChronoUnit.HOURS);
+				super.state(duracionMin, "startSession", "assistant.tutorial.session.form.error.minimunDuration");
+				duracionMax = MomentHelper.computeDuration(tutorialSession.getStartSession(), tutorialSession.getFinishSession()).getSeconds() <= Duration.ofHours(5).getSeconds();
+				super.state(duracionMax, "finishSession", "assistant.tutorial.session.form.error.maximunDuration");
+			}
+
+		} else
+			super.state(false, "*", "assistant.tutorial.session.form.error.datesMisspelled");
 	}
 
 	@Override
