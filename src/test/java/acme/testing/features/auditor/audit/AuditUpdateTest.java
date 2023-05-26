@@ -15,6 +15,31 @@ public class AuditUpdateTest extends TestHarness {
 	@Autowired
 	protected AuditTestRepository repository;
 	
+	//Ejecutar primero el de hacking y despues los otros 
+	@Test
+	public void test300Hacking() {
+		
+		Audit audit;
+		String param;
+		
+		audit = this.repository.findAuditByCode("X2345");
+		param = String.format("id=%d", audit.getId());
+		
+		
+		super.checkLinkExists("Sign in");
+		super.request("/auditor/audit/update", param);
+		super.checkPanicExists();
+		
+		super.signIn("administrator", "administrator");
+		super.request("/auditor/audit/update", param);
+		super.checkPanicExists();
+		super.signOut();
+		
+		super.signIn("lecturer1", "lecturer1");
+		super.request("/auditor/audit/update", param);
+		super.checkPanicExists();
+		super.signOut();
+	}
 	
 	@ParameterizedTest
 	@CsvFileSource(resources = "/features/auditor/audit/update-positive.csv", encoding = "utf-8", numLinesToSkip = 1)
@@ -75,31 +100,6 @@ public class AuditUpdateTest extends TestHarness {
 	}
 	
 	
-	
-	@Test
-	public void test300Hacking() {
-		
-		Audit audit;
-		String param;
-
-		audit = this.repository.findAuditByCode("A2345");
-		param = String.format("id=%d", audit.getId());
-		
-
-		super.checkLinkExists("Sign in");
-		super.request("/auditor/audit/update", param);
-		super.checkPanicExists();
-
-		super.signIn("administrator", "administrator");
-		super.request("/auditor/audit/update", param);
-		super.checkPanicExists();
-		super.signOut();
-
-		super.signIn("lecturer1", "lecturer1");
-		super.request("/auditor/audit/update", param);
-		super.checkPanicExists();
-		super.signOut();
-	}
 	
 	
 	
