@@ -8,7 +8,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.URL;
 
 import acme.framework.data.AbstractEntity;
@@ -32,8 +31,7 @@ public class Lecture extends AbstractEntity {
 	protected String			abstractt;
 
 	@NotNull
-	@Range(min = 1)
-	protected Integer			estimatedLearningTime;
+	protected Double			estimatedLearningTime;
 
 	@NotBlank
 	@Length(max = 100)
@@ -42,6 +40,7 @@ public class Lecture extends AbstractEntity {
 	@NotNull
 	protected LectureType		lectureType;
 
+	@NotNull
 	protected boolean			draftMode;
 
 	@URL

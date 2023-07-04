@@ -8,10 +8,10 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.configuration.Configuration;
 import acme.entities.course.Course;
 import acme.entities.course.CourseType;
 import acme.entities.lecture.Lecture;
+import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.framework.components.accounts.Principal;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -65,7 +65,7 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 	public void validate(final Course object) {
 		assert object != null;
 
-		Configuration conf;
+		SystemConfiguration conf;
 		conf = this.repository.findSystemConfiguration();
 
 		if (!super.getBuffer().getErrors().hasErrors("draftMode")) {
