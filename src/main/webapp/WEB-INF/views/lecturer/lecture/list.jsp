@@ -23,6 +23,8 @@
 	<acme:list-column code="lecturer.lecture.list.label.draftMode" path="draftMode" width="20%"/>
 </acme:list>
 
-
+<jstl:if test="${_command == 'list-all'}">
+	<acme:button code="lecturer.lecture.list.button.create" action="/lecturer/lecture/create"/>
+</jstl:if>
 
 

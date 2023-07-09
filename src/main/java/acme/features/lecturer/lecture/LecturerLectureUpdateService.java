@@ -82,6 +82,11 @@ public class LecturerLectureUpdateService extends AbstractService<Lecturer, Lect
 			super.state(draftMode, "draftMode", "lecturer.lecture.error.draftMode.published.update");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("title")) {
+			final Lecture instance = this.repository.findLectureByTitle(object.getTitle());
+			super.state(instance == null, "*", "Duplicated Title");
+		}
+
 	}
 
 	@Override

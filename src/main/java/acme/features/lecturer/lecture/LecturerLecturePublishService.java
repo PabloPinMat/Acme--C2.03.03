@@ -80,6 +80,7 @@ public class LecturerLecturePublishService extends AbstractService<Lecturer, Lec
 			final boolean draftMode = object.isDraftMode();
 			super.state(draftMode, "draftMode", "lecturer.lecture.error.draftMode.published");
 		}
+
 	}
 
 	@Override

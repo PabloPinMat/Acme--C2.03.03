@@ -79,7 +79,7 @@ public class LecturerCoursePublishService extends AbstractService<Lecturer, Cour
 		}
 
 		if (object.getRetailPrice() != null) {
-			if (!conf.getAcceptedCurrencies().contains(object.getRetailPrice().getCurrency()))
+			if (!conf.getAcceptedCurrencies().contains(object.getRetailPrice().getCurrency()) || conf.getAcceptedCurrencies().contains(object.getRetailPrice().getCurrency()) && object.getRetailPrice().getCurrency().length() < 3)
 				super.state(false, "*", "Wrong price format");
 		} else
 			super.state(false, "*", "Price must not be null");

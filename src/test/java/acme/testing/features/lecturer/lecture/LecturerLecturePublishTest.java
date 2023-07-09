@@ -37,7 +37,7 @@ public class LecturerLecturePublishTest extends TestHarness {
 
 	@ParameterizedTest
 	@CsvFileSource(resources = "/features/lecturer/lecture/publish-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
-	public void test100Positive(final int lectureIndex, final String title, final String abstractt, final String estimatedLearningTime, final String body, final String lectureType, final String furtherInformation) {
+	public void test100Negative(final int lectureIndex, final String title, final String abstractt, final String estimatedLearningTime, final String body, final String lectureType, final String furtherInformation) {
 
 		super.signIn("lecturer2", "lecturer2");
 

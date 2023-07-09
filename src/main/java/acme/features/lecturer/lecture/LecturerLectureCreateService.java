@@ -48,6 +48,10 @@ public class LecturerLectureCreateService extends AbstractService<Lecturer, Lect
 	public void validate(final Lecture object) {
 		assert object != null;
 
+		if (!super.getBuffer().getErrors().hasErrors("title")) {
+			final Lecture instance = this.repository.findLectureByTitle(object.getTitle());
+			super.state(instance == null, "*", "Duplicated Title");
+		}
 	}
 
 	@Override
