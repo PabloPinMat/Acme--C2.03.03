@@ -40,6 +40,30 @@ public class LecturerCourseCreateTest extends TestHarness {
 		super.signOut();
 
 	}
+	@ParameterizedTest
+	@CsvFileSource(resources = "/features/lecturer/course/create-negative.csv", encoding = "utf-8", numLinesToSkip = 1)
+	public void test100Negative(final int courseIndex, final String code, final String title, final String courseAbstract, final String retailPrice, final String link) {
+
+		super.signIn("lecturer1", "lecturer1");
+
+		super.clickOnMenu("Teacher", "List Courses");
+
+		super.checkListingExists();
+
+		super.clickOnButton("Create");
+
+		super.fillInputBoxIn("code", code);
+		super.fillInputBoxIn("title", title);
+		super.fillInputBoxIn("courseAbstract", courseAbstract);
+		super.fillInputBoxIn("retailPrice", retailPrice);
+		super.fillInputBoxIn("link", link);
+
+		super.clickOnSubmit("Create");
+
+		super.checkErrorsExist();
+
+		super.signOut();
+	}
 
 	@Test
 	public void test300Hacking() {
