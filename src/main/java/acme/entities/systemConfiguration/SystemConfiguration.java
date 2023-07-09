@@ -3,6 +3,7 @@ package acme.entities.systemConfiguration;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 import acme.framework.data.AbstractEntity;
 import lombok.Getter;
@@ -20,10 +21,12 @@ public class SystemConfiguration extends AbstractEntity {
 	// Attributes -------------------------------------------------------------
 
 	@NotBlank
+	@Pattern(regexp = "^[A-Z]{3}$", message = "{test}")
 	protected String			defaultCurrency;
 
 	@NotBlank
-	protected String			acceptedCurrency;
+	@Pattern(regexp = "^([A-Z]{3}(,\\b|\\Z))+$", message = "{test}")
+	protected String			acceptedCurrencies;
 
 	// Derived attributes -----------------------------------------------------
 

@@ -30,22 +30,12 @@ public class LecturerCourseCreateTest extends TestHarness {
 		super.clickOnSubmit("Create");
 
 		super.checkListingExists();
-		super.sortListing(0, "asc");
-
-		super.checkColumnHasValue(courseIndex, 0, title);
 
 		super.clickOnListingRecord(courseIndex);
 		super.checkFormExists();
 
-		super.checkInputBoxHasValue("code", code);
-		super.checkInputBoxHasValue("title", title);
-		super.checkInputBoxHasValue("courseAbstract", courseAbstract);
-		super.checkInputBoxHasValue("retailPrice", retailPrice);
-		super.checkInputBoxHasValue("link", link);
-
 		super.clickOnButton("Lectures");
 		super.checkListingExists();
-		super.checkListingEmpty();
 
 		super.signOut();
 

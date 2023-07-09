@@ -1,7 +1,10 @@
 lectureIndex,title,abstractt,estimatedLearningTime,body,lectureType,furtherInformation
-1,titulo de 76 caracterestitulo de 76 caracterestitulo de 76 caracterestituloo,abstractt1,3,body1,HANDS_ON,https://github.com/ferbaqfer/Acme-L3-D02
-1,lecture2,abstract de 101 caracteresabstract de 101 caracteresabstract de 101 caracteresabstract de 101 caracee,3,body2,HANDS_ON,https://github.com/ferbaqfer/Acme-L3-D02
-1,lecture3,abstractt2,-3,body2,HANDS_ON,https://github.com/ferbaqfer/Acme-L3-D02
-1,lecture4,abstractt2,3,body de 101 caracteresbody de 101 caracteresbody de 101 caracteresbody de 101 caracteresbody de 101 c,HANDS_ON,https://github.com/ferbaqfer/Acme-L3-D02
-1,lecture5,abstractt5,3,body5,---,https://github.com/ferbaqfer/Acme-L3-D02
-1,lecture5,abstractt5,3,body5,HANDS_ON,url mal
+1,,,, ,---,
+1,esto es un titulo que cuenta con exactamente 76caracteres esto es un tituloo,Abstract ejemplo,12,Body1,THEORICAL,https://github.com/ferbaqfer/Acme-L3-D02
+1,esto es un titulo que cuenta con exactamente 77 caracteres esto es un tituloo,Abstract ejemplo,11,Body1,THEORICAL,https://github.com/ferbaqfer/Acme-L3-D02
+1,Titulo ejemplo,abstract con 101 caracteresabstract con 101 caracteresabstract con 101 caracteresabstract con 101 car,3,body con 101 caracteresbody con 101 caracteresbody con 101 caracteresbody con 101 caracteresbody con 1,THEORICAL,https://github.com/ferbaqfer/Acme-L3-D02
+1,,abstract con 102 caracteresabstract con 102 caracteresabstract con 102 caracteresabstract con 102 carr,3,body2,HANDS_ON,
+1,Alecture5,Abstract de ejemplo,-3,Body con 101 caracteres Body con 101 caracteres Body con 101 caracteres Body con 101 caracteres Bodyy,THEORICAL,
+1,Alecture5,abstractt5,-0.53,Body con 102 caracteres Body con 102 caracteres Body con 102 caracteres Body con 102 caracteres Bodyy,HANDS_ON,
+1,titulo ejemplo,abstract ejemplo,-11.3,body1,THEORICAL,
+1,titulo ejemplo,abstract ejemplo,-1.75,---,link mal puesto

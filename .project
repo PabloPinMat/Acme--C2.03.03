@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Acme-L3-D04</name>
+	<name>Acme--C2.03.03</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -41,9 +41,9 @@
 			<locationURI>WORKSPACE_LOC/Frameworks/Acme-Framework-23.4.0/target/classes</locationURI>
 		</link>
 		<link>
-			<name>acme-framework-D04</name>
+			<name>acme-frameworkk</name>
 			<type>2</type>
-			<locationURI>WORKSPACE_LOC/Frameworks/Acme-Framework-23.4.0/target/classes</locationURI>
+			<locationURI>WORKSPACE_LOC/Frameworks/Acme-Framework-23.5.0/target/classes</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

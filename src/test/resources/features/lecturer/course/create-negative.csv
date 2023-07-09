@@ -1,17 +1,19 @@
 courseIndex,code,title,courseAbstract,retailPrice,link
+0,,---,,,
+0,,---,courseAbstract1,EUR 2.00,https://test.com
 0,A,AAAAAAAAACourse1,courseAbstract1,EUR 2.00,https://test.com
 0,AA,AAAAAAAAACourse1,courseAbstract1,EUR 2.00,https://test.com
-0,AAA,AAAAAAAAACourse1,courseAbstract1,EUR 2.00,https://test.com
+0,AAA,AAAAAAAAACourse1,courseAbstract1,US 2.00,https://test.com
 0,AAA1,AAAAAAAAACourse1,courseAbstract1,EUR 2.00,https://test.com
-0,AAA12,AAAAAAAAACourse1,courseAbstract1,EUR 2.00,https://test.com
+0,AAA12,AAAAAAAAACourse1,courseAbstract1,USD -2.00,https://test.com
 0,AAA999,el codigo va a estar duplicado,courseAbstract2,EUR 2.00,https://test.com
 0,AAA122,,he dejado el titulo a null,EUR 2.00,https://test.com
 0,AAA122,AEsto es un título que posiblemente contenga 76 caracteres no sé qué ponerrr,courseAbstract1,EUR 2.00,https://test.com
+0,AAA122,AEsto es un título que posiblemente contenga 77 caracteres no sé qué ponerrrr,courseAbstract1,EUR 2.00,https://test.com
 2,AAA122,BAAAAAAAACourse,Este abstract es bastante bastante largo ya que debe contener 101 caracteres si no llego meto doss mm,USD 999.00,https://github.com/ferbaqfer/Acme-L3-D02
+2,AAA122,BAAAAAAAACourse,Este abstract es bastante bastante largo ya que debe contener 102 caracteres si no llego meto doss mmm,USD 999.00,https://github.com/ferbaqfer/Acme-L3-D02
 2,AAA122,BAAAAAAAACourse,voy a poner un retail price mal, 999.00,https://github.com/ferbaqfer/Acme-L3-D02
 2,AAA122,BAAAAAAAACourse,voy a poner un retail price mal, EUR -15,https://github.com/ferbaqfer/Acme-L3-D02
-2,AAA122,BAAAAAAAACourse,voy a poner un retail price mal, EUR -15.00,https://github.com/ferbaqfer/Acme-L3-D02
-2,AAA122,BAAAAAAAACourse,voy a poner un enlace mal, EUR 5.00,MalPuesto
-2,AAA122,BAAAAAAAACourse,voy a poner un enlace mal, EUR 5.00,12
-
-
+2,AAA122,BAAAAAAAACourse,voy a poner un retail price mal, A -15.00,https://github.com/ferbaqfer/Acme-L3-D02
+2,AAA122,BAAAAAAAACourse,voy a poner un enlace mal, BGP 5.00,MalPuesto
+2,AAA122,BAAAAAAAACourse,voy a poner un enlace mal, EU 5.00,12

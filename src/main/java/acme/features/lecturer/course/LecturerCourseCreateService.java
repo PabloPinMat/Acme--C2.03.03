@@ -4,8 +4,8 @@ package acme.features.lecturer.course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.configuration.Configuration;
 import acme.entities.course.Course;
+import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
 import acme.roles.Lecturer;
@@ -56,7 +56,7 @@ public class LecturerCourseCreateService extends AbstractService<Lecturer, Cours
 	public void validate(final Course object) {
 		assert object != null;
 
-		Configuration conf;
+		SystemConfiguration conf;
 		conf = this.repository.findSystemConfiguration();
 
 		if (!super.getBuffer().getErrors().hasErrors("draftMode")) {
@@ -68,17 +68,19 @@ public class LecturerCourseCreateService extends AbstractService<Lecturer, Cours
 			super.state(instance == null, "code", "lecturer.course.error.code.duplicated");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("retailPrice")) {
-			final double retailPrice = object.getRetailPrice().getAmount();
-			super.state(retailPrice >= 0, "retailPrice", "Must be greater than 0");
-		}
-
 		if (object.getRetailPrice() != null) {
-			if (!conf.getAcceptedCurrencies().contains(object.getRetailPrice().getCurrency()))
-				super.state(false, "*", "Wrong price format");
+			if (!super.getBuffer().getErrors().hasErrors("retailPrice")) {
+				final double retailPrice = object.getRetailPrice().getAmount();
+				super.state(retailPrice >= 0, "retailPrice", "Must be greater than 0");
+			}
 		} else
 			super.state(false, "*", "Price must not be null");
 
+		if (object.getRetailPrice() != null) {
+			if (!conf.getAcceptedCurrencies().contains(object.getRetailPrice().getCurrency()) || conf.getAcceptedCurrencies().contains(object.getRetailPrice().getCurrency()) && object.getRetailPrice().getCurrency().length() < 3)
+				super.state(false, "*", "Wrong price format");
+		} else
+			super.state(false, "*", "Price must not be null");
 	}
 
 	@Override

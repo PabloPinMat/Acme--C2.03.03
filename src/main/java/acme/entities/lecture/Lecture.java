@@ -32,8 +32,8 @@ public class Lecture extends AbstractEntity {
 	protected String			abstractt;
 
 	@NotNull
-	@Range(min = 1)
-	protected Integer			estimatedLearningTime;
+	@Range(min = 0)
+	protected Double			estimatedLearningTime;
 
 	@NotBlank
 	@Length(max = 100)
@@ -42,6 +42,7 @@ public class Lecture extends AbstractEntity {
 	@NotNull
 	protected LectureType		lectureType;
 
+	@NotNull
 	protected boolean			draftMode;
 
 	@URL
