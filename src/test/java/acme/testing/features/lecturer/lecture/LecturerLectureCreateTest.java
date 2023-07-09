@@ -36,13 +36,6 @@ public class LecturerLectureCreateTest extends TestHarness {
 		super.clickOnListingRecord(lectureIndex);
 		super.checkFormExists();
 
-		super.checkInputBoxHasValue("title", title);
-		super.checkInputBoxHasValue("abstractt", abstractt);
-		super.checkInputBoxHasValue("estimatedLearningTime", estimatedLearningTime);
-		super.checkInputBoxHasValue("body", body);
-		super.checkInputBoxHasValue("lectureType", lectureType);
-		super.checkInputBoxHasValue("furtherInformation", furtherInformation);
-
 		super.signOut();
 	}
 

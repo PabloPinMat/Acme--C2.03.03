@@ -69,6 +69,9 @@ public class LecturerCourseLectureCreateService extends AbstractService<Lecturer
 	public void validate(final CourseLecture object) {
 		assert object != null;
 
+		int lectureId;
+		int courseId;
+		CourseLecture actualLecture;
 		final boolean lectureIsInDraftMode;
 		final boolean courseIsInDraftMode;
 		lectureIsInDraftMode = this.repository.isLectureInDraftModeByCourseId(object.getLecture().getId());
@@ -82,6 +85,16 @@ public class LecturerCourseLectureCreateService extends AbstractService<Lecturer
 		}
 
 		super.state(!lectureIsInDraftMode, "*", "You cannot add a lecture which is not published");
+
+		if (!cursoNulo) {
+			lectureId = object.getLecture().getId();
+			courseId = object.getCourse().getId();
+			actualLecture = this.repository.findOneLectureCourseById(courseId, lectureId);
+
+			super.state(object.getLecture().getLecturer().equals(object.getCourse().getLecturer()), "*", "Acces dennied");
+			super.state(actualLecture == null, "*", "Already added");
+
+		}
 
 	}
 

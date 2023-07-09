@@ -1,5 +1,12 @@
 lectureIndex,title,abstractt,estimatedLearningTime,body,lectureType,furtherInformation
-0,AAAAlecture1,abstractt1,3,body1,THEORICAL,https://github.com/ferbaqfer/Acme-L3-D02
-1,AAAlecture3,abstractt2,3,body2,THEORICAL,https://github.com/ferbaqfer/Acme-L3-D02
-2,AAlecture4,abstractt2,3,body2,THEORICAL,https://github.com/ferbaqfer/Acme-L3-D02
-3,Alecture5,abstractt5,3,body5,THEORICAL,https://github.com/ferbaqfer/Acme-L3-D02
+0,AAAAlecture1,abstractt1,20,body1,THEORICAL,https://github.com/ferbaqfer/Acme-L3-D02
+1,AAAlecture3,abstractt2,3,body2,HANDS_ON,https://github.com/ferbaqfer/Acme-L3-D02
+2,AAlecture4,abstractt2,10,body2,THEORICAL,
+3,Alecture5,abstractt5,11,body con 99 caracteresbody con 99 caracteresbody con 99 caracteresbody con 99 caracteresbody con 9 ,HANDS_ON,
+4,Alecture6,abstractt5,3,body con 100 caracteresbody con 100 caracteresbody con 100 caracteresbody con 100 caracteresbody con,THEORICAL,
+5,Alecture7,learning time decimal,1.75,body5,THEORICAL,
+6,Alecture8,learning time decimal,0.5,body5,HANDS_ON,
+7,Alecture9,abstract con 99 caracteresabstract con 99caracteresabstract con 99 caracteresabstract con 99 caract,3,body5,THEORICAL,https://github.com/ferbaqfer/Acme-L3-D02
+8,Alecture10,abstract con 100 caracteresabstract con 100 caracteresabstract con 100 caracteresabstract con 100 ca,3,body5,THEORICAL,https://github.com/ferbaqfer/Acme-L3-D02
+9,titulo con 75 caracterestitulo con 75 caracterestitulo con 75 caracteressss,abstractt5,3,body5,THEORICAL,https://github.com/ferbaqfer/Acme-L3-D02
+10,titulo con 74 caracterestitulo con 74 caracterestitulo con 74 caracteresss,abstractt5,3,body5,THEORICAL,https://github.com/ferbaqfer/Acme-L3-D02

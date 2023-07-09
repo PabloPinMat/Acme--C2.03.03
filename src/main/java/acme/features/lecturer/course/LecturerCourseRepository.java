@@ -6,10 +6,10 @@ import java.util.Collection;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import acme.entities.configuration.Configuration;
 import acme.entities.course.Course;
 import acme.entities.course.CourseLecture;
 import acme.entities.lecture.Lecture;
+import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.framework.repositories.AbstractRepository;
 import acme.roles.Lecturer;
 
@@ -37,7 +37,7 @@ public interface LecturerCourseRepository extends AbstractRepository {
 	@Query("select c from Course c where c.code = :code")
 	Course findCourseByCode(String code);
 
-	@Query("select c from Configuration c")
-	Configuration findSystemConfiguration();
+	@Query("select c from SystemConfiguration c")
+	SystemConfiguration findSystemConfiguration();
 
 }

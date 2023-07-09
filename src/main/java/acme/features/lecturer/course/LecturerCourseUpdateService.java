@@ -7,10 +7,10 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.entities.configuration.Configuration;
 import acme.entities.course.Course;
 import acme.entities.course.CourseType;
 import acme.entities.lecture.Lecture;
+import acme.entities.systemConfiguration.SystemConfiguration;
 import acme.framework.components.accounts.Principal;
 import acme.framework.components.models.Tuple;
 import acme.framework.services.AbstractService;
@@ -64,7 +64,7 @@ public class LecturerCourseUpdateService extends AbstractService<Lecturer, Cours
 	@Override
 	public void validate(final Course object) {
 		assert object != null;
-		Configuration conf;
+		SystemConfiguration conf;
 		conf = this.repository.findSystemConfiguration();
 
 		if (!super.getBuffer().getErrors().hasErrors("draftMode")) {
@@ -88,11 +88,10 @@ public class LecturerCourseUpdateService extends AbstractService<Lecturer, Cours
 		}
 
 		if (object.getRetailPrice() != null) {
-			if (!conf.getAcceptedCurrencies().contains(object.getRetailPrice().getCurrency()))
+			if (!conf.getAcceptedCurrencies().contains(object.getRetailPrice().getCurrency()) || conf.getAcceptedCurrencies().contains(object.getRetailPrice().getCurrency()) && object.getRetailPrice().getCurrency().length() < 3)
 				super.state(false, "*", "Wrong price format");
 		} else
 			super.state(false, "*", "Price must not be null");
-
 	}
 
 	@Override

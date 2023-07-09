@@ -1,5 +1,9 @@
 courseIndex,code,title,courseAbstract,retailPrice,link
-0,ABC123,AAAAAAAAACourse1,courseAbstract1,EUR 2.00,https://test.com
-1,ABD123,AEsto es un título que posiblemente contenga 74 caracteres no sé qué poner,courseAbstract2,EUR 2.00,https://test.com
+0,ABC123,AAAAAAAAACourse1,무지개,EUR 2.00,https://test.com
+1,ABD123,AEsto es un título que posiblemente contenga 74 caracteres no sé qué poner,courseAbstract2,EUR 122.00,https://test.com
+1,ABD123,AEsto es un título que posiblemente contenga 75 caracteres no sé qué ponerr,courseAbstract2,USD 0.099,https://test.com
 0,ACZ997,CAAAAAAACourse,Este abstract es bastante bastante largo,USD 0.01,https://test.com
 0,AZC000,CCvoy a dejar el link en nulo,Este es el abstract de un curso con precio 0,USD 0.00,https://test.com
+0,AZC000,무지개무지개,Este abstract es bastante bastante largo ya que debe contener 99 caracteres si no llego meto doss mm,USD 0.00,https://test.com
+0,AZC000,무지개무지개,Este abstract es bastante bastante largo ya que debe contener 100 caracteres si no llego meto doss mm,USD 0.00,https://test.com
+
